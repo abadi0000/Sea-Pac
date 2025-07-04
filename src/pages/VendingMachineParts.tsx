@@ -1,4 +1,3 @@
-
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Link } from 'react-router-dom';
@@ -7,7 +6,7 @@ import {
   Monitor, 
   Cpu, 
   Thermometer, 
-  Sensor, 
+  Radio, 
   Cog, 
   Lock, 
   Lightbulb, 
@@ -50,7 +49,7 @@ const VendingMachineParts = () => {
     {
       name: "مستشعر إسقاط المنتج (Drop Sensor)",
       description: "لضمان تسليم المنتج بنجاح وتجنب الأعطال",
-      icon: Sensor,
+      icon: Radio,
       image: "https://images.unsplash.com/photo-1605810230434-7631ac76ec81?auto=format&fit=crop&w=400&q=80"
     },
     {

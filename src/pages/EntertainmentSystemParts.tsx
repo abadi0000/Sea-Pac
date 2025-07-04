@@ -1,4 +1,3 @@
-
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Link } from 'react-router-dom';
@@ -9,7 +8,7 @@ import {
   Cpu, 
   Zap, 
   Glasses, 
-  Sensor, 
+  Radio, 
   Lightbulb, 
   CreditCard, 
   Projector
@@ -56,7 +55,7 @@ const EntertainmentSystemParts = () => {
     {
       name: "أجهزة الاستشعار الحركية",
       description: "لتتبع حركة اللاعبين أو الأجسام داخل بيئة اللعب",
-      icon: Sensor,
+      icon: Radio,
       image: "https://images.unsplash.com/photo-1482938289607-e9573fc25ebb?auto=format&fit=crop&w=400&q=80"
     },
     {

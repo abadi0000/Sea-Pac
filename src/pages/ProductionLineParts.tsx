@@ -1,4 +1,3 @@
-
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Link } from 'react-router-dom';
@@ -8,7 +7,7 @@ import {
   Droplets, 
   Settings, 
   Cpu, 
-  Sensor, 
+  Radio, 
   Scissors, 
   Cog, 
   CircleDot, 
@@ -50,7 +49,7 @@ const ProductionLineParts = () => {
     {
       name: "الحساسات والمستشعرات الصناعية (Sensors)",
       description: "للكشف عن المواقع، المستويات، والظروف التشغيلية",
-      icon: Sensor,
+      icon: Radio,
       image: "https://images.unsplash.com/photo-1605810230434-7631ac76ec81?auto=format&fit=crop&w=400&q=80"
     },
     {

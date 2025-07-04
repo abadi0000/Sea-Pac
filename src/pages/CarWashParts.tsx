@@ -1,4 +1,3 @@
-
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Link } from 'react-router-dom';
@@ -8,7 +7,7 @@ import {
   Zap, 
   Gauge, 
   Wind, 
-  Sensor, 
+  Radio, 
   Beaker, 
   Cog, 
   RotateCcw, 
@@ -50,7 +49,7 @@ const CarWashParts = () => {
     {
       name: "أنظمة التحكم والمستشعرات (Sensors/PLC)",
       description: "للكشف عن وجود السيارة وموقعها وتوجيه عملية الغسيل",
-      icon: Sensor,
+      icon: Radio,
       image: "https://images.unsplash.com/photo-1605810230434-7631ac76ec81?auto=format&fit=crop&w=400&q=80"
     },
     {
