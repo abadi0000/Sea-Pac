@@ -1,4 +1,3 @@
-
 import { Link, useLocation } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 
@@ -9,7 +8,8 @@ const Navigation = () => {
     { path: '/', label: 'الرئيسية' },
     { path: '/consultation-services', label: 'الخدمات الاستشارية' },
     { path: '/sebaaq-machine', label: 'سـي بـاك ماشـين' },
-    { path: '/alibaba', label: 'استورد من الصين' }
+    { path: '/alibaba', label: 'استورد من الصين' },
+    { path: '/invest', label: 'استثمر معنا' }
   ];
 
   return (

@@ -1,4 +1,3 @@
-
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -9,6 +8,7 @@ import Index from "./pages/Index";
 import ConsultationServices from "./pages/ConsultationServices";
 import SebaqMachine from "./pages/SebaqMachine";
 import Alibaba from "./pages/Alibaba";
+import Invest from "./pages/Invest";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -25,6 +25,7 @@ const App = () => (
           <Route path="/consultation-services" element={<ConsultationServices />} />
           <Route path="/sebaaq-machine" element={<SebaqMachine />} />
           <Route path="/alibaba" element={<Alibaba />} />
+          <Route path="/invest" element={<Invest />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
