@@ -1,8 +1,8 @@
-
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Wrench, Package, Settings, Headphones, Cog, Lightbulb, Cpu, Zap, MapPin } from 'lucide-react';
+import { Wrench, Package, Settings, Headphones, Cog, Lightbulb, Cpu, Zap, MapPin, ArrowRight } from 'lucide-react';
 
 const SebaqMachine = () => {
   const [hoveredService, setHoveredService] = useState<number | null>(null);
@@ -16,7 +16,7 @@ const SebaqMachine = () => {
       icon: Headphones
     },
     {
-      title: "توريد",
+      title: "توريد", 
       description: "نتولى كافة إجراءات توريد الآلات بكفاءة عالية، تشمل جميع إجراءات هيئة المواصفات والمقاييس والتخليص الجمركي. مستفيدين من خبرتنا الواسعة في الشحن الدولي والخدمات اللوجستية وشبكة موردينا العالمية",
       icon: Package
     },
@@ -37,26 +37,34 @@ const SebaqMachine = () => {
     }
   ];
 
-  const products = [
+  const machineCategories = [
     {
       title: "مكائن البيع الذاتي",
-      subtitle: "آخر العروض",
-      image: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80"
+      subtitle: "تجربة مبتكرة، أرباح مستمرة",
+      description: "انتقلوا بتجارة التجزئة إلى مستوى جديد مع مجموعتنا من مكائن البيع الذاتي المتطورة",
+      image: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80",
+      link: "/sebaaq-machine/vending-machines"
     },
     {
       title: "أنظمة خطوط الإنتاج والمصانع",
-      subtitle: "آخر العروض",
-      image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=800&q=80"
+      subtitle: "بناء مستقبل الصناعة السعودية",
+      description: "أنظمة خطوط إنتاج ومصانع متكاملة، مصممة بأحدث التقنيات لضمان الكفاءة التشغيلية",
+      image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=800&q=80",
+      link: "/sebaaq-machine/production-lines"
     },
     {
       title: "مغاسل السيارات الاوتوماتيكية",
-      subtitle: "آخر العروض",
-      image: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=800&q=80"
+      subtitle: "نظافة فائقة، كفاءة لا تضاهى",
+      description: "ارتقوا بتجربة غسيل السيارات مع أحدث أنظمة المغاسل الأوتوماتيكية",
+      image: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=800&q=80",
+      link: "/sebaaq-machine/car-wash"
     },
     {
       title: "الأنظمة الترفيهية",
-      subtitle: "آخر العروض",
-      image: "https://images.unsplash.com/photo-1531297484001-80022131f5a1?auto=format&fit=crop&w=800&q=80"
+      subtitle: "استثمر في مستقبل الترفيه السعودي",
+      description: "مجموعة واسعة من الأنظمة الترفيهية المبتكرة التي تضمن تجارب لا تُنسى",
+      image: "https://images.unsplash.com/photo-1531297484001-80022131f5a1?auto=format&fit=crop&w=800&q=80",
+      link: "/sebaaq-machine/entertainment-systems"
     }
   ];
 
@@ -101,16 +109,68 @@ const SebaqMachine = () => {
             سـي بـاك ماشـين
             <span className="gradient-text block mt-2">استشارة، توريد، تركيب، صيانة</span>
           </h1>
-          <p className="text-lg md:text-xl text-gray-300 max-w-4xl mx-auto mb-12 leading-relaxed">
-            في سـي باك ماشـين نقدم لكم حلولاً متخصصة وشاملة تشمل أحدث الأنظمة الآلية والمعدات الصناعية والتجارية والخدمية المتطورة. سواء كنتم بحاجة إلى آلات إنتاج دقيقة تتطلب تحكمًا فائقًا، أو أنظمة أوتوماتيكية معقدة تدمج بين الميكانيكا والإلكترونيات والبرمجيات. نحن شريككم الاستراتيجي الذي يضمن لكم الحصول على الآلات المناسبة وتركيبها وتشغيلها وصيانتها بكفاءة
+          <p className="text-lg md:text-xl text-gray-300 max-w-4xl mx-auto mb-8 leading-relaxed">
+            آلات متطورة لمستقبل الصناعة السعودية: جودة عالمية، كفاءة لا مثيل لها
+          </p>
+          <p className="text-base md:text-lg text-gray-400 max-w-4xl mx-auto mb-12 leading-relaxed">
+            في سي باك، ندرك أن مفتاح النجاح في المشهد الصناعي السعودي المتنامي يكمن في امتلاك الآلات المناسبة. بصفتنا شركة رائدة في توريد الآلات المميزة ذات المواصفات القوية من الصين، نقدم لكم حلولًا تكنولوجية متقدمة مصممة لتعزيز كفاءة عملياتكم، زيادة إنتاجيتكم، وضمان أعلى مستويات الجودة.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button className="bg-sebaaq-blue hover:bg-blue-600 text-white px-8 py-4 rounded-lg font-semibold">
               تواصل معنا
             </Button>
             <Button variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-sebaaq-midnight px-8 py-4 rounded-lg font-semibold">
-              تصفح عروضنا على الآلات التي نوفرها
+              استكشف منتجاتنا
             </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* Machine Categories Section */}
+      <section className="py-20 bg-gray-50">
+        <div className="container mx-auto px-6">
+          <h2 className="font-playfair text-3xl md:text-5xl font-bold text-sebaaq-midnight text-center mb-6">
+            اكتشفوا مجموعتنا الواسعة
+            <span className="gradient-text block">من الآلات المتخصصة</span>
+          </h2>
+          <p className="text-lg text-gray-600 text-center max-w-4xl mx-auto mb-16 leading-relaxed">
+            نحن لا نقدم مجرد آلات، بل نقدم استثمارات استراتيجية تدعم أهدافكم التجارية وتتوافق مع رؤية المملكة 2030 الطموحة نحو التنويع الاقتصادي والابتكار
+          </p>
+          <div className="grid md:grid-cols-2 gap-8">
+            {machineCategories.map((category, index) => (
+              <Card 
+                key={index}
+                className={`overflow-hidden transition-all duration-300 transform ${
+                  hoveredProduct === index ? 'scale-105 shadow-2xl' : 'scale-100 shadow-lg'
+                }`}
+                onMouseEnter={() => setHoveredProduct(index)}
+                onMouseLeave={() => setHoveredProduct(null)}
+              >
+                <div className="relative h-64 overflow-hidden">
+                  <img 
+                    src={category.image} 
+                    alt={category.title}
+                    className="w-full h-full object-cover transition-transform duration-300 hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                </div>
+                <CardHeader className="pb-4">
+                  <CardTitle className="text-xl font-bold text-sebaaq-midnight mb-2">
+                    {category.title}
+                  </CardTitle>
+                  <p className="text-sebaaq-blue font-medium mb-3">{category.subtitle}</p>
+                  <p className="text-gray-600 text-sm leading-relaxed mb-4">
+                    {category.description}
+                  </p>
+                  <Link to={category.link}>
+                    <Button className="w-full bg-sebaaq-blue hover:bg-blue-600 text-white">
+                      اعرف المزيد
+                      <ArrowRight className="w-4 h-4 mr-2" />
+                    </Button>
+                  </Link>
+                </CardHeader>
+              </Card>
+            ))}
           </div>
         </div>
       </section>
@@ -149,43 +209,6 @@ const SebaqMachine = () => {
                 <p className="text-gray-600 leading-relaxed">
                   {area.description}
                 </p>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Products Section */}
-      <section className="py-20 bg-gray-50">
-        <div className="container mx-auto px-6">
-          <h2 className="font-playfair text-3xl md:text-5xl font-bold text-sebaaq-midnight text-center mb-16">
-            منتجاتنا
-            <span className="gradient-text block">المتخصصة</span>
-          </h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {products.map((product, index) => (
-              <Card 
-                key={index}
-                className={`overflow-hidden transition-all duration-300 transform ${
-                  hoveredProduct === index ? 'scale-105 shadow-2xl' : 'scale-100 shadow-lg'
-                }`}
-                onMouseEnter={() => setHoveredProduct(index)}
-                onMouseLeave={() => setHoveredProduct(null)}
-              >
-                <div className="relative h-48 overflow-hidden">
-                  <img 
-                    src={product.image} 
-                    alt={product.title}
-                    className="w-full h-full object-cover transition-transform duration-300 hover:scale-110"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
-                </div>
-                <CardHeader>
-                  <CardTitle className="text-lg font-bold text-sebaaq-midnight">
-                    {product.title}
-                  </CardTitle>
-                  <p className="text-sebaaq-blue font-medium">{product.subtitle}</p>
-                </CardHeader>
               </Card>
             ))}
           </div>
