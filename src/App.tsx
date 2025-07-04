@@ -12,6 +12,11 @@ import VendingMachines from "./pages/VendingMachines";
 import ProductionLines from "./pages/ProductionLines";
 import CarWash from "./pages/CarWash";
 import EntertainmentSystems from "./pages/EntertainmentSystems";
+import PartsAndMaintenance from "./pages/PartsAndMaintenance";
+import VendingMachineParts from "./pages/VendingMachineParts";
+import ProductionLineParts from "./pages/ProductionLineParts";
+import CarWashParts from "./pages/CarWashParts";
+import EntertainmentSystemParts from "./pages/EntertainmentSystemParts";
 import Alibaba from "./pages/Alibaba";
 import Invest from "./pages/Invest";
 import NotFound from "./pages/NotFound";
@@ -33,6 +38,11 @@ const App = () => (
           <Route path="/sebaaq-machine/production-lines" element={<ProductionLines />} />
           <Route path="/sebaaq-machine/car-wash" element={<CarWash />} />
           <Route path="/sebaaq-machine/entertainment-systems" element={<EntertainmentSystems />} />
+          <Route path="/parts-maintenance" element={<PartsAndMaintenance />} />
+          <Route path="/parts-maintenance/vending-machine-parts" element={<VendingMachineParts />} />
+          <Route path="/parts-maintenance/production-line-parts" element={<ProductionLineParts />} />
+          <Route path="/parts-maintenance/car-wash-parts" element={<CarWashParts />} />
+          <Route path="/parts-maintenance/entertainment-system-parts" element={<EntertainmentSystemParts />} />
           <Route path="/alibaba" element={<Alibaba />} />
           <Route path="/invest" element={<Invest />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
