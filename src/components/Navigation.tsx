@@ -8,7 +8,8 @@ const Navigation = () => {
   const navItems = [
     { path: '/', label: 'الرئيسية' },
     { path: '/consultation-services', label: 'الخدمات الاستشارية' },
-    { path: '/sebaaq-machine', label: 'سـي بـاك ماشـين' }
+    { path: '/sebaaq-machine', label: 'سـي بـاك ماشـين' },
+    { path: '/alibaba', label: 'استورد من الصين' }
   ];
 
   return (
