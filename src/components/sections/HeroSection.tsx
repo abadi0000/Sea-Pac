@@ -11,9 +11,17 @@ const HeroSection = () => {
   }, []);
 
   return (
-    <section className="relative h-screen flex items-center justify-center overflow-hidden hero-gradient">
+    <section className="relative h-screen flex items-center justify-center overflow-hidden">
+      {/* Background Image */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style={{
+          backgroundImage: `linear-gradient(rgba(0, 51, 102, 0.8), rgba(18, 18, 18, 0.8)), url('/lovable-uploads/17fa2dcb-b54a-44e4-b3f8-5c036df065a5.png')`
+        }}
+      />
+      
       {/* Animated Background Pattern */}
-      <div className="absolute inset-0 tech-grid opacity-20"></div>
+      <div className="absolute inset-0 tech-grid opacity-10"></div>
       
       {/* Floating Elements */}
       <div className="absolute top-20 right-10 w-4 h-4 bg-sebaaq-blue rounded-full animate-float opacity-60"></div>
