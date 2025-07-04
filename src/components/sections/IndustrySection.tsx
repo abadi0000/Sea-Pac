@@ -34,30 +34,30 @@ const IndustrySection = () => {
               <div className="flex items-start gap-4">
                 <div className="w-3 h-3 bg-sebaaq-blue rounded-full mt-2 flex-shrink-0"></div>
                 <div>
-                  <h3 className="text-white font-semibold mb-2">Smart Factory Transformation</h3>
-                  <p className="text-gray-400">Expert consultations on automation and intelligent manufacturing systems.</p>
+                  <h3 className="text-white font-semibold mb-2">تطوير المصانع الذكية</h3>
+                  <p className="text-gray-400">استشارات خبيرة في الأتمتة وأنظمة التصنيع الذكية.</p>
                 </div>
               </div>
               
               <div className="flex items-start gap-4">
                 <div className="w-3 h-3 bg-sebaaq-blue rounded-full mt-2 flex-shrink-0"></div>
                 <div>
-                  <h3 className="text-white font-semibold mb-2">Efficiency Optimization</h3>
-                  <p className="text-gray-400">Solutions to increase production efficiency and reduce operational costs.</p>
+                  <h3 className="text-white font-semibold mb-2">تحسين الكفاءة</h3>
+                  <p className="text-gray-400">حلول لزيادة كفاءة الإنتاج وتقليل التكاليف التشغيلية.</p>
                 </div>
               </div>
               
               <div className="flex items-start gap-4">
                 <div className="w-3 h-3 bg-sebaaq-blue rounded-full mt-2 flex-shrink-0"></div>
                 <div>
-                  <h3 className="text-white font-semibold mb-2">End-to-End Support</h3>
-                  <p className="text-gray-400">Complete support from consultation to supply, installation, and maintenance.</p>
+                  <h3 className="text-white font-semibold mb-2">الدعم الشامل</h3>
+                  <p className="text-gray-400">دعم كامل من الاستشارة إلى التوريد والتركيب والصيانة.</p>
                 </div>
               </div>
             </div>
 
             <button className="bg-sebaaq-blue hover:bg-blue-600 text-white px-8 py-4 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105">
-              Explore Industry Solutions
+              استكشف الحلول الصناعية
             </button>
           </div>
 
