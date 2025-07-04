@@ -1,6 +1,7 @@
 
 import { useState, useEffect } from 'react';
 import { ArrowDown } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const HeroSection = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -41,9 +42,12 @@ const HeroSection = () => {
             <button className="bg-sebaaq-blue hover:bg-blue-600 text-white px-8 py-4 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105">
               استكشف خدماتنا
             </button>
-            <button className="border-2 border-white text-white hover:bg-white hover:text-sebaaq-midnight px-8 py-4 rounded-lg font-semibold transition-all duration-300">
-              طلب استشارة
-            </button>
+            <Link 
+              to="/consultation-services"
+              className="border-2 border-white text-white hover:bg-white hover:text-sebaaq-midnight px-8 py-4 rounded-lg font-semibold transition-all duration-300"
+            >
+              الخدمات الاستشارية
+            </Link>
           </div>
         </div>
       </div>
