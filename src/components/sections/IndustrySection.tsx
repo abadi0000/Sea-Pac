@@ -22,11 +22,11 @@ const IndustrySection = () => {
           <div className="space-y-8">
             <div>
               <h2 className="font-playfair text-3xl md:text-5xl font-bold text-white mb-6">
-                The Future of Industry.
-                <span className="gradient-text block">Engineered by SEBAAQ.</span>
+                مستقبل الصناعة.
+                <span className="gradient-text block">مُهندس بواسطة سيباك.</span>
               </h2>
               <p className="text-gray-400 text-lg leading-relaxed">
-                Transforming traditional manufacturing through intelligent automation and Industry 4.0 solutions.
+                تحويل التصنيع التقليدي من خلال الأتمتة الذكية وحلول الصناعة 4.0.
               </p>
             </div>
 

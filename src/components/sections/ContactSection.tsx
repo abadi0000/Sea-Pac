@@ -9,12 +9,12 @@ const ContactSection = () => {
 
       <div className="relative z-10 container mx-auto px-6 text-center">
         <h2 className="font-playfair text-3xl md:text-5xl font-bold text-white mb-6">
-          Begin Your Strategic
-          <span className="gradient-text block">Partnership</span>
+          ابدأ شراكتك
+          <span className="gradient-text block">الاستراتيجية</span>
         </h2>
         
         <p className="text-gray-400 text-lg mb-12 max-w-2xl mx-auto">
-          Let's discuss how SEBAAQ can engineer your success in the evolving landscape of global trade.
+          دعنا نناقش كيف يمكن لسيباك أن تهندس نجاحك في المشهد المتطور للتجارة العالمية.
         </p>
 
         <div className="max-w-4xl mx-auto">
