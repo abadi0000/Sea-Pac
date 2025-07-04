@@ -93,24 +93,24 @@ const StatsSection = () => {
       <div className="relative z-10 container mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="font-playfair text-3xl md:text-5xl font-bold text-white mb-4">
-            Proven Excellence in
-            <span className="gradient-text block">Global Trade</span>
+            التميز المثبت في
+            <span className="gradient-text block">التجارة العالمية</span>
           </h2>
           <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-            Our numbers speak to our commitment to excellence and reliability
+            أرقامنا تتحدث عن التزامنا بالتميز والموثوقية
           </p>
         </div>
 
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-16">
-          <StatItem number="9,000+" label="Shipments Delivered" delay={0} />
-          <StatItem number="370+" label="Permanent Clients" delay={200} />
-          <StatItem number="10+" label="Years of Experience" delay={400} />
-          <StatItem number="95%" label="On-Time Delivery" delay={600} />
+          <StatItem number="9,000+" label="شحنة مُسلمة" delay={0} />
+          <StatItem number="370+" label="عميل دائم" delay={200} />
+          <StatItem number="10+" label="سنوات من الخبرة" delay={400} />
+          <StatItem number="95%" label="التسليم في الوقت المحدد" delay={600} />
         </div>
 
         {/* Decorative Elements */}
-        <div className="absolute -top-10 -left-10 w-32 h-32 bg-sebaaq-blue rounded-full opacity-10 animate-float"></div>
-        <div className="absolute -bottom-10 -right-10 w-24 h-24 bg-blue-400 rounded-full opacity-10 animate-float" style={{animationDelay: '1.5s'}}></div>
+        <div className="absolute -top-10 -right-10 w-32 h-32 bg-sebaaq-blue rounded-full opacity-10 animate-float"></div>
+        <div className="absolute -bottom-10 -left-10 w-24 h-24 bg-blue-400 rounded-full opacity-10 animate-float" style={{animationDelay: '1.5s'}}></div>
       </div>
     </section>
   );

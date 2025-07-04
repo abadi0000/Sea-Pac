@@ -49,33 +49,33 @@ const ServicesSection = () => {
 
   const services = [
     {
-      title: "Integrated Logistics",
-      description: "End-to-end shipping solutions from China to Saudi Arabia with seamless customs clearance and advanced warehousing.",
+      title: "الخدمات اللوجستية المتكاملة",
+      description: "حلول شحن شاملة من الصين إلى المملكة العربية السعودية مع التخليص الجمركي السلس والتخزين المتقدم.",
       features: [
-        "Door-to-door shipping services",
-        "Professional customs clearance",
-        "Advanced warehousing solutions",
-        "Real-time tracking systems"
+        "خدمات الشحن من الباب إلى الباب",
+        "التخليص الجمركي المهني",
+        "حلول التخزين المتقدمة",
+        "أنظمة التتبع في الوقت الفعلي"
       ]
     },
     {
-      title: "Intelligent Sourcing",
-      description: "Direct factory connections with professional negotiation and comprehensive quality inspection services.",
+      title: "التوريد الذكي",
+      description: "اتصالات مباشرة مع المصانع مع خدمات التفاوض المهنية وفحص الجودة الشامل.",
       features: [
-        "Direct factory sourcing",
-        "Professional negotiation services",
-        "Comprehensive goods inspection",
-        "Quality assurance protocols"
+        "التوريد المباشر من المصانع",
+        "خدمات التفاوض المهنية",
+        "فحص شامل للبضائع",
+        "بروتوكولات ضمان الجودة"
       ]
     },
     {
-      title: "Alibaba Partnership",
-      description: "Trusted Alibaba agent services for verification, consolidation, and efficient shipping solutions.",
+      title: "شراكة علي بابا",
+      description: "خدمات وكيل علي بابا الموثوق للتحقق والتجميع وحلول الشحن الفعالة.",
       features: [
-        "Verified supplier connections",
-        "Order consolidation services",
-        "Efficient shipping solutions",
-        "Partnership management"
+        "اتصالات موردين معتمدة",
+        "خدمات تجميع الطلبات",
+        "حلول شحن فعالة",
+        "إدارة الشراكات"
       ]
     }
   ];
@@ -84,18 +84,18 @@ const ServicesSection = () => {
     <section className="py-20 bg-gradient-to-br from-gray-50 to-white relative overflow-hidden">
       {/* Background Decorations */}
       <div className="absolute top-0 left-0 w-full h-full">
-        <div className="absolute top-20 left-10 w-64 h-64 bg-sebaaq-blue/5 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-blue-400/5 rounded-full blur-3xl"></div>
+        <div className="absolute top-20 right-10 w-64 h-64 bg-sebaaq-blue/5 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-20 left-10 w-96 h-96 bg-blue-400/5 rounded-full blur-3xl"></div>
       </div>
 
       <div className="relative z-10 container mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="font-playfair text-3xl md:text-5xl font-bold text-sebaaq-midnight mb-4">
-            Core Offerings for
-            <span className="gradient-text block">Modern Trade</span>
+            العروض الأساسية
+            <span className="gradient-text block">للتجارة الحديثة</span>
           </h2>
           <p className="text-gray-600 text-lg max-w-3xl mx-auto">
-            Comprehensive solutions designed to streamline your supply chain and maximize efficiency
+            حلول شاملة مصممة لتبسيط سلسلة التوريد وتحقيق أقصى قدر من الكفاءة
           </p>
         </div>
 

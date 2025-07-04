@@ -15,34 +15,34 @@ const HeroSection = () => {
       <div className="absolute inset-0 tech-grid opacity-20"></div>
       
       {/* Floating Elements */}
-      <div className="absolute top-20 left-10 w-4 h-4 bg-sebaaq-blue rounded-full animate-float opacity-60"></div>
-      <div className="absolute bottom-32 right-16 w-6 h-6 bg-blue-400 rounded-full animate-float opacity-40" style={{ animationDelay: '1s' }}></div>
-      <div className="absolute top-1/3 right-1/4 w-3 h-3 bg-sebaaq-blue rounded-full animate-float opacity-50" style={{ animationDelay: '2s' }}></div>
+      <div className="absolute top-20 right-10 w-4 h-4 bg-sebaaq-blue rounded-full animate-float opacity-60"></div>
+      <div className="absolute bottom-32 left-16 w-6 h-6 bg-blue-400 rounded-full animate-float opacity-40" style={{ animationDelay: '1s' }}></div>
+      <div className="absolute top-1/3 left-1/4 w-3 h-3 bg-sebaaq-blue rounded-full animate-float opacity-50" style={{ animationDelay: '2s' }}></div>
 
       {/* Main Content */}
       <div className="relative z-10 text-center px-6 max-w-6xl mx-auto">
         <div className={`transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <img 
             src="/lovable-uploads/d7f46067-5eb1-4e56-8b93-d7c37d04c951.png" 
-            alt="SEBAAQ Logo" 
+            alt="شعار سيباك" 
             className="h-24 mx-auto mb-8 animate-fade-in"
           />
           
           <h1 className="font-playfair text-4xl md:text-6xl lg:text-7xl font-bold text-white leading-tight mb-6">
-            SEBAAQ: Engineering the
-            <span className="gradient-text block mt-2">Flow of the Future</span>
+            سيباك: هندسة
+            <span className="gradient-text block mt-2">تدفق المستقبل</span>
           </h1>
           
           <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-12 leading-relaxed">
-            From China's industrial heart to your landmark projects in Saudi Arabia
+            من قلب الصناعة الصينية إلى مشاريعكم الرائدة في المملكة العربية السعودية
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <button className="bg-sebaaq-blue hover:bg-blue-600 text-white px-8 py-4 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105">
-              Explore Our Services
+              استكشف خدماتنا
             </button>
             <button className="border-2 border-white text-white hover:bg-white hover:text-sebaaq-midnight px-8 py-4 rounded-lg font-semibold transition-all duration-300">
-              Request Consultation
+              طلب استشارة
             </button>
           </div>
         </div>
