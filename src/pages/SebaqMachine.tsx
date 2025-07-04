@@ -2,11 +2,12 @@
 import { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Wrench, Package, Settings, Headphones, Cog } from 'lucide-react';
+import { Wrench, Package, Settings, Headphones, Cog, Lightbulb, Cpu, Zap, MapPin } from 'lucide-react';
 
 const SebaqMachine = () => {
   const [hoveredService, setHoveredService] = useState<number | null>(null);
   const [hoveredProduct, setHoveredProduct] = useState<number | null>(null);
+  const [hoveredExpertise, setHoveredExpertise] = useState<number | null>(null);
 
   const services = [
     {
@@ -59,6 +60,29 @@ const SebaqMachine = () => {
     }
   ];
 
+  const expertiseAreas = [
+    {
+      title: "فهم معمّق لجوهر الآلات وأنظمة التحكم المتقدمة",
+      description: "إننا نتعمق في فهم بنيتها الجوهرية وأسسها التقنية. لقد أكسبنا التعامل المباشر مع مجموعة متنوعة من الأنظمة الصناعية والخدمية والترفيهية المتقدمة – بما في ذلك خطوط الإنتاج",
+      icon: Lightbulb
+    },
+    {
+      title: "تحليل النظم الميكانيكي، الكهربائية، والهوائية",
+      description: "لدينا فهم عميق للمكونات الميكانيكية الدقيقة، الدوائر الكهربائية وأنظمة الطاقة، بالإضافة إلى الأنظمة النيوماتيكية والهيدروليكية التي تدير الحركة والقوة داخل الآلات. هذا الإلمام الشامل يمكننا من تحليل التفاعلات بين هذه الأنظمة، تشخيص الأعطال بدقة",
+      icon: Cpu
+    },
+    {
+      title: "التخطيط الفني والتجهيز الموقعي",
+      description: "نُقيّم موقع التركيب فنيًا بشكل كامل (مساحة، طاقة، أرضيات، وبيئة العمل)، ونُخطط لتوزيع الآلات بما يضمن كفاءة التشغيل، السلامة، وتكامل توصيلات الخدمات",
+      icon: MapPin
+    },
+    {
+      title: "تركيب وتشغيل احترافي",
+      description: "يشرف فريقنا الفني المتخصص على عمليات تركيب وتجميع الآلات بدقة متناهية، ملتزمين بالمواصفات الفنية للمصنع، المخططات الهندسية المعتمدة، وأفضل الممارسات الصناعية لضمان سلامة وثبات التركيب",
+      icon: Zap
+    }
+  ];
+
   const stats = [
     { number: "90+", label: "تم تركيب آله في مختلف المجالات" },
     { number: "800+", label: "اكثر من عملية صيانة" },
@@ -87,6 +111,46 @@ const SebaqMachine = () => {
             <Button variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-sebaaq-midnight px-8 py-4 rounded-lg font-semibold">
               تصفح عروضنا على الآلات التي نوفرها
             </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* Technical Expertise Section */}
+      <section className="py-20 bg-gradient-to-br from-gray-50 to-white">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="font-playfair text-3xl md:text-5xl font-bold text-sebaaq-midnight mb-6">
+              خبرتنا التقنية الشاملة
+              <span className="gradient-text block">من التخطيط الموقعي إلى التشغيل الأمثل والدعم المستمر</span>
+            </h2>
+            <p className="text-lg text-gray-600 max-w-4xl mx-auto leading-relaxed">
+              في سي باك ماشين، تمتد خبرتنا التقنية إلى ما وراء مجرد توريد. نحن لدينا فهم عالي في كثير من المجالات والأنظمة التقنية المعقدة، مع إدراك دقيق لتعقيدات عملها الميكانيكي ومبادئ تصميمها الحركي، وذلك يشمل تحليل القوى والإجهادات، ودراسة المواد المكونة منها، وكفاءة نقل الحركة والطاقة
+            </p>
+          </div>
+          
+          <div className="grid md:grid-cols-2 gap-8">
+            {expertiseAreas.map((area, index) => (
+              <Card 
+                key={index}
+                className={`p-6 transition-all duration-300 transform ${
+                  hoveredExpertise === index ? 'scale-105 shadow-2xl bg-gradient-to-br from-sebaaq-blue/5 to-blue-400/5' : 'scale-100 shadow-lg'
+                }`}
+                onMouseEnter={() => setHoveredExpertise(index)}
+                onMouseLeave={() => setHoveredExpertise(null)}
+              >
+                <div className="flex items-start mb-4">
+                  <div className="w-14 h-14 bg-gradient-to-br from-sebaaq-blue to-blue-400 rounded-lg flex items-center justify-center ml-4 flex-shrink-0">
+                    <area.icon className="w-7 h-7 text-white" />
+                  </div>
+                  <h3 className="font-playfair text-xl font-bold text-sebaaq-midnight leading-tight">
+                    {area.title}
+                  </h3>
+                </div>
+                <p className="text-gray-600 leading-relaxed">
+                  {area.description}
+                </p>
+              </Card>
+            ))}
           </div>
         </div>
       </section>
