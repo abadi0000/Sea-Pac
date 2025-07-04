@@ -1,41 +1,173 @@
 
+import { useState } from 'react';
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Calculator, Package, Truck, Ship, Plane } from 'lucide-react';
+
 const ShippingCalculatorSection = () => {
+  const [formData, setFormData] = useState({
+    weight: '',
+    dimensions: '',
+    origin: '',
+    destination: '',
+    shippingType: ''
+  });
+
+  const handleInputChange = (field: string, value: string) => {
+    setFormData(prev => ({
+      ...prev,
+      [field]: value
+    }));
+  };
+
+  const calculateShipping = () => {
+    // This would typically connect to a real calculation API
+    console.log('Calculating shipping for:', formData);
+  };
+
   return (
-    <section className="py-20 bg-gradient-to-br from-gray-50 to-white relative overflow-hidden">
-      <div className="absolute top-0 right-0 w-96 h-96 bg-sebaaq-blue/5 rounded-full blur-3xl"></div>
+    <section className="py-20 bg-gradient-to-br from-sebaaq-midnight to-sebaaq-charcoal relative overflow-hidden">
+      {/* Background Pattern */}
+      <div className="absolute inset-0 tech-grid opacity-10"></div>
       
       <div className="relative z-10 container mx-auto px-6">
+        {/* Header */}
         <div className="text-center mb-16">
-          <h2 className="font-playfair text-3xl md:text-5xl font-bold text-sebaaq-midnight mb-4">
-            اعرف تكلفة الشحن
-            <span className="gradient-text block">فورًا</span>
+          <h2 className="font-playfair text-3xl md:text-5xl font-bold text-white mb-6">
+            حاسبة الشحن
+            <span className="gradient-text block">الذكية</span>
           </h2>
-          <p className="text-gray-600 text-lg max-w-3xl mx-auto mb-8">
-            احصل على تقدير أولي لتكلفة الشحن من الصين إلى السعودية بشكل فوري
+          <p className="text-lg text-gray-300 max-w-3xl mx-auto mb-8">
+            احصل على تقدير فوري لتكلفة شحن بضائعك من الصين إلى المملكة العربية السعودية
           </p>
         </div>
 
-        <div className="max-w-4xl mx-auto">
-          <div className="bg-white rounded-2xl p-8 shadow-2xl border border-gray-100">
-            <h3 className="font-playfair text-2xl font-bold text-sebaaq-midnight mb-6 text-center">
-              حاسبة تكلفة الشحن الفورية
-            </h3>
-            <p className="text-gray-600 text-center mb-8">
-              احصل على تقديرات أولية لتكاليف الشحن بسرعة. ما عليك سوى تزويد روبوت الدردشة بمعلومات حول أبعاد شحنتك ووزنها ووجهة الوصول
-            </p>
-            
-            {/* Placeholder for calculator - in real implementation this would be the Elfsight widget */}
-            <div className="bg-gradient-to-br from-sebaaq-blue/10 to-blue-400/10 rounded-xl p-12 text-center border-2 border-dashed border-sebaaq-blue/30">
-              <div className="w-16 h-16 bg-sebaaq-blue rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
-                </svg>
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          {/* Calculator Form */}
+          <Card className="bg-white/10 backdrop-blur-sm border-sebaaq-blue/30">
+            <CardHeader>
+              <CardTitle className="text-white flex items-center gap-3">
+                <Calculator className="w-6 h-6 text-sebaaq-blue" />
+                حاسبة تكلفة الشحن
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-6">
+              <div className="grid md:grid-cols-2 gap-4">
+                <div className="space-y-2">
+                  <Label htmlFor="weight" className="text-gray-300">الوزن (كيلوغرام)</Label>
+                  <Input
+                    id="weight"
+                    type="number"
+                    placeholder="أدخل الوزن"
+                    value={formData.weight}
+                    onChange={(e) => handleInputChange('weight', e.target.value)}
+                    className="bg-white/20 border-gray-400 text-white placeholder:text-gray-400"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="dimensions" className="text-gray-300">الأبعاد (سم)</Label>
+                  <Input
+                    id="dimensions"
+                    placeholder="الطول × العرض × الارتفاع"
+                    value={formData.dimensions}
+                    onChange={(e) => handleInputChange('dimensions', e.target.value)}
+                    className="bg-white/20 border-gray-400 text-white placeholder:text-gray-400"
+                  />
+                </div>
               </div>
-              <h4 className="text-xl font-bold text-sebaaq-midnight mb-2">حاسبة الشحن التفاعلية</h4>
-              <p className="text-gray-600 mb-6">أدخل تفاصيل شحنتك للحصول على تقدير فوري</p>
-              <button className="bg-sebaaq-blue hover:bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300">
-                ابدأ الحساب
-              </button>
+
+              <div className="grid md:grid-cols-2 gap-4">
+                <div className="space-y-2">
+                  <Label htmlFor="origin" className="text-gray-300">المدينة المرسلة</Label>
+                  <Select onValueChange={(value) => handleInputChange('origin', value)}>
+                    <SelectTrigger className="bg-white/20 border-gray-400 text-white">
+                      <SelectValue placeholder="اختر المدينة" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="guangzhou">قوانغتشو</SelectItem>
+                      <SelectItem value="shenzhen">شنتشن</SelectItem>
+                      <SelectItem value="shanghai">شنغهاي</SelectItem>
+                      <SelectItem value="beijing">بكين</SelectItem>
+                      <SelectItem value="yiwu">ييوو</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="destination" className="text-gray-300">المدينة المستقبلة</Label>
+                  <Select onValueChange={(value) => handleInputChange('destination', value)}>
+                    <SelectTrigger className="bg-white/20 border-gray-400 text-white">
+                      <SelectValue placeholder="اختر المدينة" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="riyadh">الرياض</SelectItem>
+                      <SelectItem value="jeddah">جدة</SelectItem>
+                      <SelectItem value="dammam">الدمام</SelectItem>
+                      <SelectItem value="mecca">مكة المكرمة</SelectItem>
+                      <SelectItem value="medina">المدينة المنورة</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+              </div>
+
+              <div className="space-y-2">
+                <Label htmlFor="shippingType" className="text-gray-300">نوع الشحن</Label>
+                <Select onValueChange={(value) => handleInputChange('shippingType', value)}>
+                  <SelectTrigger className="bg-white/20 border-gray-400 text-white">
+                    <SelectValue placeholder="اختر نوع الشحن" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="sea">
+                      <div className="flex items-center gap-2">
+                        <Ship className="w-4 h-4" />
+                        شحن بحري (15-30 يوم)
+                      </div>
+                    </SelectItem>
+                    <SelectItem value="air">
+                      <div className="flex items-center gap-2">
+                        <Plane className="w-4 h-4" />
+                        شحن جوي (3-7 أيام)
+                      </div>
+                    </SelectItem>
+                    <SelectItem value="express">
+                      <div className="flex items-center gap-2">
+                        <Truck className="w-4 h-4" />
+                        شحن سريع (1-3 أيام)
+                      </div>
+                    </SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+
+              <Button 
+                onClick={calculateShipping}
+                className="w-full bg-sebaaq-blue hover:bg-blue-600 text-white"
+              >
+                <Package className="w-4 h-4 mr-2" />
+                احسب التكلفة
+              </Button>
+            </CardContent>
+          </Card>
+
+          {/* Pricing Chart Image */}
+          <div className="space-y-6">
+            <div className="bg-white rounded-2xl p-8 shadow-2xl">
+              <img 
+                src="/lovable-uploads/fc517a5f-1ae6-42e8-80af-97ea437eaf38.png" 
+                alt="مخطط تقدير أسعار الشحن" 
+                className="w-full rounded-lg"
+              />
+            </div>
+            
+            <div className="text-center">
+              <h3 className="text-2xl font-bold text-white mb-4">
+                تحليل ذكي للأسعار
+              </h3>
+              <p className="text-gray-300 leading-relaxed">
+                نستخدم خوارزميات متقدمة لتحليل أسعار الشحن وتقديم أفضل العروض المتاحة بناءً على احتياجاتكم المحددة
+              </p>
             </div>
           </div>
         </div>

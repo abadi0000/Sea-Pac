@@ -2,6 +2,14 @@
 const IndustrySection = () => {
   return (
     <section className="py-20 bg-sebaaq-charcoal relative overflow-hidden">
+      {/* Background Image */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-20"
+        style={{
+          backgroundImage: `url('/lovable-uploads/32137c2d-3ef3-44c2-b0a7-849d53fca26d.png')`
+        }}
+      />
+      
       {/* Tech Grid Background */}
       <div className="absolute inset-0 tech-grid opacity-10"></div>
       

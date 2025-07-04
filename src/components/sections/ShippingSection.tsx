@@ -17,13 +17,13 @@ const ShippingSection = () => {
           </p>
         </div>
 
-        {/* Main Content with Images */}
+        {/* Main Content with Port Image */}
         <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
-          {/* Alibaba Shipping Image */}
+          {/* Port Image */}
           <div className="order-2 lg:order-1">
             <img 
-              src="/lovable-uploads/4d48ca1a-8931-4f9e-9817-ec991f917135.png" 
-              alt="شحن علي بابا" 
+              src="/lovable-uploads/f7fee70f-6642-464a-9248-24c0c3d0b0ce.png" 
+              alt="ميناء سيباك للشحن" 
               className="w-full rounded-lg shadow-2xl"
             />
           </div>
@@ -90,10 +90,49 @@ const ShippingSection = () => {
             </div>
             <div>
               <img 
-                src="/lovable-uploads/eaa468a4-4039-4a2f-80f5-f0483db26eca.png" 
+                src="/lovable-uploads/b9a6b73c-7a7c-4210-8267-bad296bc4b56.png" 
                 alt="تنظيم الحاويات" 
                 className="w-full rounded-lg shadow-lg"
               />
+            </div>
+          </div>
+        </div>
+
+        {/* AI Warehouse Management */}
+        <div className="bg-gradient-to-r from-sebaaq-blue/5 to-blue-400/5 rounded-2xl shadow-xl p-8 mb-12">
+          <div className="grid lg:grid-cols-2 gap-8 items-center">
+            <div>
+              <img 
+                src="/lovable-uploads/d14ba9d4-afc3-4a8d-8141-dbaec2d0a42b.png" 
+                alt="نظام إدارة المخازن الذكي" 
+                className="w-full rounded-lg shadow-lg"
+              />
+            </div>
+            <div>
+              <h3 className="font-playfair text-2xl md:text-3xl font-bold text-sebaaq-midnight mb-6">
+                إدارة ذكية للمخازن
+              </h3>
+              <p className="text-gray-600 mb-6 leading-relaxed">
+                نطبق أحدث تقنيات الذكاء الاصطناعي في إدارة المخازن وتتبع البضائع لضمان الدقة والكفاءة.
+              </p>
+              <ul className="space-y-3 text-gray-600">
+                <li className="flex items-center space-x-3 space-x-reverse">
+                  <div className="w-2 h-2 bg-sebaaq-blue rounded-full"></div>
+                  <span>تتبع فوري للمنتجات بالذكاء الاصطناعي</span>
+                </li>
+                <li className="flex items-center space-x-3 space-x-reverse">
+                  <div className="w-2 h-2 bg-sebaaq-blue rounded-full"></div>
+                  <span>تحليل الأبعاد والمساحات تلقائياً</span>
+                </li>
+                <li className="flex items-center space-x-3 space-x-reverse">
+                  <div className="w-2 h-2 bg-sebaaq-blue rounded-full"></div>
+                  <span>تحسين التخزين والاسترجاع</span>
+                </li>
+                <li className="flex items-center space-x-3 space-x-reverse">
+                  <div className="w-2 h-2 bg-sebaaq-blue rounded-full"></div>
+                  <span>تقارير مفصلة ودقيقة</span>
+                </li>
+              </ul>
             </div>
           </div>
         </div>

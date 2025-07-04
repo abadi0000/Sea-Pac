@@ -16,7 +16,7 @@ const HeroSection = () => {
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: `linear-gradient(rgba(0, 51, 102, 0.8), rgba(18, 18, 18, 0.8)), url('/lovable-uploads/17fa2dcb-b54a-44e4-b3f8-5c036df065a5.png')`
+          backgroundImage: `linear-gradient(rgba(0, 51, 102, 0.8), rgba(18, 18, 18, 0.8)), url('/lovable-uploads/4ee13015-b3ac-447d-a502-1cf522c7758e.png')`
         }}
       />
       
