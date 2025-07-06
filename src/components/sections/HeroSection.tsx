@@ -38,12 +38,12 @@ const HeroSection = () => {
           />
           
           <h1 className="font-playfair text-4xl md:text-6xl lg:text-7xl font-bold text-white leading-tight mb-6">
-            سيباك: هندسة
-            <span className="gradient-text block mt-2">تدفق المستقبل</span>
+            شـركة سي باك لوجستيك:
+            <span className="gradient-text block mt-2">حلول الشحن من الصين</span>
           </h1>
           
           <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-12 leading-relaxed">
-            من قلب الصناعة الصينية إلى مشاريعكم الرائدة في المملكة العربية السعودية
+            نستلم شحنتك من مصانع الصين ونسلّمها مباشرة إلى عنوانك في السعودية
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
