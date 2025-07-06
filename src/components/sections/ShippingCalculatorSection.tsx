@@ -37,11 +37,10 @@ const ShippingCalculatorSection = () => {
         {/* Header */}
         <div className="text-center mb-16">
           <h2 className="font-playfair text-3xl md:text-5xl font-bold text-white mb-6">
-            حاسبة الشحن
-            <span className="gradient-text block">الذكية</span>
+            اعرف تكلفة الشحن فورًا
           </h2>
           <p className="text-lg text-gray-300 max-w-3xl mx-auto mb-8">
-            احصل على تقدير فوري لتكلفة شحن بضائعك من الصين إلى المملكة العربية السعودية
+            احصل على تقدير أولي لتكلفة الشحن من الصين إلى السعودية بشكل فوري
           </p>
         </div>
 

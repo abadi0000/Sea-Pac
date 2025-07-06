@@ -93,19 +93,18 @@ const StatsSection = () => {
       <div className="relative z-10 container mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="font-playfair text-3xl md:text-5xl font-bold text-white mb-4">
-            التميز المثبت في
-            <span className="gradient-text block">التجارة العالمية</span>
+            لماذا يثق بنا عملاؤنا؟
           </h2>
-          <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-            أرقامنا تتحدث عن التزامنا بالتميز والموثوقية
+          <p className="text-gray-400 text-lg max-w-4xl mx-auto leading-relaxed">
+            من خلال سنوات من العمل المباشر مع الموردين والمصانع في الصين، أنجزنا آلاف الشحنات، وبنينا شبكة قوية من الشركاء، وحققنا رضا عملائنا بنسبة عالية. إليك لمحة سريعة عن إنجازاتنا
           </p>
         </div>
 
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-16">
-          <StatItem number="9,000+" label="شحنة مُسلمة" delay={0} />
-          <StatItem number="370+" label="عميل دائم" delay={200} />
-          <StatItem number="10+" label="سنوات من الخبرة" delay={400} />
-          <StatItem number="95%" label="التسليم في الوقت المحدد" delay={600} />
+          <StatItem number="370+" label="عميل دائم يثق بنا" delay={0} />
+          <StatItem number="9000+" label="شحنة تم توصيلها" delay={200} />
+          <StatItem number="10+" label="سنين خبراتنا في السوق الصيني" delay={400} />
+          <StatItem number="95%" label="دقة في مواعيد التسليم" delay={600} />
         </div>
 
         {/* Decorative Elements */}

@@ -42,13 +42,18 @@ const HeroSection = () => {
             <span className="gradient-text block mt-2">حلول الشحن من الصين</span>
           </h1>
           
-          <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-12 leading-relaxed">
-            نستلم شحنتك من مصانع الصين ونسلّمها مباشرة إلى عنوانك في السعودية
-          </p>
+          <div className="text-lg md:text-xl text-gray-300 max-w-4xl mx-auto mb-8 leading-relaxed space-y-4">
+            <p>
+              نوفر حلولاً لوجستية متكاملة للشركات والأفراد، وكيل شحن معتمد من الصين، مع ضمان أعلى معايير الأمان والاحترافية
+            </p>
+            <p className="text-sebaaq-blue font-semibold">
+              نستلم شحنتك من مصانع الصين ونسلّمها مباشرة إلى عنوانك في السعودية
+            </p>
+          </div>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <button className="bg-sebaaq-blue hover:bg-blue-600 text-white px-8 py-4 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105">
-              استكشف خدماتنا
+              اعرف تكلفة الشحن فورًا
             </button>
             <Link 
               to="/consultation-services"
