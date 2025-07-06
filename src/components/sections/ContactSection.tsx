@@ -56,13 +56,13 @@ const ContactSection = () => {
           {/* Main CTA */}
           <div className="bg-gradient-to-r from-sebaaq-blue to-blue-400 rounded-2xl p-8">
             <h3 className="font-playfair text-2xl font-bold text-white mb-4">
-              Ready to Transform Your Supply Chain?
+              هل أنت مستعد لتحويل سلسلة التوريد الخاصة بك؟
             </h3>
             <p className="text-white/90 mb-6">
-              Join hundreds of companies who trust SEBAAQ for their China-Saudi Arabia logistics needs.
+              انضم إلى مئات الشركات التي تثق بسيباك لاحتياجاتها اللوجستية بين الصين والمملكة العربية السعودية.
             </p>
             <button className="bg-white text-sebaaq-blue px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition-all duration-300 transform hover:scale-105">
-              Request a Consultation
+              اطلب استشارة
             </button>
           </div>
         </div>
