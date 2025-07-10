@@ -78,17 +78,6 @@ const FeaturesSectionWithHoverEffects = () => {
           ))}
         </div>
 
-        {/* Smart Logistics Section */}
-        <div className="bg-gradient-to-r from-primary/10 to-primary/5 rounded-2xl p-8">
-          <div className="text-center">
-            <h3 className="font-tajawal text-2xl md:text-3xl font-bold text-foreground mb-4">
-              حلول لوجستية ذكية
-            </h3>
-            <p className="text-muted-foreground leading-relaxed max-w-3xl mx-auto font-noto-arabic">
-              استورد بضائعك بمرونة وكفاءة. يتيح لك الشحن الجزئي مشاركة مساحة الحاوية مع شحنات أخرى، مما يقلل التكاليف ويوفر المرونة في أوقات الشحن.
-            </p>
-          </div>
-        </div>
       </div>
     </section>
   );

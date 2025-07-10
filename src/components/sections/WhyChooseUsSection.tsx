@@ -78,17 +78,6 @@ const WhyChooseUsSection = () => {
           ))}
         </div>
 
-        {/* Smart Logistics Section */}
-        <div className="bg-gradient-to-r from-sebaaq-blue/10 to-blue-400/10 rounded-2xl p-8">
-          <div className="text-center">
-            <h3 className="font-playfair text-2xl md:text-3xl font-bold text-sebaaq-midnight mb-4">
-              حلول لوجستية ذكية
-            </h3>
-            <p className="text-gray-600 leading-relaxed max-w-3xl mx-auto">
-              استورد بضائعك بمرونة وكفاءة. يتيح لك الشحن الجزئي مشاركة مساحة الحاوية مع شحنات أخرى، مما يقلل التكاليف ويوفر المرونة في أوقات الشحن.
-            </p>
-          </div>
-        </div>
       </div>
     </section>
   );
