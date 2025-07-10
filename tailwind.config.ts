@@ -34,9 +34,10 @@ export default {
 		},
 		extend: {
 			fontFamily: {
-				'playfair': ['Playfair Display', 'serif'],
+				'sans': ['Noto Sans Arabic', 'Tajawal', 'Inter', 'system-ui', 'sans-serif'],
 				'inter': ['Inter', 'sans-serif'],
-				'cairo': ['Cairo', 'sans-serif'],
+				'tajawal': ['Tajawal', 'sans-serif'],
+				'noto-arabic': ['Noto Sans Arabic', 'sans-serif'],
 			},
 			colors: {
 				border: 'hsl(var(--border))',

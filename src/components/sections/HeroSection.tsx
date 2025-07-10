@@ -65,7 +65,7 @@ const HeroSection = () => {
               <div className="flex gap-4 flex-col">
                 <h1 
                   id="hero-title"
-                  className="text-5xl md:text-7xl max-w-4xl tracking-tighter text-center font-regular" 
+                  className="text-5xl md:text-7xl max-w-4xl tracking-tight text-center font-bold font-tajawal" 
                   dir="rtl"
                 >
                   <span className="text-primary">سي باك لوجستيك</span>
@@ -100,7 +100,7 @@ const HeroSection = () => {
                 </h1>
 
                 <p 
-                  className="text-lg md:text-xl leading-relaxed tracking-tight text-muted-foreground max-w-4xl text-center" 
+                  className="text-lg md:text-xl leading-relaxed tracking-normal text-muted-foreground max-w-4xl text-center font-noto-arabic" 
                   dir="rtl"
                 >
                   نوفر حلولاً لوجستية متكاملة للشركات والأفراد مع خدمات الشحن البحري والجوي والتوصيل المباشر والتغليف الاحترافي. 
