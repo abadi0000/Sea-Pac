@@ -33,12 +33,13 @@ export default {
 			'2xl': '1400px',
 		},
 		extend: {
-			fontFamily: {
-				'sans': ['Noto Sans Arabic', 'Tajawal', 'Inter', 'system-ui', 'sans-serif'],
-				'inter': ['Inter', 'sans-serif'],
-				'tajawal': ['Tajawal', 'sans-serif'],
-				'noto-arabic': ['Noto Sans Arabic', 'sans-serif'],
-			},
+		fontFamily: {
+			'sans': ['Cairo', 'Noto Sans Arabic', 'Tajawal', 'Inter', 'system-ui', 'sans-serif'],
+			'cairo': ['Cairo', 'sans-serif'],
+			'inter': ['Inter', 'sans-serif'],
+			'tajawal': ['Tajawal', 'sans-serif'],
+			'noto-arabic': ['Noto Sans Arabic', 'sans-serif'],
+		},
 			colors: {
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
