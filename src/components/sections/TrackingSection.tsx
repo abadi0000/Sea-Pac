@@ -1,4 +1,314 @@
 
+import { useRef, useEffect, useState } from "react";
+import { motion } from "framer-motion";
+import { Ship, MapPin } from "lucide-react";
+
+// DottedMap implementation
+class DottedMap {
+  private height: number;
+  private grid: string;
+
+  constructor({ height, grid }: { height: number; grid: string }) {
+    this.height = height;
+    this.grid = grid;
+  }
+
+  getSVG({
+    radius,
+    color,
+    shape,
+    backgroundColor,
+  }: {
+    radius: number;
+    color: string;
+    shape: string;
+    backgroundColor: string;
+  }) {
+    const width = this.height * 2;
+    const height = this.height;
+    const spacing = 4;
+    
+    let dots = '';
+    for (let x = 0; x < width; x += spacing) {
+      for (let y = 0; y < height; y += spacing) {
+        if (this.grid === 'diagonal' && (x + y) % (spacing * 2) === 0) {
+          dots += `<circle cx="${x}" cy="${y}" r="${radius}" fill="${color}" />`;
+        }
+      }
+    }
+
+    return `<svg width="${width}" height="${height}" xmlns="http://www.w3.org/2000/svg" style="background-color: ${backgroundColor}">
+      ${dots}
+    </svg>`;
+  }
+}
+
+interface RoutePoint {
+  lat: number;
+  lng: number;
+  label: string;
+  city: string;
+}
+
+interface CargoShipRouteProps {
+  startPort?: RoutePoint;
+  endPort?: RoutePoint;
+  lineColor?: string;
+  shipColor?: string;
+}
+
+export function CargoShipRoute({
+  startPort = {
+    lat: 23.1291,
+    lng: 113.2644,
+    label: "منفذ المنشأ",
+    city: "شنغهاي، الصين"
+  },
+  endPort = {
+    lat: 21.4858,
+    lng: 39.1925,
+    label: "منفذ الوجهة", 
+    city: "جدة، المملكة العربية السعودية"
+  },
+  lineColor = "#0ea5e9",
+  shipColor = "#059669"
+}: CargoShipRouteProps) {
+  const svgRef = useRef<SVGSVGElement>(null);
+  const [shipPosition, setShipPosition] = useState(0);
+  
+  const map = new DottedMap({ height: 100, grid: "diagonal" });
+
+  const svgMap = map.getSVG({
+    radius: 0.22,
+    color: "#00000040",
+    shape: "circle",
+    backgroundColor: "white",
+  });
+
+  const projectPoint = (lat: number, lng: number) => {
+    const x = (lng + 180) * (800 / 360);
+    const y = (90 - lat) * (400 / 180);
+    return { x, y };
+  };
+
+  const createCurvedPath = (
+    start: { x: number; y: number },
+    end: { x: number; y: number }
+  ) => {
+    const midX = (start.x + end.x) / 2;
+    const midY = Math.min(start.y, end.y) - 80;
+    return `M ${start.x} ${start.y} Q ${midX} ${midY} ${end.x} ${end.y}`;
+  };
+
+  const getPointOnPath = (t: number, start: { x: number; y: number }, end: { x: number; y: number }) => {
+    const midX = (start.x + end.x) / 2;
+    const midY = Math.min(start.y, end.y) - 80;
+    
+    const x = (1 - t) * (1 - t) * start.x + 2 * (1 - t) * t * midX + t * t * end.x;
+    const y = (1 - t) * (1 - t) * start.y + 2 * (1 - t) * t * midY + t * t * end.y;
+    
+    return { x, y };
+  };
+
+  const startPoint = projectPoint(startPort.lat, startPort.lng);
+  const endPoint = projectPoint(endPort.lat, endPort.lng);
+  const pathData = createCurvedPath(startPoint, endPoint);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setShipPosition((prev) => (prev + 0.005) % 1);
+    }, 100);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  const shipPos = getPointOnPath(shipPosition, startPoint, endPoint);
+
+  return (
+    <div className="w-full max-w-6xl mx-auto bg-white rounded-lg border border-gray-200 overflow-hidden shadow-lg">
+      {/* Header */}
+      <div className="p-6 border-b border-gray-200 bg-gradient-to-br from-sebaaq-blue/5 to-blue-400/5">
+        <div className="flex items-center gap-3 mb-4">
+          <Ship className="h-6 w-6 text-sebaaq-blue" />
+          <h2 className="text-2xl font-bold text-sebaaq-midnight font-noto-sans-arabic">مسار الشحن البحري</h2>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="flex items-center gap-2">
+            <div className="w-3 h-3 rounded-full bg-green-500"></div>
+            <div>
+              <p className="font-semibold text-sebaaq-midnight font-noto-sans-arabic">{startPort.city}</p>
+              <p className="text-sm text-gray-600 font-noto-sans-arabic">منفذ المنشأ</p>
+            </div>
+          </div>
+          <div className="flex items-center gap-2">
+            <div className="w-3 h-3 rounded-full bg-red-500"></div>
+            <div>
+              <p className="font-semibold text-sebaaq-midnight font-noto-sans-arabic">{endPort.city}</p>
+              <p className="text-sm text-gray-600 font-noto-sans-arabic">منفذ الوجهة</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Map */}
+      <div className="relative aspect-[2/1] bg-white">
+        <img
+          src={`data:image/svg+xml;utf8,${encodeURIComponent(svgMap)}`}
+          className="h-full w-full [mask-image:linear-gradient(to_bottom,transparent,white_10%,white_90%,transparent)] pointer-events-none select-none"
+          alt="خريطة العالم"
+          draggable={false}
+        />
+        
+        <svg
+          ref={svgRef}
+          viewBox="0 0 800 400"
+          className="w-full h-full absolute inset-0 pointer-events-none select-none"
+        >
+          <defs>
+            <linearGradient id="route-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stopColor="white" stopOpacity="0" />
+              <stop offset="5%" stopColor={lineColor} stopOpacity="1" />
+              <stop offset="95%" stopColor={lineColor} stopOpacity="1" />
+              <stop offset="100%" stopColor="white" stopOpacity="0" />
+            </linearGradient>
+            <linearGradient id="ship-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor={shipColor} />
+              <stop offset="100%" stopColor="#047857" />
+            </linearGradient>
+          </defs>
+
+          {/* Route Path */}
+          <motion.path
+            d={pathData}
+            fill="none"
+            stroke="url(#route-gradient)"
+            strokeWidth="2"
+            strokeDasharray="5,5"
+            initial={{ pathLength: 0 }}
+            animate={{ pathLength: 1 }}
+            transition={{ duration: 2, ease: "easeOut" }}
+          />
+
+          {/* Start Port */}
+          <g>
+            <circle
+              cx={startPoint.x}
+              cy={startPoint.y}
+              r="4"
+              fill="#22c55e"
+            />
+            <circle
+              cx={startPoint.x}
+              cy={startPoint.y}
+              r="4"
+              fill="#22c55e"
+              opacity="0.5"
+            >
+              <animate
+                attributeName="r"
+                from="4"
+                to="12"
+                dur="2s"
+                begin="0s"
+                repeatCount="indefinite"
+              />
+              <animate
+                attributeName="opacity"
+                from="0.5"
+                to="0"
+                dur="2s"
+                begin="0s"
+                repeatCount="indefinite"
+              />
+            </circle>
+          </g>
+
+          {/* End Port */}
+          <g>
+            <circle
+              cx={endPoint.x}
+              cy={endPoint.y}
+              r="4"
+              fill="#ef4444"
+            />
+            <circle
+              cx={endPoint.x}
+              cy={endPoint.y}
+              r="4"
+              fill="#ef4444"
+              opacity="0.5"
+            >
+              <animate
+                attributeName="r"
+                from="4"
+                to="12"
+                dur="2s"
+                begin="0s"
+                repeatCount="indefinite"
+              />
+              <animate
+                attributeName="opacity"
+                from="0.5"
+                to="0"
+                dur="2s"
+                begin="0s"
+                repeatCount="indefinite"
+              />
+            </circle>
+          </g>
+
+          {/* Moving Ship */}
+          <g transform={`translate(${shipPos.x}, ${shipPos.y})`}>
+            <circle r="8" fill="url(#ship-gradient)" opacity="0.3" />
+            <circle r="4" fill="url(#ship-gradient)" />
+            <path
+              d="M-6,-2 L6,-2 L4,2 L-4,2 Z M0,-4 L0,4"
+              fill="white"
+              stroke="none"
+            />
+          </g>
+
+          {/* Port Labels */}
+          <text
+            x={startPoint.x}
+            y={startPoint.y - 15}
+            textAnchor="middle"
+            className="fill-sebaaq-midnight text-xs font-medium font-noto-sans-arabic"
+          >
+            {startPort.city}
+          </text>
+          <text
+            x={endPoint.x}
+            y={endPoint.y - 15}
+            textAnchor="middle"
+            className="fill-sebaaq-midnight text-xs font-medium font-noto-sans-arabic"
+          >
+            {endPort.city}
+          </text>
+        </svg>
+      </div>
+
+      {/* Route Info */}
+      <div className="p-6 bg-gradient-to-br from-sebaaq-blue/5 to-blue-400/5 border-t border-gray-200">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
+          <div>
+            <p className="text-2xl font-bold text-sebaaq-midnight">~8,500</p>
+            <p className="text-sm text-gray-600 font-noto-sans-arabic">ميل بحري</p>
+          </div>
+          <div>
+            <p className="text-2xl font-bold text-sebaaq-midnight">18-22</p>
+            <p className="text-sm text-gray-600 font-noto-sans-arabic">يوم عبور</p>
+          </div>
+          <div>
+            <p className="text-2xl font-bold text-sebaaq-midnight font-noto-sans-arabic">نشط</p>
+            <p className="text-sm text-gray-600 font-noto-sans-arabic">حالة المسار</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 const TrackingSection = () => {
   return (
     <section className="py-20 bg-white relative overflow-hidden">
@@ -12,59 +322,19 @@ const TrackingSection = () => {
       </div>
       
       <div className="relative z-10 container mx-auto px-6">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="font-playfair text-3xl md:text-5xl font-bold text-sebaaq-midnight mb-6">
-            تتبع شحنتك
-            <span className="gradient-text block">لحظة بلحظة</span>
-          </h2>
-          
-          <p className="text-gray-600 text-lg leading-relaxed mb-12 max-w-3xl mx-auto">
-            <strong>ندرك أهمية البقاء على اطلاع دائم بحركة شحناتك، لذلك نقدم لك نظام تتبع شحنات متطور يمنحك رؤية كاملة وراحة بال تامة</strong>
-          </p>
-
-          <div className="bg-gradient-to-br from-sebaaq-blue/10 to-blue-400/10 rounded-2xl p-8 mb-12">
-            <div className="flex flex-col md:flex-row items-center justify-between gap-8">
-              <div className="flex-1">
-                <h3 className="font-playfair text-2xl font-bold text-sebaaq-midnight mb-4">
-                  ابق على اطلاع دائم: تتبع الشحنات المباشر
-                </h3>
-                <p className="text-gray-600 leading-relaxed mb-6">
-                  تتبع شحنتك لحظة بلحظة مع نظام التتبع من سي باك لوجيستك
-                </p>
-                <button className="bg-sebaaq-blue hover:bg-blue-600 text-white px-8 py-4 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105">
-                  تتبع الشحنة
-                </button>
-              </div>
-              
-              <div className="flex-1 max-w-md">
-                <div className="bg-white rounded-xl p-6 shadow-lg">
-                  <div className="space-y-4">
-                    <div className="flex items-center gap-4">
-                      <div className="w-4 h-4 bg-green-500 rounded-full"></div>
-                      <div className="flex-1">
-                        <div className="text-sm font-semibold text-gray-800">تم الاستلام من المصنع</div>
-                        <div className="text-xs text-gray-500">الصين - شنغهاي</div>
-                      </div>
-                    </div>
-                    <div className="flex items-center gap-4">
-                      <div className="w-4 h-4 bg-sebaaq-blue rounded-full"></div>
-                      <div className="flex-1">
-                        <div className="text-sm font-semibold text-gray-800">في الطريق</div>
-                        <div className="text-xs text-gray-500">شحن جوي</div>
-                      </div>
-                    </div>
-                    <div className="flex items-center gap-4">
-                      <div className="w-4 h-4 bg-gray-300 rounded-full"></div>
-                      <div className="flex-1">
-                        <div className="text-sm text-gray-500">وصول المملكة</div>
-                        <div className="text-xs text-gray-400">قريباً</div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="font-tajawal text-3xl md:text-5xl font-bold text-sebaaq-midnight mb-6">
+              تتبع شحنتك
+              <span className="gradient-text block">لحظة بلحظة</span>
+            </h2>
+            
+            <p className="text-gray-600 text-lg leading-relaxed mb-8 max-w-3xl mx-auto font-noto-sans-arabic">
+              <strong>ندرك أهمية البقاء على اطلاع دائم بحركة شحناتك، لذلك نقدم لك نظام تتبع شحنات متطور يمنحك رؤية كاملة وراحة بال تامة</strong>
+            </p>
           </div>
+          
+          <CargoShipRoute />
         </div>
       </div>
     </section>
