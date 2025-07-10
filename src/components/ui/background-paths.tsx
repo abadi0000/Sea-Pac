@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 interface BackgroundPathsProps {
   title: string;
@@ -6,116 +6,275 @@ interface BackgroundPathsProps {
 }
 
 export function BackgroundPaths({ title, className = "" }: BackgroundPathsProps) {
+  const [hoveredPort, setHoveredPort] = useState<string | null>(null);
+  const [hoveredRoute, setHoveredRoute] = useState<string | null>(null);
+
   return (
     <div className={`relative overflow-hidden bg-gradient-to-br from-sebaaq-midnight to-sebaaq-charcoal ${className}`}>
-      {/* Animated SVG Background Paths */}
-      <div className="absolute inset-0 opacity-10">
+      {/* Interactive Cargo Vessel Route Map */}
+      <div className="absolute inset-0">
         <svg
           className="absolute inset-0 w-full h-full"
-          viewBox="0 0 1000 1000"
+          viewBox="0 0 1400 800"
           xmlns="http://www.w3.org/2000/svg"
           preserveAspectRatio="xMidYMid slice"
         >
           <defs>
-            <linearGradient id="pathGradient1" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="hsl(var(--sebaaq-blue))" />
-              <stop offset="100%" stopColor="rgb(59, 130, 246)" />
+            <linearGradient id="routeGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stopColor="#2295d1" stopOpacity="0.9" />
+              <stop offset="50%" stopColor="#ffffff" stopOpacity="0.7" />
+              <stop offset="100%" stopColor="#2295d1" stopOpacity="0.9" />
             </linearGradient>
-            <linearGradient id="pathGradient2" x1="100%" y1="0%" x2="0%" y2="100%">
-              <stop offset="0%" stopColor="rgb(59, 130, 246)" />
-              <stop offset="100%" stopColor="hsl(var(--sebaaq-blue))" />
-            </linearGradient>
+            
+            <radialGradient id="portGradient" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stopColor="#ffffff" stopOpacity="1" />
+              <stop offset="70%" stopColor="#2295d1" stopOpacity="0.9" />
+              <stop offset="100%" stopColor="#003366" stopOpacity="0.8" />
+            </radialGradient>
+            
+            <filter id="glow">
+              <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+              <feMerge> 
+                <feMergeNode in="coloredBlur"/>
+                <feMergeNode in="SourceGraphic"/>
+              </feMerge>
+            </filter>
           </defs>
-          
-          {/* Animated Path 1 */}
-          <path
-            d="M0,200 Q250,100 500,200 T1000,200"
-            stroke="url(#pathGradient1)"
-            strokeWidth="2"
-            fill="none"
-            className="animate-pulse"
-          >
-            <animate
-              attributeName="d"
-              values="M0,200 Q250,100 500,200 T1000,200;M0,250 Q250,150 500,250 T1000,250;M0,200 Q250,100 500,200 T1000,200"
-              dur="6s"
-              repeatCount="indefinite"
+
+          {/* Simplified world map outlines */}
+          <g stroke="#ffffff" strokeWidth="1" fill="none" opacity="0.2">
+            {/* China coastline simplified */}
+            <path d="M250 180 Q280 160 320 170 Q360 180 380 200 Q400 220 380 240 Q350 250 320 240 Q280 230 250 220 Z" />
+            
+            {/* Arabian Peninsula simplified */}
+            <path d="M900 300 Q950 280 1000 300 Q1050 320 1080 360 Q1100 400 1080 440 Q1050 460 1000 450 Q950 440 920 420 Q900 380 900 340 Z" />
+            
+            {/* Indian Ocean outline */}
+            <path d="M400 250 Q600 280 800 300 Q850 320 900 340" stroke="#2295d1" strokeWidth="0.5" opacity="0.3" />
+          </g>
+
+          {/* Main shipping routes */}
+          <g>
+            {/* Primary route: China to Jeddah via Suez Canal */}
+            <path
+              d="M320 200 Q450 220 600 250 Q750 280 850 320 Q950 350 1020 380"
+              stroke="url(#routeGradient)"
+              strokeWidth="3"
+              fill="none"
+              filter="url(#glow)"
+              className="cursor-pointer"
+              onMouseEnter={() => setHoveredRoute('china-jeddah')}
+              onMouseLeave={() => setHoveredRoute(null)}
             />
-          </path>
-          
-          {/* Animated Path 2 */}
-          <path
-            d="M0,400 Q300,300 600,400 T1000,400"
-            stroke="url(#pathGradient2)"
-            strokeWidth="1.5"
-            fill="none"
-            opacity="0.7"
-          >
-            <animate
-              attributeName="d"
-              values="M0,400 Q300,300 600,400 T1000,400;M0,350 Q300,450 600,350 T1000,350;M0,400 Q300,300 600,400 T1000,400"
-              dur="8s"
-              repeatCount="indefinite"
+            
+            {/* Secondary route: China to Dammam via Arabian Sea */}
+            <path
+              d="M340 210 Q480 240 650 270 Q800 300 920 340 Q980 360 1040 390"
+              stroke="url(#routeGradient)"
+              strokeWidth="2"
+              fill="none"
+              opacity="0.7"
+              filter="url(#glow)"
+              className="cursor-pointer"
+              onMouseEnter={() => setHoveredRoute('china-dammam')}
+              onMouseLeave={() => setHoveredRoute(null)}
             />
-          </path>
-          
-          {/* Animated Path 3 */}
-          <path
-            d="M0,600 Q200,500 400,600 T800,600"
-            stroke="url(#pathGradient1)"
-            strokeWidth="1"
-            fill="none"
-            opacity="0.5"
-          >
-            <animate
-              attributeName="d"
-              values="M0,600 Q200,500 400,600 T800,600;M0,650 Q200,550 400,650 T800,650;M0,600 Q200,500 400,600 T800,600"
-              dur="10s"
-              repeatCount="indefinite"
+          </g>
+
+          {/* Moving vessels along routes */}
+          <g filter="url(#glow)">
+            {/* Vessel 1 - China to Jeddah */}
+            <g>
+              <circle r="3" fill="#ffffff" opacity="0.9">
+                <animateMotion dur="15s" repeatCount="indefinite">
+                  <path d="M320 200 Q450 220 600 250 Q750 280 850 320 Q950 350 1020 380" />
+                </animateMotion>
+              </circle>
+              <circle r="6" fill="none" stroke="#2295d1" strokeWidth="1" opacity="0.5">
+                <animateMotion dur="15s" repeatCount="indefinite">
+                  <path d="M320 200 Q450 220 600 250 Q750 280 850 320 Q950 350 1020 380" />
+                </animateMotion>
+              </circle>
+            </g>
+            
+            {/* Vessel 2 - China to Dammam */}
+            <g>
+              <circle r="2" fill="#ffffff" opacity="0.8">
+                <animateMotion dur="18s" repeatCount="indefinite" begin="5s">
+                  <path d="M340 210 Q480 240 650 270 Q800 300 920 340 Q980 360 1040 390" />
+                </animateMotion>
+              </circle>
+            </g>
+          </g>
+
+          {/* Ports - China */}
+          <g>
+            {/* Shanghai */}
+            <circle 
+              cx="350" 
+              cy="190" 
+              r="8" 
+              fill="url(#portGradient)" 
+              filter="url(#glow)"
+              className="cursor-pointer"
+              onMouseEnter={() => setHoveredPort('shanghai')}
+              onMouseLeave={() => setHoveredPort(null)}
             />
-          </path>
-          
-          {/* Animated Path 4 */}
-          <path
-            d="M200,800 Q500,700 800,800 T1000,800"
-            stroke="url(#pathGradient2)"
-            strokeWidth="1.5"
-            fill="none"
-            opacity="0.6"
-          >
-            <animate
-              attributeName="d"
-              values="M200,800 Q500,700 800,800 T1000,800;M200,750 Q500,850 800,750 T1000,750;M200,800 Q500,700 800,800 T1000,800"
-              dur="7s"
-              repeatCount="indefinite"
+            
+            {/* Shenzhen */}
+            <circle 
+              cx="320" 
+              cy="220" 
+              r="7" 
+              fill="url(#portGradient)" 
+              filter="url(#glow)"
+              className="cursor-pointer"
+              onMouseEnter={() => setHoveredPort('shenzhen')}
+              onMouseLeave={() => setHoveredPort(null)}
             />
-          </path>
-          
-          {/* Moving Dots */}
-          <circle r="3" fill="hsl(var(--sebaaq-blue))" opacity="0.8">
-            <animateMotion dur="8s" repeatCount="indefinite">
-              <path d="M0,200 Q250,100 500,200 T1000,200" />
-            </animateMotion>
-          </circle>
-          
-          <circle r="2" fill="rgb(59, 130, 246)" opacity="0.6">
-            <animateMotion dur="10s" repeatCount="indefinite">
-              <path d="M0,400 Q300,300 600,400 T1000,400" />
-            </animateMotion>
-          </circle>
-          
-          <circle r="2.5" fill="hsl(var(--sebaaq-blue))" opacity="0.7">
-            <animateMotion dur="12s" repeatCount="indefinite">
-              <path d="M0,600 Q200,500 400,600 T800,600" />
-            </animateMotion>
-          </circle>
+            
+            {/* Qingdao */}
+            <circle 
+              cx="340" 
+              cy="170" 
+              r="6" 
+              fill="url(#portGradient)" 
+              filter="url(#glow)"
+              className="cursor-pointer"
+              onMouseEnter={() => setHoveredPort('qingdao')}
+              onMouseLeave={() => setHoveredPort(null)}
+            />
+          </g>
+
+          {/* Ports - Saudi Arabia */}
+          <g>
+            {/* Jeddah */}
+            <circle 
+              cx="1020" 
+              cy="380" 
+              r="8" 
+              fill="#22c55e" 
+              filter="url(#glow)"
+              className="cursor-pointer"
+              onMouseEnter={() => setHoveredPort('jeddah')}
+              onMouseLeave={() => setHoveredPort(null)}
+            />
+            
+            {/* Dammam */}
+            <circle 
+              cx="1040" 
+              cy="390" 
+              r="7" 
+              fill="#22c55e" 
+              filter="url(#glow)"
+              className="cursor-pointer"
+              onMouseEnter={() => setHoveredPort('dammam')}
+              onMouseLeave={() => setHoveredPort(null)}
+            />
+          </g>
+
+          {/* Key maritime choke points */}
+          <g>
+            {/* Strait of Malacca */}
+            <polygon 
+              points="580,260 590,270 580,280 570,270" 
+              fill="#fbbf24" 
+              opacity="0.8"
+              className="cursor-pointer"
+              onMouseEnter={() => setHoveredPort('malacca')}
+              onMouseLeave={() => setHoveredPort(null)}
+            />
+            
+            {/* Suez Canal */}
+            <polygon 
+              points="940,340 950,350 940,360 930,350" 
+              fill="#fbbf24" 
+              opacity="0.8"
+              className="cursor-pointer"
+              onMouseEnter={() => setHoveredPort('suez')}
+              onMouseLeave={() => setHoveredPort(null)}
+            />
+          </g>
+
+          {/* Port labels */}
+          <g className="text-white font-cairo text-sm fill-white">
+            <text x="360" y="185" textAnchor="middle" opacity="0.9">Shanghai</text>
+            <text x="330" y="235" textAnchor="middle" opacity="0.9">Shenzhen</text>
+            <text x="350" y="165" textAnchor="middle" opacity="0.9">Qingdao</text>
+            <text x="1030" y="375" textAnchor="middle" opacity="0.9">Jeddah</text>
+            <text x="1050" y="405" textAnchor="middle" opacity="0.9">Dammam</text>
+            <text x="590" y="255" textAnchor="middle" opacity="0.7" fontSize="12">Malacca</text>
+            <text x="950" y="335" textAnchor="middle" opacity="0.7" fontSize="12">Suez</text>
+          </g>
         </svg>
       </div>
-      
-      {/* Grid Pattern Overlay */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="tech-grid"></div>
-      </div>
+
+      {/* Tooltip for interactive elements */}
+      {(hoveredPort || hoveredRoute) && (
+        <div className="absolute top-4 right-4 bg-black/80 text-white p-4 rounded-lg backdrop-blur-sm max-w-xs z-20">
+          {hoveredPort === 'shanghai' && (
+            <div>
+              <h3 className="font-bold">Shanghai Port</h3>
+              <p className="text-sm">To Jeddah: 15-21 days</p>
+              <p className="text-sm">To Dammam: 18-25 days</p>
+            </div>
+          )}
+          {hoveredPort === 'shenzhen' && (
+            <div>
+              <h3 className="font-bold">Shenzhen Port</h3>
+              <p className="text-sm">To Jeddah: 16-22 days</p>
+              <p className="text-sm">To Dammam: 19-26 days</p>
+            </div>
+          )}
+          {hoveredPort === 'qingdao' && (
+            <div>
+              <h3 className="font-bold">Qingdao Port</h3>
+              <p className="text-sm">To Jeddah: 17-23 days</p>
+              <p className="text-sm">To Dammam: 20-27 days</p>
+            </div>
+          )}
+          {hoveredPort === 'jeddah' && (
+            <div>
+              <h3 className="font-bold">Jeddah Port</h3>
+              <p className="text-sm">Red Sea Gateway</p>
+              <p className="text-sm">Main Western Saudi Port</p>
+            </div>
+          )}
+          {hoveredPort === 'dammam' && (
+            <div>
+              <h3 className="font-bold">Dammam Port</h3>
+              <p className="text-sm">Arabian Gulf Gateway</p>
+              <p className="text-sm">Eastern Saudi Port</p>
+            </div>
+          )}
+          {hoveredPort === 'malacca' && (
+            <div>
+              <h3 className="font-bold">Strait of Malacca</h3>
+              <p className="text-sm">Critical maritime chokepoint</p>
+            </div>
+          )}
+          {hoveredPort === 'suez' && (
+            <div>
+              <h3 className="font-bold">Suez Canal</h3>
+              <p className="text-sm">Red Sea access route</p>
+            </div>
+          )}
+          {hoveredRoute === 'china-jeddah' && (
+            <div>
+              <h3 className="font-bold">China to Jeddah Route</h3>
+              <p className="text-sm">Via Suez Canal</p>
+              <p className="text-sm">Transit: 15-22 days</p>
+            </div>
+          )}
+          {hoveredRoute === 'china-dammam' && (
+            <div>
+              <h3 className="font-bold">China to Dammam Route</h3>
+              <p className="text-sm">Via Arabian Sea</p>
+              <p className="text-sm">Transit: 18-26 days</p>
+            </div>
+          )}
+        </div>
+      )}
       
       {/* Content */}
       <div className="relative z-10 flex items-center justify-center min-h-[400px] px-6">
@@ -123,13 +282,12 @@ export function BackgroundPaths({ title, className = "" }: BackgroundPathsProps)
           <h1 className="font-playfair text-4xl md:text-6xl font-bold text-white mb-4">
             {title}
           </h1>
-          <div className="w-24 h-1 bg-gradient-to-r from-sebaaq-blue to-blue-400 mx-auto"></div>
+          <div className="w-24 h-1 bg-gradient-to-r from-sebaaq-blue to-blue-400 mx-auto mb-4"></div>
+          <p className="text-white/80 text-lg">
+            خطوط الشحن المباشرة من الصين إلى السعودية
+          </p>
         </div>
       </div>
-      
-      {/* Floating Elements */}
-      <div className="absolute top-20 left-20 w-32 h-32 bg-sebaaq-blue/10 rounded-full blur-2xl animate-float"></div>
-      <div className="absolute bottom-20 right-20 w-40 h-40 bg-blue-400/10 rounded-full blur-2xl animate-float" style={{animationDelay: '2s'}}></div>
     </div>
   );
 }
