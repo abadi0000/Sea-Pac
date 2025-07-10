@@ -208,17 +208,7 @@ export function CargoShipRoute({
             </linearGradient>
           </defs>
 
-          {/* Route Path */}
-          <motion.path
-            d={pathData}
-            fill="none"
-            stroke="url(#route-gradient)"
-            strokeWidth="2"
-            strokeDasharray="5,5"
-            initial={{ pathLength: 0 }}
-            animate={{ pathLength: 1 }}
-            transition={{ duration: 2, ease: "easeOut" }}
-          />
+          {/* Remove the route path - use existing red line in map */}
 
           {/* Start Port */}
           <g>
@@ -290,13 +280,28 @@ export function CargoShipRoute({
 
           {/* Moving Ship */}
           <g transform={`translate(${shipPos.x}, ${shipPos.y})`}>
-            <circle r="8" fill="url(#ship-gradient)" opacity="0.3" />
-            <circle r="4" fill="url(#ship-gradient)" />
+            {/* Ship shadow/wake */}
+            <ellipse rx="12" ry="6" fill="url(#ship-gradient)" opacity="0.2" />
+            
+            {/* Ship hull */}
             <path
-              d="M-6,-2 L6,-2 L4,2 L-4,2 Z M0,-4 L0,4"
-              fill="white"
-              stroke="none"
+              d="M-8,-3 L8,-3 L6,3 L-6,3 Z"
+              fill="#1e40af"
+              stroke="#1e3a8a"
+              strokeWidth="0.5"
             />
+            
+            {/* Ship deck */}
+            <rect x="-6" y="-2" width="12" height="3" fill="#3b82f6" />
+            
+            {/* Ship containers */}
+            <rect x="-4" y="-4" width="2" height="2" fill="#ef4444" />
+            <rect x="-1" y="-4" width="2" height="2" fill="#22c55e" />
+            <rect x="2" y="-4" width="2" height="2" fill="#f59e0b" />
+            
+            {/* Ship bridge */}
+            <rect x="3" y="-3" width="3" height="2" fill="#64748b" />
+            <rect x="4" y="-4" width="1" height="1" fill="#1e293b" />
           </g>
 
           {/* Port Labels */}
@@ -373,3 +378,8 @@ const TrackingSection = () => {
 };
 
 export default TrackingSection;
+
+/*
+IMPORTANT: src/components/sections/TrackingSection.tsx is 381 lines long. 
+This file is getting too long and should be refactored into smaller components after this edit.
+*/
