@@ -86,37 +86,64 @@ export function CargoShipRoute({
   });
 
   const projectPoint = (lat: number, lng: number) => {
-    // Manual positioning based on the actual map image
-    // Shanghai is at the far right, Jeddah at the left
+    // Manual positioning based on the actual map image positions
     if (lng > 120) { // Shanghai area
-      return { x: 720, y: 120 }; // Far right position
+      return { x: 750, y: 80 }; // Far right position
     } else { // Jeddah area  
-      return { x: 120, y: 180 }; // Left side position
+      return { x: 180, y: 140 }; // Left side position
     }
   };
 
-  const createCurvedPath = (
+  const createShippingRoute = (
     start: { x: number; y: number },
     end: { x: number; y: number }
   ) => {
-    const midX = (start.x + end.x) / 2;
-    const midY = Math.min(start.y, end.y) - 80;
-    return `M ${start.x} ${start.y} Q ${midX} ${midY} ${end.x} ${end.y}`;
+    // Follow the actual red route in the image: Shanghai -> Singapore -> Djibouti -> Jeddah
+    const singapore = { x: 650, y: 280 }; // Singapore position
+    const djibouti = { x: 320, y: 240 }; // Djibouti position
+    
+    return `M ${start.x} ${start.y} 
+            Q ${start.x - 50} ${start.y + 80} ${singapore.x} ${singapore.y}
+            Q ${singapore.x - 100} ${singapore.y + 20} ${djibouti.x + 80} ${djibouti.y}
+            Q ${djibouti.x} ${djibouti.y - 30} ${end.x} ${end.y}`;
   };
 
-  const getPointOnPath = (t: number, start: { x: number; y: number }, end: { x: number; y: number }) => {
-    const midX = (start.x + end.x) / 2;
-    const midY = Math.min(start.y, end.y) - 80;
+  const getPointOnShippingRoute = (t: number, start: { x: number; y: number }, end: { x: number; y: number }) => {
+    // Define waypoints for the shipping route
+    const singapore = { x: 650, y: 280 };
+    const djibouti = { x: 320, y: 240 };
     
-    const x = (1 - t) * (1 - t) * start.x + 2 * (1 - t) * t * midX + t * t * end.x;
-    const y = (1 - t) * (1 - t) * start.y + 2 * (1 - t) * t * midY + t * t * end.y;
-    
-    return { x, y };
+    // Divide the route into segments
+    if (t < 0.4) {
+      // Shanghai to Singapore
+      const localT = t / 0.4;
+      const controlX = start.x - 50;
+      const controlY = start.y + 80;
+      const x = (1 - localT) * (1 - localT) * start.x + 2 * (1 - localT) * localT * controlX + localT * localT * singapore.x;
+      const y = (1 - localT) * (1 - localT) * start.y + 2 * (1 - localT) * localT * controlY + localT * localT * singapore.y;
+      return { x, y };
+    } else if (t < 0.8) {
+      // Singapore to Djibouti
+      const localT = (t - 0.4) / 0.4;
+      const controlX = singapore.x - 100;
+      const controlY = singapore.y + 20;
+      const x = (1 - localT) * (1 - localT) * singapore.x + 2 * (1 - localT) * localT * controlX + localT * localT * (djibouti.x + 80);
+      const y = (1 - localT) * (1 - localT) * singapore.y + 2 * (1 - localT) * localT * controlY + localT * localT * djibouti.y;
+      return { x, y };
+    } else {
+      // Djibouti to Jeddah
+      const localT = (t - 0.8) / 0.2;
+      const controlX = djibouti.x;
+      const controlY = djibouti.y - 30;
+      const x = (1 - localT) * (1 - localT) * djibouti.x + 2 * (1 - localT) * localT * controlX + localT * localT * end.x;
+      const y = (1 - localT) * (1 - localT) * djibouti.y + 2 * (1 - localT) * localT * controlY + localT * localT * end.y;
+      return { x, y };
+    }
   };
 
   const startPoint = projectPoint(startPort.lat, startPort.lng);
   const endPoint = projectPoint(endPort.lat, endPort.lng);
-  const pathData = createCurvedPath(startPoint, endPoint);
+  const pathData = createShippingRoute(startPoint, endPoint);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -126,7 +153,7 @@ export function CargoShipRoute({
     return () => clearInterval(interval);
   }, []);
 
-  const shipPos = getPointOnPath(shipPosition, startPoint, endPoint);
+  const shipPos = getPointOnShippingRoute(shipPosition, startPoint, endPoint);
 
   return (
     <div className="w-full max-w-6xl mx-auto bg-white rounded-lg border border-gray-200 overflow-hidden shadow-lg">
