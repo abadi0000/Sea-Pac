@@ -29,10 +29,9 @@ const HeroSection = () => {
       {/* Enhanced Background with Overlay */}
       <div className="absolute inset-0">
         <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat transform scale-110 transition-transform duration-20000 ease-linear"
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat transform scale-110 transition-transform duration-20000 ease-linear animate-[subtle-zoom_20s_ease-in-out_infinite_alternate]"
           style={{
             backgroundImage: `url('/lovable-uploads/ff0a1b84-4ef4-4abd-b976-94c738cd52ce.png')`,
-            animation: 'subtle-zoom 20s ease-in-out infinite alternate'
           }}
         />
         <div className="absolute inset-0 bg-gradient-to-br from-sebaaq-midnight/90 via-sebaaq-midnight/80 to-sebaaq-charcoal/85" />
@@ -149,14 +148,6 @@ const HeroSection = () => {
           <ArrowDown className="text-white w-6 h-6 opacity-70" />
         </div>
       </div>
-
-      {/* Custom CSS for subtle zoom animation */}
-      <style jsx>{`
-        @keyframes subtle-zoom {
-          0% { transform: scale(1.1); }
-          100% { transform: scale(1.15); }
-        }
-      `}</style>
     </section>
   );
 };
