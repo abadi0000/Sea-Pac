@@ -43,28 +43,28 @@ const SebaqMachine = () => {
       title: "مكائن البيع الذاتي",
       subtitle: "تجربة مبتكرة، أرباح مستمرة",
       description: "انتقلوا بتجارة التجزئة إلى مستوى جديد مع مجموعتنا من مكائن البيع الذاتي المتطورة",
-      image: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80",
+      image: "/lovable-uploads/7f53ab4c-dbb6-459a-b98d-07e3971314f2.png",
       link: "/sebaaq-machine/vending-machines"
     },
     {
       title: "أنظمة خطوط الإنتاج والمصانع",
       subtitle: "بناء مستقبل الصناعة السعودية",
       description: "أنظمة خطوط إنتاج ومصانع متكاملة، مصممة بأحدث التقنيات لضمان الكفاءة التشغيلية",
-      image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=800&q=80",
+      image: "/lovable-uploads/f2b9e552-7049-43c5-8633-7b33ffe817b1.png",
       link: "/sebaaq-machine/production-lines"
     },
     {
       title: "مغاسل السيارات الاوتوماتيكية",
       subtitle: "نظافة فائقة، كفاءة لا تضاهى",
       description: "ارتقوا بتجربة غسيل السيارات مع أحدث أنظمة المغاسل الأوتوماتيكية",
-      image: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=800&q=80",
+      image: "/lovable-uploads/c89ef772-7b7a-46ad-8c9e-033a7db07978.png",
       link: "/sebaaq-machine/car-wash"
     },
     {
       title: "المشاريع الترفيهية",
       subtitle: "استثمر في مستقبل الترفيه السعودي",
       description: "مجموعة واسعة من الأنظمة الترفيهية المبتكرة التي تضمن تجارب لا تُنسى",
-      image: "https://images.unsplash.com/photo-1531297484001-80022131f5a1?auto=format&fit=crop&w=800&q=80",
+      image: "/lovable-uploads/640aeb90-1566-4874-8489-7c6bfc60e55e.png",
       link: "/sebaaq-machine/entertainment-systems"
     }
   ];
