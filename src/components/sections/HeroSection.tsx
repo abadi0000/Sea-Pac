@@ -51,18 +51,12 @@ const HeroSection = () => {
             
             {/* Logo */}
             <div className="mb-8 sm:mb-12">
-              <picture>
-                <source 
-                  srcSet="/lovable-uploads/d7f46067-5eb1-4e56-8b93-d7c37d04c951.webp" 
-                  type="image/webp"
-                />
-                <img 
-                  src="/lovable-uploads/d7f46067-5eb1-4e56-8b93-d7c37d04c951.png" 
-                  alt="شعار شركة سي باك لوجستيك - خدمات الشحن من الصين إلى السعودية" 
-                  className="h-16 sm:h-20 md:h-24 mx-auto transform hover:scale-105 transition-transform duration-300"
-                  loading="eager"
-                />
-              </picture>
+              <img 
+                src="/lovable-uploads/a49bff48-e82c-41f8-ac87-8f57a3afd2b7.png" 
+                alt="شعار شركة سي باك لوجستيك - خدمات الشحن من الصين إلى السعودية" 
+                className="h-16 sm:h-20 md:h-24 mx-auto transform hover:scale-105 transition-transform duration-300"
+                loading="eager"
+              />
             </div>
             
             {/* Main Title */}
