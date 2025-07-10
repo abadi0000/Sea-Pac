@@ -3,6 +3,9 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Card } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import BT500Specifications from '@/components/sections/BT500Specifications';
+import BT500Features from '@/components/sections/BT500Features';
+import CustomerTestimonials from '@/components/sections/CustomerTestimonials';
 import { 
   Droplets, 
   Zap, 
@@ -13,7 +16,10 @@ import {
   Mail, 
   CheckCircle,
   ArrowRight,
-  Gem
+  Gem,
+  Users,
+  Award,
+  Clock
 } from 'lucide-react';
 
 const CarWashBT500 = () => {
@@ -78,8 +84,8 @@ const CarWashBT500 = () => {
               </h1>
               
               <p className="text-lg text-muted-foreground leading-relaxed">
-                حل متوازن ومثالي للمشاريع التجارية المتوسطة. تقنية متقدمة 
-                بتكلفة معقولة وكفاءة عالية في الأداء.
+                حيث يلتقي الابتكار والتكنولوجيا - حلول الأتمتة لغسيل المركبات.
+                نظام 2 في 1: غسيل بدون لمس + غسيل بالفرش لأداء استثنائي.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4">
@@ -113,63 +119,93 @@ const CarWashBT500 = () => {
         </div>
       </section>
 
-      {/* Details Section */}
+      {/* Comprehensive Specifications */}
+      <BT500Specifications />
+
+      {/* Advanced Features */}
+      <BT500Features />
+
+      {/* Quality & Support Section */}
       <section className="py-16">
         <div className="container mx-auto px-4">
-          <Tabs defaultValue="specs" className="w-full">
-            <TabsList className="grid w-full grid-cols-3 mb-8">
-              <TabsTrigger value="specs">المواصفات</TabsTrigger>
-              <TabsTrigger value="features">المميزات</TabsTrigger>
-              <TabsTrigger value="benefits">الفوائد</TabsTrigger>
-            </TabsList>
+          <div className="text-center mb-12">
+            <Badge className="mb-4 bg-secondary/20 text-secondary-foreground border-secondary/30">
+              جودة SEBAQ
+            </Badge>
+            <h2 className="text-3xl font-bold text-foreground mb-4">
+              لماذا SEBAQ؟
+            </h2>
+          </div>
 
-            <TabsContent value="specs" className="space-y-6">
-              <h2 className="text-2xl font-bold text-foreground mb-6">المواصفات التقنية</h2>
-              <div className="grid md:grid-cols-2 gap-4">
-                {specifications.map((spec, index) => (
-                  <Card key={index} className="p-4">
-                    <div className="flex justify-between items-center">
-                      <span className="font-semibold text-foreground">{spec.label}</span>
-                      <span className="text-secondary-foreground font-bold">{spec.value}</span>
-                    </div>
-                  </Card>
-                ))}
+          <div className="grid md:grid-cols-3 gap-8 mb-16">
+            <Card className="p-6 bg-gradient-to-br from-blue-500/5 to-blue-600/10 border border-blue-500/20">
+              <div className="text-center space-y-4">
+                <div className="inline-flex p-3 rounded-full bg-blue-500/20 border border-blue-500/30">
+                  <Shield className="w-6 h-6 text-blue-400" />
+                </div>
+                <h3 className="text-xl font-bold text-foreground">الهيكل المتين</h3>
+                <p className="text-muted-foreground">
+                  جميع أنظمة SEBAQ مصنوعة من الستيل المجلفن المقاوم للصدأ
+                </p>
               </div>
-            </TabsContent>
+            </Card>
 
-            <TabsContent value="features" className="space-y-6">
-              <h2 className="text-2xl font-bold text-foreground mb-6">المميزات الرئيسية</h2>
-              <div className="grid md:grid-cols-2 gap-6">
-                {features.map((feature, index) => (
-                  <Card key={index} className="p-6">
-                    <div className="flex items-start gap-4">
-                      <div className="p-2 bg-secondary/10 text-secondary-foreground rounded-lg">
-                        {feature.icon}
-                      </div>
-                      <div>
-                        <h3 className="font-semibold text-foreground mb-2">{feature.title}</h3>
-                        <p className="text-muted-foreground">{feature.description}</p>
-                      </div>
-                    </div>
-                  </Card>
-                ))}
+            <Card className="p-6 bg-gradient-to-br from-green-500/5 to-green-600/10 border border-green-500/20">
+              <div className="text-center space-y-4">
+                <div className="inline-flex p-3 rounded-full bg-green-500/20 border border-green-500/30">
+                  <Award className="w-6 h-6 text-green-400" />
+                </div>
+                <h3 className="text-xl font-bold text-foreground">قطع عالمية</h3>
+                <p className="text-muted-foreground">
+                  جميع القطع من علامات تجارية قوية ومعروفة (ألمانية وفرنسية)
+                </p>
               </div>
-            </TabsContent>
+            </Card>
 
-            <TabsContent value="benefits" className="space-y-6">
-              <h2 className="text-2xl font-bold text-foreground mb-6">الفوائد والمزايا</h2>
-              <div className="grid md:grid-cols-2 gap-4">
-                {benefits.map((benefit, index) => (
-                  <div key={index} className="flex items-center gap-3">
-                    <CheckCircle className="h-5 w-5 text-green-500" />
-                    <span className="text-foreground">{benefit}</span>
+            <Card className="p-6 bg-gradient-to-br from-purple-500/5 to-purple-600/10 border border-purple-500/20">
+              <div className="text-center space-y-4">
+                <div className="inline-flex p-3 rounded-full bg-purple-500/20 border border-purple-500/30">
+                  <Users className="w-6 h-6 text-purple-400" />
+                </div>
+                <h3 className="text-xl font-bold text-foreground">تصميم محلي</h3>
+                <p className="text-muted-foreground">
+                  تصميم وتجميع محلي مناسب للبيئة السعودية القاسية
+                </p>
+              </div>
+            </Card>
+          </div>
+
+          <Card className="p-8 bg-gradient-to-br from-secondary/5 to-accent/5 border border-secondary/20">
+            <div className="text-center space-y-6">
+              <h3 className="text-2xl font-bold text-foreground">
+                خطوات الشراء
+              </h3>
+              <div className="grid md:grid-cols-7 gap-4 text-center">
+                {[
+                  { step: "1", title: "الاستفسار", desc: "تواصل معنا" },
+                  { step: "2", title: "الاستشارة", desc: "حجز موعد خبير" },
+                  { step: "3", title: "تقييم الموقع", desc: "زيارة ميدانية" },
+                  { step: "4", title: "العقد", desc: "توقيع الاتفاقية" },
+                  { step: "5", title: "التركيب", desc: "تركيب المعدات" },
+                  { step: "6", title: "التدريب", desc: "تدريب الفريق" },
+                  { step: "7", title: "المتابعة", desc: "دعم مستمر" }
+                ].map((item, index) => (
+                  <div key={index} className="space-y-3">
+                    <div className="w-12 h-12 bg-secondary/20 rounded-full flex items-center justify-center mx-auto border border-secondary/30">
+                      <span className="text-lg font-bold text-secondary-foreground">{item.step}</span>
+                    </div>
+                    <h4 className="font-semibold text-foreground text-sm">{item.title}</h4>
+                    <p className="text-xs text-muted-foreground">{item.desc}</p>
                   </div>
                 ))}
               </div>
-            </TabsContent>
-          </Tabs>
+            </div>
+          </Card>
         </div>
       </section>
+
+      {/* Customer Testimonials */}
+      <CustomerTestimonials />
 
       {/* CTA Section */}
       <section className="py-16 bg-muted/30">
