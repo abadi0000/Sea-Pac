@@ -109,34 +109,50 @@ export function CargoShipRoute({
   };
 
   const getPointOnShippingRoute = (t: number, start: { x: number; y: number }, end: { x: number; y: number }) => {
-    // Define waypoints for the shipping route
-    const singapore = { x: 650, y: 280 };
-    const djibouti = { x: 320, y: 240 };
+    // Define sea-only waypoints following the blue ocean areas
+    const southChinaSea = { x: 680, y: 300 }; // South China Sea
+    const malaccaStrait = { x: 620, y: 320 }; // Malacca Strait
+    const indianOcean1 = { x: 580, y: 340 }; // Indian Ocean
+    const indianOcean2 = { x: 480, y: 360 }; // Indian Ocean middle
+    const arabianSea = { x: 380, y: 320 }; // Arabian Sea
+    const redSeaEntrance = { x: 300, y: 280 }; // Red Sea entrance
     
-    // Divide the route into segments
-    if (t < 0.4) {
-      // Shanghai to Singapore
-      const localT = t / 0.4;
-      const controlX = start.x - 50;
-      const controlY = start.y + 80;
-      const x = (1 - localT) * (1 - localT) * start.x + 2 * (1 - localT) * localT * controlX + localT * localT * singapore.x;
-      const y = (1 - localT) * (1 - localT) * start.y + 2 * (1 - localT) * localT * controlY + localT * localT * singapore.y;
+    // Divide the route into sea segments
+    if (t < 0.15) {
+      // Shanghai to South China Sea
+      const localT = t / 0.15;
+      const x = start.x + (southChinaSea.x - start.x) * localT;
+      const y = start.y + (southChinaSea.y - start.y) * localT;
+      return { x, y };
+    } else if (t < 0.25) {
+      // South China Sea to Malacca Strait
+      const localT = (t - 0.15) / 0.1;
+      const x = southChinaSea.x + (malaccaStrait.x - southChinaSea.x) * localT;
+      const y = southChinaSea.y + (malaccaStrait.y - southChinaSea.y) * localT;
+      return { x, y };
+    } else if (t < 0.4) {
+      // Malacca Strait to Indian Ocean
+      const localT = (t - 0.25) / 0.15;
+      const x = malaccaStrait.x + (indianOcean1.x - malaccaStrait.x) * localT;
+      const y = malaccaStrait.y + (indianOcean1.y - malaccaStrait.y) * localT;
+      return { x, y };
+    } else if (t < 0.6) {
+      // Indian Ocean crossing
+      const localT = (t - 0.4) / 0.2;
+      const x = indianOcean1.x + (indianOcean2.x - indianOcean1.x) * localT;
+      const y = indianOcean1.y + (indianOcean2.y - indianOcean1.y) * localT;
       return { x, y };
     } else if (t < 0.8) {
-      // Singapore to Djibouti
-      const localT = (t - 0.4) / 0.4;
-      const controlX = singapore.x - 100;
-      const controlY = singapore.y + 20;
-      const x = (1 - localT) * (1 - localT) * singapore.x + 2 * (1 - localT) * localT * controlX + localT * localT * (djibouti.x + 80);
-      const y = (1 - localT) * (1 - localT) * singapore.y + 2 * (1 - localT) * localT * controlY + localT * localT * djibouti.y;
+      // Indian Ocean to Arabian Sea
+      const localT = (t - 0.6) / 0.2;
+      const x = indianOcean2.x + (arabianSea.x - indianOcean2.x) * localT;
+      const y = indianOcean2.y + (arabianSea.y - indianOcean2.y) * localT;
       return { x, y };
     } else {
-      // Djibouti to Jeddah
+      // Arabian Sea to Red Sea entrance to Jeddah
       const localT = (t - 0.8) / 0.2;
-      const controlX = djibouti.x;
-      const controlY = djibouti.y - 30;
-      const x = (1 - localT) * (1 - localT) * djibouti.x + 2 * (1 - localT) * localT * controlX + localT * localT * end.x;
-      const y = (1 - localT) * (1 - localT) * djibouti.y + 2 * (1 - localT) * localT * controlY + localT * localT * end.y;
+      const x = arabianSea.x + (end.x - arabianSea.x) * localT;
+      const y = arabianSea.y + (end.y - arabianSea.y) * localT;
       return { x, y };
     }
   };
