@@ -182,10 +182,10 @@ export function CargoShipRoute({
       </div>
 
       {/* Map */}
-      <div className="relative aspect-[2/1] bg-white">
+      <div className="relative w-full h-96 bg-white">
         <img
           src="/lovable-uploads/5a935ef4-4a33-4ad3-8dcc-149f4c72098b.png"
-          className="h-full w-full object-cover pointer-events-none select-none"
+          className="w-full h-full object-contain pointer-events-none select-none"
           alt="خريطة مسارات الشحن"
           draggable={false}
         />
