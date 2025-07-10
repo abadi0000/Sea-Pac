@@ -178,9 +178,9 @@ function LogisticsHero({
   companyName = "سي باك لوجستيك",
   tagline = "حلول الشحن الذكية من الصين إلى المملكة",
   services = {
-    seaShipping: "شحن بحري",
-    airShipping: "شحن جوي",
-    machinery: "توريد وتركيب وصيانة آلات حديثة"
+    seaShipping: "شحن بحري وجوي",
+    airShipping: "توريد وتركيب وصيانة",
+    machinery: "البحث عن مصانع"
   },
   ctaButtons = {
     contact: "اتصل بنا الآن",
