@@ -219,16 +219,28 @@ const CarWash = () => {
                   </div>
                   
                   {/* Product Image */}
-                  <div className="aspect-square rounded-lg bg-gradient-to-br from-blue-100 to-blue-200 flex items-center justify-center relative overflow-hidden border-2 border-sebaaq-blue/20 mb-4">
-                    <div className="absolute inset-0 bg-gradient-to-br from-sebaaq-blue/20 via-blue-500/20 to-purple-500/20"></div>
-                    <div className="relative z-10 text-center">
-                      <div className="text-4xl font-bold text-sebaaq-blue mb-2">{product.title}</div>
-                      <div className="flex items-center justify-center gap-2 text-sebaaq-blue/70">
-                        <Droplets className="h-8 w-8" />
-                        <Zap className="h-8 w-8" />
-                        <Wind className="h-8 w-8" />
-                      </div>
-                    </div>
+                  <div className="aspect-square rounded-lg overflow-hidden border-2 border-sebaaq-blue/20 mb-4">
+                    {product.id === 'bt900' && (
+                      <img
+                        src="/lovable-uploads/c5375e9e-6274-4fe3-ace0-0c5f793ff6d0.png"
+                        alt={`${product.title} - نظام غسيل السيارات`}
+                        className="w-full h-full object-cover"
+                      />
+                    )}
+                    {product.id === 'bt500' && (
+                      <img
+                        src="/lovable-uploads/28144a1c-943b-408f-ad5d-00076e8779ae.png"
+                        alt={`${product.title} - نظام غسيل السيارات`}
+                        className="w-full h-full object-cover"
+                      />
+                    )}
+                    {(product.id === 'tl500' || product.id === 'tl400' || product.id === 'tl300') && (
+                      <img
+                        src="/lovable-uploads/3ccf25e5-f98e-46f9-be3c-88ad951e5499.png"
+                        alt={`${product.title} - نظام غسيل السيارات`}
+                        className="w-full h-full object-cover"
+                      />
+                    )}
                   </div>
                   
                   <p className="text-gray-600 mb-4 leading-relaxed text-sm flex-grow">
