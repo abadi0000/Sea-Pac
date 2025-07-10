@@ -6,8 +6,6 @@ import ShippingCalculatorSection from "@/components/sections/ShippingCalculatorS
 import ShippingSection from "@/components/sections/ShippingSection";
 import { FeaturesSectionWithHoverEffects } from "@/components/blocks/feature-section-with-hover-effects";
 import FactorySearchSection from "@/components/sections/FactorySearchSection";
-import TrackingSection from "@/components/sections/TrackingSection";
-import WarehouseSection from "@/components/sections/WarehouseSection";
 import VisionSection from "@/components/sections/VisionSection";
 import ContactSection from "@/components/sections/ContactSection";
 
@@ -20,8 +18,6 @@ const Index = () => {
       <StatsSection />
       <FactorySearchSection />
       <ShippingSection />
-      <TrackingSection />
-      <WarehouseSection />
       
       <ContactSection />
     </div>
