@@ -41,6 +41,7 @@ const App = () => (
           <Navigation />
           <main role="main">
             <Routes>
+              <Route path="/home" element={<Index />} />
               <Route path="/" element={<Index />} />
               <Route path="/shipping-calculator" element={<ShippingCalculator />} />
               <Route path="/consultation-services" element={<ConsultationServices />} />

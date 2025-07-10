@@ -9,7 +9,7 @@ const Navigation = () => {
   const location = useLocation();
 
   const navItems = [
-    { path: '/', label: 'الرئيسية' },
+    { path: '/home', label: 'الرئيسية' },
     { path: '/consultation-services', label: 'الخدمات الاستشارية' },
     { path: '/sebaaq-machine', label: 'سـي بـاك ماشـين' },
     { path: '/parts-maintenance', label: 'قطع الغيار والصيانة' },
@@ -24,7 +24,7 @@ const Navigation = () => {
         <div className="flex items-center justify-between h-18 sm:h-24">
           {/* Logo */}
           <Link 
-            to="/" 
+            to="/home" 
             className="focus:outline-none focus:ring-4 focus:ring-sebaaq-blue/50 rounded-md p-2"
             aria-label="سـي بـاك - الصفحة الرئيسية"
           >
