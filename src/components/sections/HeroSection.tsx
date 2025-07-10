@@ -342,7 +342,6 @@ function LogisticsHero({
               >
                 <Mockup type="responsive">
                   <div className="w-full h-[300px] bg-gradient-to-br from-primary/10 via-secondary/10 to-accent/10 rounded-lg flex items-center justify-center relative overflow-hidden">
-                    <div className="absolute inset-0 opacity-50" style={{ backgroundImage: 'radial-gradient(circle at 50% 50%, hsl(var(--foreground) / 0.05) 1px, transparent 1px)', backgroundSize: '20px 20px' }}></div>
                   </div>
                 </Mockup>
               </MockupFrame>
