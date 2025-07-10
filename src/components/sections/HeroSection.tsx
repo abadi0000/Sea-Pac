@@ -1,292 +1,414 @@
 "use client"
 
-import React, { useState, useEffect } from 'react'
-import { motion } from 'framer-motion'
-import { Button } from '@/components/ui/button'
-import { Card } from '@/components/ui/card'
-import { Badge } from '@/components/ui/badge'
-import { Plane, Ship, Settings, Phone, FileText, ArrowLeft, Loader2 } from 'lucide-react'
+import React from 'react';
+import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
+import { ArrowRightIcon, Ship, Plane, Settings, Phone, FileText } from 'lucide-react';
+import { motion, Variants } from 'framer-motion';
+import { cn } from '@/lib/utils';
+import { cva, type VariantProps } from 'class-variance-authority';
 
-interface ServiceItem {
-  icon: React.ReactNode
-  title: string
-  description: string
+// Glow Component
+const glowVariants = cva("absolute w-full", {
+  variants: {
+    variant: {
+      top: "top-0",
+      above: "-top-[128px]",
+      bottom: "bottom-0",
+      below: "-bottom-[128px]",
+      center: "top-[50%]",
+    },
+  },
+  defaultVariants: {
+    variant: "top",
+  },
+});
+
+const Glow = React.forwardRef<
+  HTMLDivElement,
+  React.HTMLAttributes<HTMLDivElement> & VariantProps<typeof glowVariants>
+>(({ className, variant, ...props }, ref) => (
+  <div
+    ref={ref}
+    className={cn(glowVariants({ variant }), className)}
+    {...props}
+  >
+    <div
+      className={cn(
+        "absolute left-1/2 h-[256px] w-[60%] -translate-x-1/2 scale-[2.5] rounded-[50%] bg-[radial-gradient(ellipse_at_center,_hsl(var(--primary)/.5)_10%,_hsl(var(--primary)/0)_60%)] sm:h-[512px]",
+        variant === "center" && "-translate-y-1/2",
+      )}
+    />
+    <div
+      className={cn(
+        "absolute left-1/2 h-[128px] w-[40%] -translate-x-1/2 scale-[2] rounded-[50%] bg-[radial-gradient(ellipse_at_center,_hsl(var(--primary)/.3)_10%,_hsl(var(--primary)/0)_60%)] sm:h-[256px]",
+        variant === "center" && "-translate-y-1/2",
+      )}
+    />
+  </div>
+));
+Glow.displayName = "Glow";
+
+// Mockup Components
+const mockupVariants = cva(
+  "flex relative z-10 overflow-hidden shadow-2xl border border-border/5 border-t-border/15",
+  {
+    variants: {
+      type: {
+        mobile: "rounded-[48px] max-w-[350px]",
+        responsive: "rounded-md",
+      },
+    },
+    defaultVariants: {
+      type: "responsive",
+    },
+  },
+);
+
+interface MockupProps
+  extends React.HTMLAttributes<HTMLDivElement>,
+    VariantProps<typeof mockupVariants> {}
+
+const Mockup = React.forwardRef<HTMLDivElement, MockupProps>(
+  ({ className, type, ...props }, ref) => (
+    <div
+      ref={ref}
+      className={cn(mockupVariants({ type, className }))}
+      {...props}
+    />
+  ),
+);
+Mockup.displayName = "Mockup";
+
+const frameVariants = cva(
+  "bg-accent/5 flex relative z-10 overflow-hidden rounded-2xl",
+  {
+    variants: {
+      size: {
+        small: "p-2",
+        large: "p-4",
+      },
+    },
+    defaultVariants: {
+      size: "small",
+    },
+  },
+);
+
+interface MockupFrameProps
+  extends React.HTMLAttributes<HTMLDivElement>,
+    VariantProps<typeof frameVariants> {}
+
+const MockupFrame = React.forwardRef<HTMLDivElement, MockupFrameProps>(
+  ({ className, size, ...props }, ref) => (
+    <div
+      ref={ref}
+      className={cn(frameVariants({ size, className }))}
+      {...props}
+    />
+  ),
+);
+MockupFrame.displayName = "MockupFrame";
+
+// AnimatedGroup Component
+const defaultContainerVariants: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+    },
+  },
+};
+
+const defaultItemVariants: Variants = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1 },
+};
+
+interface AnimatedGroupProps {
+  children: React.ReactNode;
+  className?: string;
+  variants?: {
+    container?: Variants;
+    item?: Variants;
+  };
 }
 
-interface HeroSectionProps {
-  companyName?: string
-  headline?: string
-  services?: ServiceItem[]
-  primaryButtonText?: string
-  secondaryButtonText?: string
-  onPrimaryAction?: () => void
-  onSecondaryAction?: () => void
-}
-
-const HeroSection: React.FC<HeroSectionProps> = ({
-  companyName = "سي باك لوجستيك",
-  headline = "حلول الشحن الذكية من الصين إلى المملكة",
-  services = [
-    {
-      icon: <Ship className="w-6 h-6" />,
-      title: "شحن بحري",
-      description: "خدمات شحن بحري موثوقة وآمنة"
-    },
-    {
-      icon: <Plane className="w-6 h-6" />,
-      title: "شحن جوي",
-      description: "شحن سريع وفعال عبر الطيران"
-    },
-    {
-      icon: <Settings className="w-6 h-6" />,
-      title: "توريد وتركيب وصيانة آلات حديثة",
-      description: "حلول شاملة للمعدات والآلات"
-    }
-  ],
-  primaryButtonText = "اتصل بنا الآن",
-  secondaryButtonText = "احصل على عرض سعر",
-  onPrimaryAction,
-  onSecondaryAction
-}) => {
-  const [isVisible, setIsVisible] = useState(false)
-  const [primaryLoading, setPrimaryLoading] = useState(false)
-  const [secondaryLoading, setSecondaryLoading] = useState(false)
-
-  useEffect(() => {
-    setIsVisible(true)
-  }, [])
-
-  const handlePrimaryClick = async () => {
-    setPrimaryLoading(true)
-    try {
-      await new Promise(resolve => setTimeout(resolve, 1000))
-      onPrimaryAction?.()
-    } finally {
-      setPrimaryLoading(false)
-    }
-  }
-
-  const handleSecondaryClick = async () => {
-    setSecondaryLoading(true)
-    try {
-      await new Promise(resolve => setTimeout(resolve, 1000))
-      if (onSecondaryAction) {
-        onSecondaryAction()
-      } else {
-        const calculatorSection = document.getElementById('shipping-calculator');
-        calculatorSection?.scrollIntoView({ behavior: 'smooth' });
-      }
-    } finally {
-      setSecondaryLoading(false)
-    }
-  }
+function AnimatedGroup({
+  children,
+  className,
+  variants,
+}: AnimatedGroupProps) {
+  const containerVariants = variants?.container || defaultContainerVariants;
+  const itemVariants = variants?.item || defaultItemVariants;
 
   return (
-    <section 
-      className="relative min-h-screen bg-gradient-to-br from-background via-background to-muted/20 overflow-hidden"
-      dir="rtl"
-      role="banner"
-      aria-label="قسم البطل الرئيسي"
+    <motion.div
+      initial="hidden"
+      animate="visible"
+      variants={containerVariants}
+      className={cn(className)}
     >
-      {/* Background Pattern */}
-      <div className="absolute inset-0 bg-grid-pattern opacity-5" />
-      <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent" />
-      
-      {/* Floating Elements */}
-      <div className="absolute top-20 right-10 w-20 h-20 bg-primary/10 rounded-full blur-xl animate-pulse" />
-      <div className="absolute bottom-32 left-16 w-32 h-32 bg-secondary/10 rounded-full blur-2xl animate-pulse delay-1000" />
-      
-      <div className="relative container mx-auto px-4 py-16 lg:py-24">
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: isVisible ? 1 : 0 }}
-          transition={{ duration: 0.6 }}
-          className="max-w-7xl mx-auto"
-        >
-          {/* Company Badge */}
-          <motion.div 
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="flex justify-center mb-8"
-          >
-            <Badge 
-              variant="secondary" 
-              className="text-lg px-6 py-2 bg-primary/10 text-primary border-primary/20 hover:bg-primary/20 transition-colors duration-300"
-              role="img"
-              aria-label={`شركة ${companyName}`}
-            >
-              {companyName}
-            </Badge>
-          </motion.div>
+      {React.Children.map(children, (child, index) => (
+        <motion.div key={index} variants={itemVariants}>
+          {child}
+        </motion.div>
+      ))}
+    </motion.div>
+  );
+}
 
-          {/* Main Headline */}
-          <motion.div 
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="text-center mb-16"
+// Main Hero Component
+interface LogisticsHeroProps {
+  companyName?: string;
+  tagline?: string;
+  services?: {
+    seaShipping: string;
+    airShipping: string;
+    machinery: string;
+  };
+  ctaButtons?: {
+    contact: string;
+    quote: string;
+  };
+}
+
+function LogisticsHero({
+  companyName = "سي باك لوجستيك",
+  tagline = "حلول الشحن الذكية من الصين إلى المملكة",
+  services = {
+    seaShipping: "شحن بحري",
+    airShipping: "شحن جوي",
+    machinery: "توريد وتركيب وصيانة آلات حديثة"
+  },
+  ctaButtons = {
+    contact: "اتصل بنا الآن",
+    quote: "احصل على عرض سعر"
+  }
+}: LogisticsHeroProps) {
+  const transitionVariants = {
+    item: {
+      hidden: {
+        opacity: 0,
+        y: 12,
+      },
+      visible: {
+        opacity: 1,
+        y: 0,
+      },
+    },
+  };
+
+  return (
+    <section
+      className={cn(
+        "bg-background text-foreground font-cairo",
+        "py-8 sm:py-16 md:py-20 px-4",
+        "overflow-hidden pb-0 relative"
+      )}
+      style={{
+        background: "linear-gradient(135deg, hsl(var(--background)) 0%, hsl(var(--muted)) 100%)",
+      }}
+      dir="rtl"
+    >
+      {/* Background Effects */}
+      <div
+        className="absolute right-0 top-0 h-1/2 w-1/2 opacity-30"
+        style={{
+          background:
+            "radial-gradient(circle at 70% 30%, hsl(var(--primary) / 0.15) 0%, transparent 60%)",
+        }}
+      />
+      <div
+        className="absolute left-0 top-0 h-1/2 w-1/2 -scale-x-100 opacity-30"
+        style={{
+          background:
+            "radial-gradient(circle at 70% 30%, hsl(var(--primary) / 0.15) 0%, transparent 60%)",
+        }}
+      />
+
+      <div className="mx-auto flex max-w-7xl flex-col gap-8 pt-12 sm:gap-16">
+        <div className="flex flex-col items-center gap-4 text-center sm:gap-8">
+          {/* Badge */}
+          <AnimatedGroup variants={transitionVariants}>
+            <Badge variant="outline" className="gap-2 text-sm px-4 py-1.5 border-primary/20 bg-primary/5 font-cairo">
+              <span className="text-muted-foreground">✨ خدمات لوجستية متطورة</span>
+              <ArrowRightIcon className="h-3 w-3" />
+            </Badge>
+          </AnimatedGroup>
+
+          {/* Company Name & Tagline */}
+          <AnimatedGroup
+            variants={{
+              container: {
+                visible: {
+                  transition: {
+                    staggerChildren: 0.2,
+                    delayChildren: 0.3,
+                  },
+                },
+              },
+              ...transitionVariants,
+            }}
           >
-            <h1 className="text-4xl md:text-6xl lg:text-8xl font-bold text-foreground mb-8 leading-tight">
-              <span className="bg-gradient-to-r from-primary via-primary/80 to-primary/60 bg-clip-text text-transparent">
-                حلول شحن ذكية من الصين إلى المملكة العربية السعودية
-              </span>
+            <h1 className="relative z-10 inline-block bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-3xl font-bold leading-tight text-transparent drop-shadow-2xl sm:text-4xl sm:leading-tight md:text-5xl md:leading-tight font-cairo">
+              {companyName}
             </h1>
-            <p className="text-xl md:text-2xl text-muted-foreground max-w-4xl mx-auto leading-relaxed">
-              نقدم حلولاً لوجستية متكاملة تربط الصين بالمملكة العربية السعودية بأعلى معايير الجودة والكفاءة. 
-              نحن شريكك المتكامل للنمو مع حلول لوجستية ذكية وحلول صناعية متطورة.
+            <p className="text-lg relative z-10 max-w-[700px] font-medium text-primary opacity-90 sm:text-xl font-cairo">
+              {tagline}
             </p>
-          </motion.div>
+          </AnimatedGroup>
 
           {/* Services Grid */}
-          <motion.div 
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.6 }}
-            className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16 max-w-6xl mx-auto"
+          <AnimatedGroup
+            variants={{
+              container: {
+                visible: {
+                  transition: {
+                    staggerChildren: 0.1,
+                    delayChildren: 0.6,
+                  },
+                },
+              },
+              ...transitionVariants,
+            }}
+            className="grid grid-cols-1 md:grid-cols-3 gap-4 w-full max-w-4xl"
           >
-            {services.map((service, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.5, delay: 0.8 + index * 0.1 }}
-                whileHover={{ 
-                  scale: 1.05,
-                  transition: { duration: 0.2 }
-                }}
-                whileTap={{ scale: 0.98 }}
-              >
-                <Card 
-                  className="p-8 h-full bg-card/60 backdrop-blur-sm border-border/50 hover:border-primary/40 transition-all duration-300 hover:shadow-xl hover:shadow-primary/20 cursor-pointer group relative overflow-hidden"
-                  role="article"
-                  aria-label={service.title}
-                  tabIndex={0}
-                  onKeyDown={(e) => {
-                    if (e.key === 'Enter' || e.key === ' ') {
-                      e.preventDefault()
-                    }
-                  }}
-                >
-                  <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  <div className="relative flex flex-col items-center text-center space-y-6">
-                    <div className="p-4 rounded-full bg-gradient-to-br from-primary/10 to-primary/20 text-primary group-hover:bg-gradient-to-br group-hover:from-primary group-hover:to-primary/80 group-hover:text-primary-foreground transition-all duration-300 shadow-lg">
-                      {service.icon}
-                    </div>
-                    <h3 className="text-xl font-bold text-foreground group-hover:text-primary transition-colors duration-300">
-                      {service.title}
-                    </h3>
-                    <p className="text-muted-foreground leading-relaxed group-hover:text-foreground/80 transition-colors duration-300">
-                      {service.description}
-                    </p>
-                  </div>
-                </Card>
-              </motion.div>
-            ))}
-          </motion.div>
+            <div className="flex flex-col items-center gap-3 p-4 rounded-xl bg-background/50 border border-border/50 backdrop-blur-sm hover:bg-background/70 transition-all duration-300">
+              <div className="p-3 rounded-full bg-primary/10 border border-primary/20">
+                <Ship className="h-6 w-6 text-primary" />
+              </div>
+              <h3 className="text-base font-semibold text-foreground font-cairo">{services.seaShipping}</h3>
+            </div>
+            
+            <div className="flex flex-col items-center gap-3 p-4 rounded-xl bg-background/50 border border-border/50 backdrop-blur-sm hover:bg-background/70 transition-all duration-300">
+              <div className="p-3 rounded-full bg-secondary/10 border border-secondary/20">
+                <Plane className="h-6 w-6 text-secondary-foreground" />
+              </div>
+              <h3 className="text-base font-semibold text-foreground font-cairo">{services.airShipping}</h3>
+            </div>
+            
+            <div className="flex flex-col items-center gap-3 p-4 rounded-xl bg-background/50 border border-border/50 backdrop-blur-sm hover:bg-background/70 transition-all duration-300 md:col-span-1">
+              <div className="p-3 rounded-full bg-accent/10 border border-accent/20">
+                <Settings className="h-6 w-6 text-accent-foreground" />
+              </div>
+              <h3 className="text-base font-semibold text-foreground text-center font-cairo">{services.machinery}</h3>
+            </div>
+          </AnimatedGroup>
 
           {/* CTA Buttons */}
-          <motion.div 
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 1.2 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+          <AnimatedGroup
+            variants={{
+              container: {
+                visible: {
+                  transition: {
+                    staggerChildren: 0.1,
+                    delayChildren: 0.9,
+                  },
+                },
+              },
+              ...transitionVariants,
+            }}
+            className="flex flex-col sm:flex-row gap-3 justify-center"
           >
-            <Button
-              size="lg"
-              className="w-full sm:w-auto px-8 py-4 text-lg font-semibold bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 focus:scale-105 focus:ring-2 focus:ring-primary focus:ring-offset-2"
-              onClick={handleSecondaryClick}
-              disabled={secondaryLoading}
-              aria-label={secondaryButtonText}
-              role="button"
-            >
-              {secondaryLoading ? (
-                <>
-                  <Loader2 className="w-5 h-5 ml-2 animate-spin" />
-                  جاري التحميل...
-                </>
-              ) : (
-                <>
-                  <FileText className="w-5 h-5 ml-2" />
-                  {secondaryButtonText}
-                </>
-              )}
+            <Button size="lg" className="text-base px-6 py-3 bg-primary hover:bg-primary/90 font-cairo">
+              <Phone className="h-4 w-4 ml-2" />
+              {ctaButtons.contact}
             </Button>
-
-            <Button
-              variant="outline"
-              size="lg"
-              className="w-full sm:w-auto px-8 py-4 text-lg font-semibold border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 focus:scale-105 focus:ring-2 focus:ring-primary focus:ring-offset-2"
-              onClick={handlePrimaryClick}
-              disabled={primaryLoading}
-              aria-label={primaryButtonText}
-              role="button"
-            >
-              {primaryLoading ? (
-                <>
-                  <Loader2 className="w-5 h-5 ml-2 animate-spin" />
-                  جاري التحميل...
-                </>
-              ) : (
-                <>
-                  <Phone className="w-5 h-5 ml-2" />
-                  {primaryButtonText}
-                </>
-              )}
+            <Button variant="outline" size="lg" className="text-base px-6 py-3 border-primary/20 hover:bg-primary/5 font-cairo">
+              <FileText className="h-4 w-4 ml-2" />
+              {ctaButtons.quote}
             </Button>
-          </motion.div>
+          </AnimatedGroup>
 
-          {/* Trust Indicators */}
-          <motion.div 
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 1.4 }}
-            className="mt-16 text-center"
+          {/* Hero Image */}
+          <AnimatedGroup
+            variants={{
+              container: {
+                visible: {
+                  transition: {
+                    delayChildren: 1.2,
+                  },
+                },
+              },
+              ...transitionVariants,
+            }}
           >
-            <p className="text-muted-foreground mb-6">موثوق به من قبل أكثر من 500 شركة</p>
-            <div className="flex flex-wrap justify-center items-center gap-8 opacity-60">
-              {[1, 2, 3, 4].map((item) => (
-                <div 
-                  key={item}
-                  className="w-24 h-12 bg-muted rounded-lg flex items-center justify-center"
-                  role="img"
-                  aria-label={`شريك تجاري ${item}`}
-                >
-                  <div className="w-16 h-6 bg-muted-foreground/20 rounded" />
-                </div>
-              ))}
+            <div className="relative pt-8 w-full">
+              <MockupFrame
+                className="opacity-0 animate-appear delay-700"
+                size="small"
+              >
+                <Mockup type="responsive">
+                  <div className="w-full h-[300px] bg-gradient-to-br from-primary/10 via-secondary/10 to-accent/10 rounded-lg flex items-center justify-center relative overflow-hidden">
+                    <div className="absolute inset-0 opacity-50" style={{ backgroundImage: 'radial-gradient(circle at 50% 50%, hsl(var(--foreground) / 0.05) 1px, transparent 1px)', backgroundSize: '20px 20px' }}></div>
+                    <div className="relative z-10 text-center">
+                      <div className="flex items-center justify-center gap-6 mb-4">
+                        <Ship className="h-12 w-12 text-primary" />
+                        <ArrowRightIcon className="h-6 w-6 text-muted-foreground" />
+                        <Plane className="h-12 w-12 text-secondary-foreground" />
+                        <ArrowRightIcon className="h-6 w-6 text-muted-foreground" />
+                        <Settings className="h-12 w-12 text-accent-foreground" />
+                      </div>
+                      <p className="text-lg font-bold text-foreground font-cairo">خدمات لوجستية شاملة</p>
+                      <p className="text-muted-foreground mt-1 text-sm font-cairo">من الصين إلى المملكة العربية السعودية</p>
+                    </div>
+                  </div>
+                </Mockup>
+              </MockupFrame>
+              <Glow
+                variant="top"
+                className="opacity-0 animate-appear-zoom delay-1000"
+              />
             </div>
-          </motion.div>
-
-          {/* Scroll Indicator */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 1.6 }}
-            className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
-          >
-            <motion.div
-              animate={{ y: [0, 10, 0] }}
-              transition={{ duration: 2, repeat: Infinity }}
-              className="flex flex-col items-center text-muted-foreground"
-            >
-              <span className="text-sm mb-2">تمرير للأسفل</span>
-              <ArrowLeft className="w-5 h-5 rotate-90" />
-            </motion.div>
-          </motion.div>
-        </motion.div>
+          </AnimatedGroup>
+        </div>
       </div>
 
       <style dangerouslySetInnerHTML={{
         __html: `
-          .bg-grid-pattern {
-            background-image: radial-gradient(circle, hsl(var(--foreground) / 0.1) 1px, transparent 1px);
-            background-size: 20px 20px;
+          @keyframes appear {
+            from {
+              opacity: 0;
+              transform: translateY(10px);
+            }
+            to {
+              opacity: 1;
+              transform: translateY(0);
+            }
+          }
+          
+          @keyframes appear-zoom {
+            from {
+              opacity: 0;
+              transform: scale(0.95);
+            }
+            to {
+              opacity: 1;
+              transform: scale(1);
+            }
+          }
+          
+          .animate-appear {
+            animation: appear 0.5s ease-out forwards;
+          }
+          
+          .animate-appear-zoom {
+            animation: appear-zoom 0.5s ease-out forwards;
+          }
+          
+          .delay-700 {
+            animation-delay: 700ms;
+          }
+          
+          .delay-1000 {
+            animation-delay: 1000ms;
           }
         `
       }} />
     </section>
-  )
+  );
 }
 
-export default HeroSection
+export default LogisticsHero;
