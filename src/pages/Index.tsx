@@ -8,13 +8,12 @@ import WhyChooseUsSection from "@/components/sections/WhyChooseUsSection";
 import FactorySearchSection from "@/components/sections/FactorySearchSection";
 import TrackingSection from "@/components/sections/TrackingSection";
 import WarehouseSection from "@/components/sections/WarehouseSection";
+import VisionSection from "@/components/sections/VisionSection";
 import ContactSection from "@/components/sections/ContactSection";
-import { BackgroundPaths } from "@/components/ui/background-paths";
 
 const Index = () => {
   return (
     <div className="min-h-screen">
-      <BackgroundPaths title="Sea Paac Logistics" className="min-h-screen" />
       <HeroSection />
       <ShippingCalculatorSection />
       <WhyChooseUsSection />
@@ -23,6 +22,7 @@ const Index = () => {
       <ShippingSection />
       <TrackingSection />
       <WarehouseSection />
+      
       <ContactSection />
     </div>
   );
