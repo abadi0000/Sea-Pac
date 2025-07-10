@@ -30,36 +30,75 @@ const CarWashProducts = () => {
       id: 'tl300',
       title: 'TL300',
       subtitle: 'نظام الغسيل الأساسي',
-      description: 'حل مثالي للمشاريع الصغيرة مع تقنية موثوقة وأداء ممتاز',
+      description: 'نقطة البداية المثالية لدخول عالم غسيل السيارات الآلي. تقنية بسيطة وموثوقة بأقل تكلفة استثمارية.',
       image: '/lovable-uploads/abb4e71e-24b1-482b-a871-ee34c063b64f.png',
       features: ['ضغط الماء العالي', 'نظام استشعار أساسي', 'تحكم آلي'],
-      link: '/car-wash/tl300'
+      capacity: '12-15 سيارة/ساعة',
+      power: '6 كيلو واط',
+      water: '80-110 لتر',
+      pressure: '4-6 بار',
+      price: 'الأكثر اقتصادية',
+      benefits: [
+        'الأنسب للبداية في المجال',
+        'أقل تكلفة استثمارية',
+        'صيانة سهلة ومنخفضة التكلفة',
+        'مناسب للمساحات الصغيرة',
+        'عائد استثمار سريع',
+        'ضمان لمدة سنة واحدة'
+      ]
     },
     {
       id: 'tl400',
       title: 'TL400',
       subtitle: 'نظام الغسيل المتقدم',
-      description: 'تقنية متطورة للمشاريع المتوسطة مع ميزات إضافية',
+      description: 'الحل الأمثل للمشاريع الناشئة والصغيرة. تقنية موثوقة بسعر مناسب وأداء ممتاز يضمن نجاح مشروعك.',
       image: '/lovable-uploads/d3dbcc1a-125e-4102-9c54-9702d6fd142e.png',
       features: ['ضغط الماء المتغير', 'استشعار ذكي', 'ذراع روبوتي متحرك'],
-      link: '/car-wash/tl400'
+      capacity: '15-20 سيارة/ساعة',
+      power: '8 كيلو واط',
+      water: '100-130 لتر',
+      pressure: '5-8 بار',
+      price: 'خيار ذكي',
+      benefits: [
+        'مثالي للمشاريع الصغيرة',
+        'استثمار مربح ومضمون',
+        'تشغيل بسيط وآمن',
+        'قطع غيار متوفرة',
+        'دعم فني متواصل',
+        'ضمان لمدة سنة واحدة'
+      ]
     },
     {
       id: 'tl500',
       title: 'TL500',
       subtitle: 'نظام الغسيل الاحترافي',
-      description: 'أعلى مستويات التقنية والأداء للمشاريع الكبيرة',
+      description: 'حل مثالي للمشاريع المتوسطة مع تقنية متقدمة وأداء موثوق. تصميم مدروس يجمع بين الكفاءة والاقتصادية.',
       image: '/lovable-uploads/dfaffd5e-3ebc-4472-af18-6ece10fc1502.png',
       features: ['ضغط الماء الذكي', 'استشعار متقدم', 'ذراع روبوتي كامل'],
-      link: '/car-wash/tl500'
+      capacity: '20-25 سيارة/ساعة',
+      power: '10 كيلو واط',
+      water: '120-150 لتر',
+      pressure: '6-10 بار',
+      price: 'جودة عالية',
+      benefits: [
+        'مناسب للمشاريع الصغيرة والمتوسطة',
+        'سهولة التركيب والتشغيل',
+        'تكلفة تشغيل منخفضة',
+        'صيانة بسيطة وسريعة',
+        'جودة غسيل ممتازة',
+        'ضمان شامل لمدة سنة ونصف'
+      ]
     }
   ];
 
   const specifications = [
-    { feature: 'ضغط الماء', tl300: '6-8 بار', tl400: '6-10 بار', tl500: '6-12 بار' },
-    { feature: 'استهلاك المياه', tl300: '80-100 لتر', tl400: '100-120 لتر', tl500: '120-150 لتر' },
-    { feature: 'القدرة الكهربائية', tl300: '7.5 كيلو واط', tl400: '8.5 كيلو واط', tl500: '10 كيلو واط' },
-    { feature: 'عدد السيارات/ساعة', tl300: '15-18', tl400: '18-22', tl500: '20-25' },
+    { feature: 'ضغط الماء', tl300: '4-6 بار', tl400: '5-8 بار', tl500: '6-10 بار' },
+    { feature: 'استهلاك المياه', tl300: '80-110 لتر', tl400: '100-130 لتر', tl500: '120-150 لتر' },
+    { feature: 'القدرة الكهربائية', tl300: '6 كيلو واط', tl400: '8 كيلو واط', tl500: '10 كيلو واط' },
+    { feature: 'عدد السيارات/ساعة', tl300: '12-15', tl400: '15-20', tl500: '20-25' },
+    { feature: 'الطول', tl300: '7.5 متر', tl400: '8.5 متر', tl500: '9.5 متر' },
+    { feature: 'العرض', tl300: '2.6 متر', tl400: '2.8 متر', tl500: '3.0 متر' },
+    { feature: 'الارتفاع', tl300: '2.2 متر', tl400: '2.4 متر', tl500: '2.5 متر' },
     { feature: 'نظام التحكم الذكي', tl300: '✓', tl400: '✓', tl500: '✓' },
     { feature: 'الذراع الروبوتي', tl300: '—', tl400: '✓', tl500: '✓' },
     { feature: 'نظام التجفيف المتقدم', tl300: '—', tl400: '✓', tl500: '✓' },
@@ -201,7 +240,7 @@ const CarWashProducts = () => {
                       {product.description}
                     </p>
                     
-                    <div className="space-y-2 mb-6">
+                    <div className="space-y-2 mb-4">
                       {product.features.map((feature, i) => (
                         <div key={i} className="flex items-center gap-2">
                           <CheckCircle className="h-4 w-4 text-green-500" />
@@ -210,14 +249,27 @@ const CarWashProducts = () => {
                       ))}
                     </div>
                     
-                    <Link to={product.link}>
-                      <Button 
-                        className="w-full bg-primary hover:bg-primary/90 text-primary-foreground group-hover:shadow-lg transition-all duration-300"
-                      >
-                        تفاصيل أكثر
-                        <ArrowRight className="h-4 w-4 mr-2" />
-                      </Button>
-                    </Link>
+                    <div className="grid grid-cols-2 gap-2 mb-6 text-sm">
+                      <div className="bg-muted/50 p-2 rounded">
+                        <div className="text-muted-foreground">السعة</div>
+                        <div className="font-semibold">{product.capacity}</div>
+                      </div>
+                      <div className="bg-muted/50 p-2 rounded">
+                        <div className="text-muted-foreground">القدرة</div>
+                        <div className="font-semibold">{product.power}</div>
+                      </div>
+                    </div>
+                    
+                    <Button 
+                      className="w-full bg-primary hover:bg-primary/90 text-primary-foreground group-hover:shadow-lg transition-all duration-300"
+                      onClick={() => {
+                        const element = document.getElementById(`details-${product.id}`);
+                        element?.scrollIntoView({ behavior: 'smooth' });
+                      }}
+                    >
+                      تفاصيل أكثر
+                      <ArrowRight className="h-4 w-4 mr-2" />
+                    </Button>
                   </CardContent>
                 </Card>
               </motion.div>
@@ -321,6 +373,105 @@ const CarWashProducts = () => {
           </div>
         </div>
       </section>
+
+      {/* Product Details Sections */}
+      {products.map((product, index) => (
+        <section 
+          key={product.id} 
+          id={`details-${product.id}`}
+          className={`py-20 ${index % 2 === 0 ? 'bg-background' : 'bg-muted/30'}`}
+        >
+          <div className="container mx-auto px-4">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              className="text-center mb-12"
+            >
+              <Badge className="mb-4 bg-primary text-primary-foreground">
+                {product.price}
+              </Badge>
+              <h2 className="text-4xl font-bold text-foreground mb-4">
+                تفاصيل {product.title}
+              </h2>
+              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+                {product.description}
+              </p>
+            </motion.div>
+
+            <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
+              <motion.div
+                initial={{ opacity: 0, x: -50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                className="space-y-6"
+              >
+                <h3 className="text-2xl font-bold text-foreground mb-6">المواصفات التقنية</h3>
+                <div className="grid grid-cols-2 gap-4">
+                  <Card className="p-4">
+                    <div className="text-center">
+                      <div className="text-2xl font-bold text-primary">{product.capacity}</div>
+                      <div className="text-sm text-muted-foreground">السعة</div>
+                    </div>
+                  </Card>
+                  <Card className="p-4">
+                    <div className="text-center">
+                      <div className="text-2xl font-bold text-primary">{product.power}</div>
+                      <div className="text-sm text-muted-foreground">القدرة</div>
+                    </div>
+                  </Card>
+                  <Card className="p-4">
+                    <div className="text-center">
+                      <div className="text-2xl font-bold text-primary">{product.water}</div>
+                      <div className="text-sm text-muted-foreground">استهلاك المياه</div>
+                    </div>
+                  </Card>
+                  <Card className="p-4">
+                    <div className="text-center">
+                      <div className="text-2xl font-bold text-primary">{product.pressure}</div>
+                      <div className="text-sm text-muted-foreground">ضغط المياه</div>
+                    </div>
+                  </Card>
+                </div>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, x: 50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                className="relative"
+              >
+                <div className="aspect-square rounded-2xl bg-gradient-to-br from-primary/5 to-accent/5 flex items-center justify-center overflow-hidden">
+                  <img 
+                    src={product.image}
+                    alt={product.title}
+                    className="w-full h-full object-contain transform hover:scale-105 transition-transform duration-300"
+                  />
+                </div>
+              </motion.div>
+            </div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              className="space-y-6"
+            >
+              <h3 className="text-2xl font-bold text-foreground mb-6">الفوائد والمزايا</h3>
+              <div className="grid md:grid-cols-2 gap-4">
+                {product.benefits.map((benefit, i) => (
+                  <motion.div 
+                    key={i}
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ delay: i * 0.1 }}
+                    className="flex items-center gap-3"
+                  >
+                    <CheckCircle className="h-5 w-5 text-green-500" />
+                    <span className="text-foreground">{benefit}</span>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+          </div>
+        </section>
+      ))}
 
       {/* Optional Technologies */}
       <section className="py-16 bg-muted/30">
