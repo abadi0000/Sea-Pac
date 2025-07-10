@@ -7,6 +7,11 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navigation from "./components/Navigation";
 import Index from "./pages/Index";
 import ShippingCalculator from "./pages/ShippingCalculator";
+import CarWashBT900 from "./pages/CarWashBT900";
+import CarWashBT500 from "./pages/CarWashBT500";
+import CarWashTL500 from "./pages/CarWashTL500";
+import CarWashTL400 from "./pages/CarWashTL400";
+import CarWashTL300 from "./pages/CarWashTL300";
 import ConsultationServices from "./pages/ConsultationServices";
 import SebaqMachine from "./pages/SebaqMachine";
 import VendingMachines from "./pages/VendingMachines";
@@ -42,6 +47,11 @@ const App = () => (
               <Route path="/sebaaq-machine/vending-machines" element={<VendingMachines />} />
               <Route path="/sebaaq-machine/production-lines" element={<ProductionLines />} />
               <Route path="/sebaaq-machine/car-wash" element={<CarWash />} />
+              <Route path="/car-wash/bt900" element={<CarWashBT900 />} />
+              <Route path="/car-wash/bt500" element={<CarWashBT500 />} />
+              <Route path="/car-wash/tl500" element={<CarWashTL500 />} />
+              <Route path="/car-wash/tl400" element={<CarWashTL400 />} />
+              <Route path="/car-wash/tl300" element={<CarWashTL300 />} />
               <Route path="/sebaaq-machine/entertainment-systems" element={<EntertainmentSystems />} />
               <Route path="/parts-maintenance" element={<PartsAndMaintenance />} />
               <Route path="/parts-maintenance/vending-machine-parts" element={<VendingMachineParts />} />
