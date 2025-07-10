@@ -197,7 +197,7 @@ export function CargoShipRoute({
         </div>
       </div>
 
-      {/* Map */}
+      {/* Map - Full width, no padding */}
       <div className="relative w-full h-96 bg-white">
         <img
           src="/lovable-uploads/5a935ef4-4a33-4ad3-8dcc-149f4c72098b.png"
