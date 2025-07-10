@@ -106,8 +106,8 @@ const CarWash = () => {
     {
       id: "bt900",
       title: "BT900",
-      subtitle: "نظام الغسيل المتطور",
-      description: "أحدث تقنيات الغسيل الأوتوماتيكي مع نظام 2 في 1: غسيل بدون لمس + غسيل بالفرش. تقنيات متطورة تضمن أداءً فائق الكفاءة.",
+      subtitle: "نظام الذكاء الاصطناعي المتطور",
+      description: "أحدث تقنيات الغسيل الأوتوماتيكي مع نظام 2 في 1: غسيل بدون لمس + غسيل بالفرش. تقنيات متطورة مع الذكاء الاصطناعي تضمن أداءً فائق الكفاءة.",
       capacity: "60 سيارة/ساعة",
       washTime: "1 دقيقة",
       warranty: "10 سنوات",
@@ -121,6 +121,82 @@ const CarWash = () => {
       ],
       route: "/car-wash/bt900",
       featured: true
+    },
+    {
+      id: "bt500",
+      title: "BT500",
+      subtitle: "نظام الغسيل الاحترافي",
+      description: "مغسلة أوتوماتيكية متطورة تجمع بين تقنية الغسيل بالفرش والغسيل بدون لمس في نظام واحد متكامل. مصممة للاستخدام التجاري المكثف.",
+      capacity: "45 سيارة/ساعة",
+      washTime: "1.5 دقيقة",
+      warranty: "5 سنوات",
+      features: [
+        "نظام مزدوج (فرش + بدون لمس)",
+        "فرش عالية الجودة",
+        "نظام تجفيف متطور",
+        "استهلاك مياه محسّن",
+        "واجهة تحكم ذكية",
+        "صيانة سهلة"
+      ],
+      route: "/car-wash/bt500",
+      featured: false
+    },
+    {
+      id: "tl500",
+      title: "TL500",
+      subtitle: "غسيل بدون لمس متقدم",
+      description: "نظام غسيل بدون لمس عالي الأداء مع ذراع روبوتي متحرك 360 درجة. يوفر تنظيف شامل للمركبة دون أي تلامس مع الطلاء.",
+      capacity: "40 سيارة/ساعة",
+      washTime: "2 دقيقة",
+      warranty: "3 سنوات",
+      features: [
+        "ذراع روبوتي 360 درجة",
+        "ضغط ماء عالي 80 بار",
+        "نظام استشعار ذكي",
+        "تنظيف بدون خدوش",
+        "برامج غسيل متنوعة",
+        "تجفيف هوائي قوي"
+      ],
+      route: "/car-wash/products",
+      featured: false
+    },
+    {
+      id: "tl400",
+      title: "TL400",
+      subtitle: "غسيل بدون لمس متوسط",
+      description: "حل اقتصادي للغسيل بدون لمس مع أداء موثوق. مناسب للمحطات متوسطة الحجم والأعمال الناشئة في مجال غسيل السيارات.",
+      capacity: "30 سيارة/ساعة",
+      washTime: "2.5 دقيقة",
+      warranty: "3 سنوات",
+      features: [
+        "ذراع واحد متحرك",
+        "ضغط ماء 60 بار",
+        "نظام استشعار أساسي",
+        "تشغيل اقتصادي",
+        "برامج غسيل أساسية",
+        "تجفيف هوائي"
+      ],
+      route: "/car-wash/products",
+      featured: false
+    },
+    {
+      id: "tl300",
+      title: "TL300",
+      subtitle: "غسيل بدون لمس اقتصادي",
+      description: "الحل المثالي للمشاريع الصغيرة والمتوسطة. نظام غسيل بدون لمس بسيط وفعال يقدم نتائج ممتازة بتكلفة معقولة.",
+      capacity: "25 سيارة/ساعة",
+      washTime: "3 دقائق",
+      warranty: "2 سنة",
+      features: [
+        "تصميم مدمج",
+        "ضغط ماء 50 بار",
+        "تشغيل بسيط",
+        "استهلاك طاقة منخفض",
+        "صيانة سهلة",
+        "مناسب للمساحات الصغيرة"
+      ],
+      route: "/car-wash/products",
+      featured: false
     }
   ];
 
@@ -231,90 +307,93 @@ const CarWash = () => {
             المنتجات المتاحة
             <span className="gradient-text block">أحدث أنظمة الغسيل</span>
           </h2>
-          <div className="grid md:grid-cols-1 lg:grid-cols-1 gap-8 max-w-4xl mx-auto">
+          <div className="grid md:grid-cols-1 lg:grid-cols-3 xl:grid-cols-3 gap-6 max-w-7xl mx-auto">
             {availableProducts.map((product, index) => (
-              <Card key={index} className="p-8 hover:shadow-2xl transition-all duration-300 transform hover:scale-105 bg-gradient-to-br from-white to-blue-50 border-2 border-sebaaq-blue/20">
-                <div className="flex flex-col lg:flex-row gap-8">
-                  {/* Product Info */}
-                  <div className="flex-1">
-                    <div className="flex items-center mb-6">
-                      {product.featured && (
-                        <div className="bg-gradient-to-r from-orange-500 to-red-500 text-white px-3 py-1 rounded-full text-sm font-bold ml-4">
-                          مميز
-                        </div>
-                      )}
-                      <div>
-                        <h3 className="font-playfair text-3xl font-bold text-sebaaq-midnight leading-tight">
-                          {product.title}
-                        </h3>
-                        <p className="text-sebaaq-blue font-medium text-lg">{product.subtitle}</p>
+              <Card key={index} className="p-6 hover:shadow-2xl transition-all duration-300 transform hover:scale-105 bg-gradient-to-br from-white to-blue-50 border-2 border-sebaaq-blue/20">
+                <div className="flex flex-col h-full">
+                  {/* Product Header */}
+                  <div className="flex items-center mb-4">
+                    {product.featured && (
+                      <div className="bg-gradient-to-r from-orange-500 to-red-500 text-white px-2 py-1 rounded-full text-xs font-bold ml-2">
+                        مميز
                       </div>
+                    )}
+                    <div>
+                      <h3 className="font-playfair text-2xl font-bold text-sebaaq-midnight leading-tight">
+                        {product.title}
+                      </h3>
+                      <p className="text-sebaaq-blue font-medium text-sm">{product.subtitle}</p>
                     </div>
-                    
-                    <p className="text-gray-600 mb-6 leading-relaxed text-lg">
-                      {product.description}
-                    </p>
-                    
-                    {/* Specs Grid */}
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-                      <div className="bg-gradient-to-r from-sebaaq-blue/10 to-blue-400/10 p-4 rounded-lg text-center">
-                        <div className="flex items-center justify-center mb-2">
-                          <Gauge className="w-5 h-5 text-sebaaq-blue ml-2" />
-                          <span className="font-semibold text-sebaaq-midnight">السرعة</span>
-                        </div>
-                        <p className="text-sebaaq-blue font-bold">{product.capacity}</p>
-                      </div>
-                      <div className="bg-gradient-to-r from-green-500/10 to-emerald-400/10 p-4 rounded-lg text-center">
-                        <div className="flex items-center justify-center mb-2">
-                          <Timer className="w-5 h-5 text-green-600 ml-2" />
-                          <span className="font-semibold text-sebaaq-midnight">وقت الغسيل</span>
-                        </div>
-                        <p className="text-green-600 font-bold">{product.washTime}</p>
-                      </div>
-                      <div className="bg-gradient-to-r from-purple-500/10 to-violet-400/10 p-4 rounded-lg text-center">
-                        <div className="flex items-center justify-center mb-2">
-                          <Shield className="w-5 h-5 text-purple-600 ml-2" />
-                          <span className="font-semibold text-sebaaq-midnight">الضمان</span>
-                        </div>
-                        <p className="text-purple-600 font-bold">{product.warranty}</p>
-                      </div>
-                    </div>
-                    
-                    {/* Features */}
-                    <div className="mb-8">
-                      <h4 className="font-bold text-sebaaq-midnight mb-4 text-lg">المميزات الرئيسية:</h4>
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                        {product.features.map((feature, idx) => (
-                          <div key={idx} className="flex items-center text-gray-600">
-                            <CheckCircle className="w-5 h-5 text-green-500 ml-3 flex-shrink-0" />
-                            <span className="font-medium">{feature}</span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                    
-                    {/* CTA Button */}
-                    <Link to={product.route}>
-                      <Button className="bg-gradient-to-r from-sebaaq-blue to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white px-8 py-4 rounded-lg font-semibold text-lg group transition-all duration-300">
-                        تفاصيل أكثر عن {product.title}
-                        <ArrowLeft className="w-5 h-5 mr-2 group-hover:transform group-hover:-translate-x-1 transition-transform" />
-                      </Button>
-                    </Link>
                   </div>
                   
-                  {/* Product Image Placeholder */}
-                  <div className="lg:w-80">
-                    <div className="aspect-square rounded-2xl bg-gradient-to-br from-blue-100 to-blue-200 flex items-center justify-center relative overflow-hidden border-4 border-sebaaq-blue/20">
-                      <div className="absolute inset-0 bg-gradient-to-br from-sebaaq-blue/20 via-blue-500/20 to-purple-500/20"></div>
-                      <div className="relative z-10 text-center">
-                        <div className="text-6xl font-bold text-sebaaq-blue mb-4">{product.title}</div>
-                        <div className="flex items-center justify-center gap-4 text-sebaaq-blue/70">
-                          <Droplets className="h-12 w-12" />
-                          <Zap className="h-12 w-12" />
-                          <Wind className="h-12 w-12" />
-                        </div>
+                  {/* Product Image */}
+                  <div className="aspect-square rounded-lg bg-gradient-to-br from-blue-100 to-blue-200 flex items-center justify-center relative overflow-hidden border-2 border-sebaaq-blue/20 mb-4">
+                    <div className="absolute inset-0 bg-gradient-to-br from-sebaaq-blue/20 via-blue-500/20 to-purple-500/20"></div>
+                    <div className="relative z-10 text-center">
+                      <div className="text-4xl font-bold text-sebaaq-blue mb-2">{product.title}</div>
+                      <div className="flex items-center justify-center gap-2 text-sebaaq-blue/70">
+                        <Droplets className="h-8 w-8" />
+                        <Zap className="h-8 w-8" />
+                        <Wind className="h-8 w-8" />
                       </div>
                     </div>
+                  </div>
+                  
+                  <p className="text-gray-600 mb-4 leading-relaxed text-sm flex-grow">
+                    {product.description}
+                  </p>
+                  
+                  {/* Specs Grid */}
+                  <div className="grid grid-cols-3 gap-2 mb-4 text-xs">
+                    <div className="bg-gradient-to-r from-sebaaq-blue/10 to-blue-400/10 p-2 rounded text-center">
+                      <div className="flex items-center justify-center mb-1">
+                        <Gauge className="w-3 h-3 text-sebaaq-blue ml-1" />
+                        <span className="font-semibold text-sebaaq-midnight text-xs">السرعة</span>
+                      </div>
+                      <p className="text-sebaaq-blue font-bold text-xs">{product.capacity}</p>
+                    </div>
+                    <div className="bg-gradient-to-r from-green-500/10 to-emerald-400/10 p-2 rounded text-center">
+                      <div className="flex items-center justify-center mb-1">
+                        <Timer className="w-3 h-3 text-green-600 ml-1" />
+                        <span className="font-semibold text-sebaaq-midnight text-xs">الوقت</span>
+                      </div>
+                      <p className="text-green-600 font-bold text-xs">{product.washTime}</p>
+                    </div>
+                    <div className="bg-gradient-to-r from-purple-500/10 to-violet-400/10 p-2 rounded text-center">
+                      <div className="flex items-center justify-center mb-1">
+                        <Shield className="w-3 h-3 text-purple-600 ml-1" />
+                        <span className="font-semibold text-sebaaq-midnight text-xs">الضمان</span>
+                      </div>
+                      <p className="text-purple-600 font-bold text-xs">{product.warranty}</p>
+                    </div>
+                  </div>
+                  
+                  {/* Features */}
+                  <div className="mb-4">
+                    <h4 className="font-bold text-sebaaq-midnight mb-2 text-sm">المميزات الرئيسية:</h4>
+                    <div className="grid grid-cols-1 gap-1">
+                      {product.features.slice(0, 3).map((feature, idx) => (
+                        <div key={idx} className="flex items-center text-gray-600 text-xs">
+                          <CheckCircle className="w-3 h-3 text-green-500 ml-2 flex-shrink-0" />
+                          <span className="font-medium">{feature}</span>
+                        </div>
+                      ))}
+                      {product.features.length > 3 && (
+                        <div className="text-xs text-gray-500">
+                          +{product.features.length - 3} مميزات أخرى
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                  
+                  {/* CTA Button */}
+                  <div className="mt-auto">
+                    <Link to={product.route}>
+                      <Button className="w-full bg-gradient-to-r from-sebaaq-blue to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white px-4 py-2 rounded-lg font-semibold text-sm group transition-all duration-300">
+                        تفاصيل أكثر
+                        <ArrowLeft className="w-4 h-4 mr-2 group-hover:transform group-hover:-translate-x-1 transition-transform" />
+                      </Button>
+                    </Link>
                   </div>
                 </div>
               </Card>
