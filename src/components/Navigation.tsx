@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { Menu, X, Phone } from 'lucide-react';
+import { Menu, X, Phone, Presentation } from 'lucide-react';
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -14,7 +14,8 @@ const Navigation = () => {
     { path: '/sebaaq-machine', label: 'سـي بـاك ماشـين' },
     { path: '/parts-maintenance', label: 'قطع الغيار والصيانة' },
     { path: '/alibaba', label: 'استورد من الصين' },
-    { path: '/invest', label: 'استثمر معنا' }
+    { path: '/invest', label: 'استثمر معنا' },
+    { path: '/pitch-deck', label: 'شراكة مؤسس' }
   ];
 
   const toggleMenu = () => setIsOpen(!isOpen);
@@ -55,6 +56,17 @@ const Navigation = () => {
               تواصل معنا
             </Button>
             
+            <Link to="/pitch-deck">
+              <Button 
+                variant="outline"
+                size="sm" 
+                className="hidden sm:flex text-xs sm:text-sm px-3 sm:px-4 border-sebaaq-blue text-sebaaq-blue hover:bg-sebaaq-blue hover:text-white"
+              >
+                <Presentation className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" />
+                شراكة مؤسس
+              </Button>
+            </Link>
+            
             <button
               onClick={toggleMenu}
               className="lg:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors"
@@ -83,7 +95,7 @@ const Navigation = () => {
                 {item.label}
               </Link>
             ))}
-            <div className="pt-2">
+            <div className="pt-2 space-y-2">
               <Button 
                 size="sm" 
                 className="w-full sm:hidden bg-sebaaq-blue hover:bg-blue-600 text-white"
@@ -91,6 +103,16 @@ const Navigation = () => {
                 <Phone className="w-4 h-4 mr-2" />
                 تواصل معنا
               </Button>
+              <Link to="/pitch-deck" className="block" onClick={() => setIsOpen(false)}>
+                <Button 
+                  variant="outline"
+                  size="sm" 
+                  className="w-full sm:hidden border-sebaaq-blue text-sebaaq-blue hover:bg-sebaaq-blue hover:text-white"
+                >
+                  <Presentation className="w-4 h-4 mr-2" />
+                  شراكة مؤسس
+                </Button>
+              </Link>
             </div>
           </div>
         </div>
