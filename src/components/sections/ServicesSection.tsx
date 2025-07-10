@@ -12,24 +12,30 @@ interface ServiceCardProps {
 
 const ServiceCard = ({ title, description, features, isHovered, onHover, onLeave }: ServiceCardProps) => {
   return (
-    <div 
-      className={`relative bg-white rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8 shadow-lg sm:shadow-2xl transition-all duration-500 transform ${
+    <article 
+      className={`relative bg-white rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8 shadow-lg sm:shadow-2xl transition-all duration-500 transform focus-within:ring-4 focus-within:ring-sebaaq-blue/50 ${
         isHovered ? 'scale-105 shadow-xl sm:shadow-3xl' : 'scale-100'
       }`}
       onMouseEnter={onHover}
       onMouseLeave={onLeave}
+      tabIndex={0}
+      role="article"
+      aria-labelledby={`service-title-${title.replace(/\s+/g, '-')}`}
     >
       <div className="relative z-10">
-        <h3 className="font-playfair text-lg sm:text-xl md:text-2xl font-bold text-sebaaq-midnight mb-3 sm:mb-4 leading-tight">
+        <h3 
+          id={`service-title-${title.replace(/\s+/g, '-')}`}
+          className="font-playfair text-lg sm:text-xl md:text-2xl font-bold text-sebaaq-midnight mb-3 sm:mb-4 leading-tight"
+        >
           {title}
         </h3>
-        <p className="text-gray-600 mb-4 sm:mb-6 leading-relaxed text-sm sm:text-base">
+        <p className="text-gray-700 mb-4 sm:mb-6 leading-relaxed text-sm sm:text-base">
           {description}
         </p>
-        <ul className="space-y-2 sm:space-y-3">
+        <ul className="space-y-2 sm:space-y-3" role="list" aria-label={`مميزات ${title}`}>
           {features.map((feature, index) => (
-            <li key={index} className="flex items-start gap-2 sm:gap-3">
-              <div className="w-2 h-2 bg-sebaaq-blue rounded-full mt-1.5 sm:mt-2 flex-shrink-0"></div>
+            <li key={index} className="flex items-start gap-2 sm:gap-3" role="listitem">
+              <div className="w-2 h-2 bg-sebaaq-blue rounded-full mt-1.5 sm:mt-2 flex-shrink-0" aria-hidden="true"></div>
               <span className="text-gray-700 text-sm sm:text-base leading-relaxed">{feature}</span>
             </li>
           ))}
@@ -39,8 +45,8 @@ const ServiceCard = ({ title, description, features, isHovered, onHover, onLeave
       {/* Hover Effect Background */}
       <div className={`absolute inset-0 bg-gradient-to-br from-sebaaq-blue/5 to-blue-400/5 rounded-xl sm:rounded-2xl transition-opacity duration-500 ${
         isHovered ? 'opacity-100' : 'opacity-0'
-      }`}></div>
-    </div>
+      }`} aria-hidden="true"></div>
+    </article>
   );
 };
 
@@ -111,25 +117,32 @@ const ServicesSection = () => {
   ];
 
   return (
-    <section className="py-12 sm:py-16 md:py-20 bg-gradient-to-br from-gray-50 to-white relative overflow-hidden">
+    <section 
+      className="py-12 sm:py-16 md:py-20 bg-gradient-to-br from-gray-50 to-white relative overflow-hidden"
+      aria-labelledby="services-title"
+    >
       {/* Background Decorations */}
-      <div className="absolute top-0 left-0 w-full h-full">
+      <div className="absolute top-0 left-0 w-full h-full" aria-hidden="true">
         <div className="absolute top-10 sm:top-20 right-5 sm:right-10 w-32 sm:w-48 md:w-64 h-32 sm:h-48 md:h-64 bg-sebaaq-blue/5 rounded-full blur-2xl sm:blur-3xl"></div>
         <div className="absolute bottom-10 sm:bottom-20 left-5 sm:left-10 w-48 sm:w-64 md:w-96 h-48 sm:h-64 md:h-96 bg-blue-400/5 rounded-full blur-2xl sm:blur-3xl"></div>
       </div>
 
       <div className="relative z-10 container mx-auto px-4 sm:px-6">
         <div className="text-center mb-12 sm:mb-16">
-          <h2 className="font-playfair text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-sebaaq-midnight mb-4 leading-tight">
+          <h2 id="services-title" className="font-playfair text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-sebaaq-midnight mb-4 leading-tight">
             لماذا تختار
             <span className="gradient-text block">سي باك؟</span>
           </h2>
-          <p className="text-gray-600 text-sm sm:text-base md:text-lg max-w-5xl mx-auto leading-relaxed px-2">
-            سي باك لوجيستيك، شركة سعودية متخصصة في الخدمات اللوجستية، تتفهم التحديات التي تواجه الشركات والأفراد في عمليات الاستيراد من الصين، توفر خدمات إحترافية ودعم عملاء قوي
+          <p className="text-gray-700 text-sm sm:text-base md:text-lg max-w-5xl mx-auto leading-relaxed px-2">
+            سي باك شركة سعودية متخصصة في خدمات الشحن. نفهم تحديات استيراد البضائع من الصين. نقدم خدمات احترافية ودعم قوي للعملاء.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-6 md:gap-8 lg:gap-12">
+        <div 
+          className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-6 md:gap-8 lg:gap-12"
+          role="region"
+          aria-label="قائمة خدمات الشركة"
+        >
           {services.map((service, index) => (
             <ServiceCard
               key={index}
@@ -144,23 +157,29 @@ const ServicesSection = () => {
         </div>
 
         {/* Additional Service Highlights */}
-        <div className="mt-12 sm:mt-16 md:mt-20 bg-gradient-to-r from-sebaaq-midnight to-sebaaq-blue rounded-xl sm:rounded-2xl p-6 sm:p-8 md:p-12 text-white">
+        <div className="mt-12 sm:mt-16 md:mt-20 bg-gradient-to-r from-sebaaq-midnight to-sebaaq-blue rounded-xl sm:rounded-2xl p-6 sm:p-8 md:p-12 text-white" role="complementary">
           <div className="grid md:grid-cols-2 gap-8 sm:gap-12 items-center">
             <div>
-              <h3 className="font-playfair text-xl sm:text-2xl md:text-3xl font-bold mb-4 sm:mb-6">حلول لوجستية ذكية</h3>
-              <h4 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4">شحن جزئي سريع ومباشر من الصين إلى السعودية</h4>
+              <h3 className="font-playfair text-xl sm:text-2xl md:text-3xl font-bold mb-4 sm:mb-6">حلول شحن ذكية</h3>
+              <h4 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4">شحن سريع من الصين إلى السعودية</h4>
               <p className="text-white/90 leading-relaxed mb-4 sm:mb-6 text-sm sm:text-base">
-                استورد بضائعك بمرونة وكفاءة. يتيح لك الشحن الجزئي مشاركة مساحة الحاوية مع شحنات أخرى، مما يقلل التكاليف
+                استورد بضائعك بسهولة وكفاءة. نوفر خدمة شحن مرنة تقلل التكاليف وتوفر الوقت.
               </p>
               <div className="flex items-center gap-3 sm:gap-4">
-                <div className="w-3 h-3 bg-white rounded-full"></div>
-                <span className="text-sm sm:text-base">خبرة محلية طويلة في السوق الصيني</span>
+                <div className="w-3 h-3 bg-white rounded-full" aria-hidden="true"></div>
+                <span className="text-sm sm:text-base">خبرة طويلة في السوق الصيني</span>
               </div>
             </div>
             <div className="text-center">
               <div className="bg-white/10 rounded-xl sm:rounded-2xl p-6 sm:p-8 backdrop-blur-sm">
                 <div className="w-16 sm:w-20 md:w-24 h-16 sm:h-20 md:h-24 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4">
-                  <svg className="w-8 sm:w-10 md:w-12 h-8 sm:h-10 md:h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg 
+                    className="w-8 sm:w-10 md:w-12 h-8 sm:h-10 md:h-12 text-white" 
+                    fill="none" 
+                    stroke="currentColor" 
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                  >
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
                   </svg>
                 </div>

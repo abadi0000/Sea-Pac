@@ -83,24 +83,31 @@ const StatItem = ({ number, label, delay }: StatItemProps) => {
 
 const StatsSection = () => {
   return (
-    <section className="relative py-20 bg-sebaaq-charcoal overflow-hidden">
+    <section 
+      className="relative py-20 bg-sebaaq-charcoal overflow-hidden"
+      aria-labelledby="stats-title"
+    >
       {/* Animated Background */}
-      <div className="absolute inset-0">
+      <div className="absolute inset-0" aria-hidden="true">
         <div className="absolute inset-0 bg-gradient-to-br from-sebaaq-midnight/50 to-transparent"></div>
         <div className="tech-grid opacity-10"></div>
       </div>
 
       <div className="relative z-10 container mx-auto px-6">
         <div className="text-center mb-16">
-          <h2 className="font-playfair text-3xl md:text-5xl font-bold text-white mb-4">
+          <h2 id="stats-title" className="font-playfair text-3xl md:text-5xl font-bold text-white mb-4">
             لماذا يثق بنا عملاؤنا؟
           </h2>
-          <p className="text-gray-400 text-lg max-w-4xl mx-auto leading-relaxed">
-            من خلال سنوات من العمل المباشر مع الموردين والمصانع في الصين، أنجزنا آلاف الشحنات، وبنينا شبكة قوية من الشركاء، وحققنا رضا عملائنا بنسبة عالية. إليك لمحة سريعة عن إنجازاتنا
+          <p className="text-gray-300 text-lg max-w-4xl mx-auto leading-relaxed">
+            خبرة طويلة في العمل مع موردي الصين. أنجزنا آلاف الشحنات وبنينا شبكة قوية من الشركاء. حققنا رضا عملائنا بنسبة عالية.
           </p>
         </div>
 
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-16">
+        <div 
+          className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-16"
+          role="region"
+          aria-label="إحصائيات أداء الشركة"
+        >
           <StatItem number="370+" label="عميل دائم يثق بنا" delay={0} />
           <StatItem number="9000+" label="شحنة تم توصيلها" delay={200} />
           <StatItem number="10+" label="سنين خبراتنا في السوق الصيني" delay={400} />
@@ -108,8 +115,8 @@ const StatsSection = () => {
         </div>
 
         {/* Decorative Elements */}
-        <div className="absolute -top-10 -right-10 w-32 h-32 bg-sebaaq-blue rounded-full opacity-10 animate-float"></div>
-        <div className="absolute -bottom-10 -left-10 w-24 h-24 bg-blue-400 rounded-full opacity-10 animate-float" style={{animationDelay: '1.5s'}}></div>
+        <div className="absolute -top-10 -right-10 w-32 h-32 bg-sebaaq-blue rounded-full opacity-10 animate-float" aria-hidden="true"></div>
+        <div className="absolute -bottom-10 -left-10 w-24 h-24 bg-blue-400 rounded-full opacity-10 animate-float" style={{animationDelay: '1.5s'}} aria-hidden="true"></div>
       </div>
     </section>
   );

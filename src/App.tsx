@@ -30,26 +30,30 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
-        <Navigation />
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/consultation-services" element={<ConsultationServices />} />
-          <Route path="/sebaaq-machine" element={<SebaqMachine />} />
-          <Route path="/sebaaq-machine/vending-machines" element={<VendingMachines />} />
-          <Route path="/sebaaq-machine/production-lines" element={<ProductionLines />} />
-          <Route path="/sebaaq-machine/car-wash" element={<CarWash />} />
-          <Route path="/sebaaq-machine/entertainment-systems" element={<EntertainmentSystems />} />
-          <Route path="/parts-maintenance" element={<PartsAndMaintenance />} />
-          <Route path="/parts-maintenance/vending-machine-parts" element={<VendingMachineParts />} />
-          <Route path="/parts-maintenance/production-line-parts" element={<ProductionLineParts />} />
-          <Route path="/parts-maintenance/car-wash-parts" element={<CarWashParts />} />
-          <Route path="/parts-maintenance/entertainment-system-parts" element={<EntertainmentSystemParts />} />
-          <Route path="/alibaba" element={<Alibaba />} />
-          <Route path="/invest" element={<Invest />} />
-          <Route path="/pitch-deck" element={<PitchDeck />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+        <div className="min-h-screen bg-background text-foreground">
+          <Navigation />
+          <main role="main">
+            <Routes>
+              <Route path="/" element={<Index />} />
+              <Route path="/consultation-services" element={<ConsultationServices />} />
+              <Route path="/sebaaq-machine" element={<SebaqMachine />} />
+              <Route path="/sebaaq-machine/vending-machines" element={<VendingMachines />} />
+              <Route path="/sebaaq-machine/production-lines" element={<ProductionLines />} />
+              <Route path="/sebaaq-machine/car-wash" element={<CarWash />} />
+              <Route path="/sebaaq-machine/entertainment-systems" element={<EntertainmentSystems />} />
+              <Route path="/parts-maintenance" element={<PartsAndMaintenance />} />
+              <Route path="/parts-maintenance/vending-machine-parts" element={<VendingMachineParts />} />
+              <Route path="/parts-maintenance/production-line-parts" element={<ProductionLineParts />} />
+              <Route path="/parts-maintenance/car-wash-parts" element={<CarWashParts />} />
+              <Route path="/parts-maintenance/entertainment-system-parts" element={<EntertainmentSystemParts />} />
+              <Route path="/alibaba" element={<Alibaba />} />
+              <Route path="/invest" element={<Invest />} />
+              <Route path="/pitch-deck" element={<PitchDeck />} />
+              {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </main>
+        </div>
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
