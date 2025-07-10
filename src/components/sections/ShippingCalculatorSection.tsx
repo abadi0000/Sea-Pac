@@ -173,13 +173,13 @@ const ShippingCalculatorSection = () => {
                   </SelectTrigger>
                   <SelectContent className="bg-white border-gray-300">
                     <SelectItem value="non-electronic">
-                      منتجات غير إلكترونية بدون بطارية - 900 ريال لكل متر مكعب
+                      منتجات غير إلكترونية بدون بطارية
                     </SelectItem>
                     <SelectItem value="electronic-no-battery">
-                      أجهزة إلكترونية بدون بطارية - 1200 ريال لكل متر مكعب
+                      أجهزة إلكترونية بدون بطارية
                     </SelectItem>
                     <SelectItem value="with-battery">
-                      منتجات تحتوي على بطارية - 1300 ريال لكل متر مكعب
+                      منتجات تحتوي على بطارية
                     </SelectItem>
                   </SelectContent>
                 </Select>
