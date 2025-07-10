@@ -16,46 +16,18 @@ const FactorySearchSection = () => {
               نساعدك في العثور على مصانع حقيقية، تقييم الجودة، ومقارنة الأسعار
             </p>
 
-            <div className="bg-gradient-to-r from-red-500/20 to-orange-500/20 rounded-xl p-6 mb-8 border border-red-500/30">
-              <div className="flex items-center gap-4 mb-4">
-                <div className="w-12 h-12 bg-red-500 rounded-full flex items-center justify-center text-white font-bold text-xl">
-                  !
+            <div className="bg-gradient-to-r from-red-500/20 to-orange-500/20 rounded-xl p-8 mb-8 border border-red-500/30">
+              <div className="text-center mb-6">
+                <div className="text-8xl md:text-9xl font-bold text-red-500 mb-4 leading-none">
+                  90%
                 </div>
-                <div>
-                  <h3 className="text-white font-bold text-xl">90%</h3>
-                  <p className="text-gray-300 text-sm">من المنتجات المعروضة أونلاين</p>
-                </div>
+                <h3 className="text-white font-bold text-xl mb-2">من المنتجات المعروضة أونلاين</h3>
+                <p className="text-white leading-relaxed">
+                  من المنتجات المعروضة اون لاين مثل في علي بابا وغيره، هي من وسطاء وشركات تجارية ليست بشكل مباشر من المصانع
+                </p>
               </div>
-              <p className="text-white leading-relaxed">
-                من المنتجات المعروضة اون لاين مثل في علي بابا وغيره، هي من وسطاء وشركات تجارية ليست بشكل مباشر من المصانع
-              </p>
             </div>
 
-            <div className="space-y-4">
-              <div className="flex items-start gap-4">
-                <div className="w-3 h-3 bg-sebaaq-blue rounded-full mt-2 flex-shrink-0"></div>
-                <div>
-                  <h3 className="text-white font-semibold mb-2">تحديد المصادر المثلى</h3>
-                  <p className="text-gray-400">نساعدك في العثور على المصانع الأكثر ملاءمة لاحتياجاتك المحددة</p>
-                </div>
-              </div>
-              
-              <div className="flex items-start gap-4">
-                <div className="w-3 h-3 bg-sebaaq-blue rounded-full mt-2 flex-shrink-0"></div>
-                <div>
-                  <h3 className="text-white font-semibold mb-2">تحليل التكاليف والتفاوض</h3>
-                  <p className="text-gray-400">نعمل على تأمين أفضل الأسعار التنافسية من خلال التفاوض الاستراتيجي</p>
-                </div>
-              </div>
-              
-              <div className="flex items-start gap-4">
-                <div className="w-3 h-3 bg-sebaaq-blue rounded-full mt-2 flex-shrink-0"></div>
-                <div>
-                  <h3 className="text-white font-semibold mb-2">ضمان الجودة والمطابقة</h3>
-                  <p className="text-gray-400">فحص دقيق للبضائع قبل الشحن لضمان المطابقة للمواصفات</p>
-                </div>
-              </div>
-            </div>
           </div>
 
           <div className="relative">
@@ -65,22 +37,87 @@ const FactorySearchSection = () => {
                 <p className="text-gray-300">تجاهل الوسطاء والكيانات التجارية</p>
               </div>
               
-              <div className="grid grid-cols-2 gap-4">
-                <div className="bg-white/10 rounded-lg p-4 text-center">
-                  <div className="w-8 h-8 bg-sebaaq-blue rounded-full mx-auto mb-2"></div>
-                  <p className="text-white text-sm">تحديد المصانع</p>
+              {/* Desktop: Horizontal Flow */}
+              <div className="hidden md:flex items-center justify-between relative">
+                {/* Step 1 */}
+                <div className="flex flex-col items-center animate-fade-in" style={{animationDelay: '0.2s'}}>
+                  <div className="w-16 h-16 bg-sebaaq-blue rounded-full flex items-center justify-center mb-3 hover:scale-110 transition-transform duration-300">
+                    <div className="w-8 h-8 bg-white rounded-full"></div>
+                  </div>
+                  <p className="text-white text-sm font-medium">تحديد المصانع</p>
                 </div>
-                <div className="bg-white/10 rounded-lg p-4 text-center">
-                  <div className="w-8 h-8 bg-blue-400 rounded-full mx-auto mb-2"></div>
-                  <p className="text-white text-sm">فحص الجودة</p>
+                
+                {/* Arrow 1 */}
+                <div className="flex-1 flex items-center justify-center mx-4">
+                  <div className="w-8 h-0.5 bg-gradient-to-r from-sebaaq-blue to-blue-400"></div>
+                  <div className="w-0 h-0 border-l-4 border-l-blue-400 border-t-2 border-b-2 border-t-transparent border-b-transparent"></div>
                 </div>
-                <div className="bg-white/10 rounded-lg p-4 text-center">
-                  <div className="w-8 h-8 bg-sebaaq-blue rounded-full mx-auto mb-2"></div>
-                  <p className="text-white text-sm">التفاوض</p>
+                
+                {/* Step 2 */}
+                <div className="flex flex-col items-center animate-fade-in" style={{animationDelay: '0.4s'}}>
+                  <div className="w-16 h-16 bg-blue-400 rounded-full flex items-center justify-center mb-3 hover:scale-110 transition-transform duration-300">
+                    <div className="w-8 h-8 bg-white rounded-full"></div>
+                  </div>
+                  <p className="text-white text-sm font-medium">فحص الجودة</p>
                 </div>
-                <div className="bg-white/10 rounded-lg p-4 text-center">
-                  <div className="w-8 h-8 bg-blue-400 rounded-full mx-auto mb-2"></div>
-                  <p className="text-white text-sm">الشحن المباشر</p>
+                
+                {/* Arrow 2 */}
+                <div className="flex-1 flex items-center justify-center mx-4">
+                  <div className="w-8 h-0.5 bg-gradient-to-r from-blue-400 to-sebaaq-blue"></div>
+                  <div className="w-0 h-0 border-l-4 border-l-sebaaq-blue border-t-2 border-b-2 border-t-transparent border-b-transparent"></div>
+                </div>
+                
+                {/* Step 3 */}
+                <div className="flex flex-col items-center animate-fade-in" style={{animationDelay: '0.6s'}}>
+                  <div className="w-16 h-16 bg-sebaaq-blue rounded-full flex items-center justify-center mb-3 hover:scale-110 transition-transform duration-300">
+                    <div className="w-8 h-8 bg-white rounded-full"></div>
+                  </div>
+                  <p className="text-white text-sm font-medium">التفاوض</p>
+                </div>
+                
+                {/* Arrow 3 */}
+                <div className="flex-1 flex items-center justify-center mx-4">
+                  <div className="w-8 h-0.5 bg-gradient-to-r from-sebaaq-blue to-blue-400"></div>
+                  <div className="w-0 h-0 border-l-4 border-l-blue-400 border-t-2 border-b-2 border-t-transparent border-b-transparent"></div>
+                </div>
+                
+                {/* Step 4 */}
+                <div className="flex flex-col items-center animate-fade-in" style={{animationDelay: '0.8s'}}>
+                  <div className="w-16 h-16 bg-blue-400 rounded-full flex items-center justify-center mb-3 hover:scale-110 transition-transform duration-300">
+                    <div className="w-8 h-8 bg-white rounded-full"></div>
+                  </div>
+                  <p className="text-white text-sm font-medium">الشحن المباشر</p>
+                </div>
+              </div>
+              
+              {/* Mobile: Vertical Stack */}
+              <div className="md:hidden space-y-6">
+                <div className="flex items-center gap-4 animate-fade-in" style={{animationDelay: '0.2s'}}>
+                  <div className="w-12 h-12 bg-sebaaq-blue rounded-full flex items-center justify-center flex-shrink-0">
+                    <div className="w-6 h-6 bg-white rounded-full"></div>
+                  </div>
+                  <p className="text-white font-medium">تحديد المصانع</p>
+                </div>
+                
+                <div className="flex items-center gap-4 animate-fade-in" style={{animationDelay: '0.4s'}}>
+                  <div className="w-12 h-12 bg-blue-400 rounded-full flex items-center justify-center flex-shrink-0">
+                    <div className="w-6 h-6 bg-white rounded-full"></div>
+                  </div>
+                  <p className="text-white font-medium">فحص الجودة</p>
+                </div>
+                
+                <div className="flex items-center gap-4 animate-fade-in" style={{animationDelay: '0.6s'}}>
+                  <div className="w-12 h-12 bg-sebaaq-blue rounded-full flex items-center justify-center flex-shrink-0">
+                    <div className="w-6 h-6 bg-white rounded-full"></div>
+                  </div>
+                  <p className="text-white font-medium">التفاوض</p>
+                </div>
+                
+                <div className="flex items-center gap-4 animate-fade-in" style={{animationDelay: '0.8s'}}>
+                  <div className="w-12 h-12 bg-blue-400 rounded-full flex items-center justify-center flex-shrink-0">
+                    <div className="w-6 h-6 bg-white rounded-full"></div>
+                  </div>
+                  <p className="text-white font-medium">الشحن المباشر</p>
                 </div>
               </div>
             </div>

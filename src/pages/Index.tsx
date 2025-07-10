@@ -22,7 +22,7 @@ const Index = () => {
       <ShippingSection />
       <TrackingSection />
       <WarehouseSection />
-      <VisionSection />
+      
       <ContactSection />
     </div>
   );
