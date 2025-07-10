@@ -12,6 +12,7 @@ import CarWashBT500 from "./pages/CarWashBT500";
 import CarWashTL500 from "./pages/CarWashTL500";
 import CarWashTL400 from "./pages/CarWashTL400";
 import CarWashTL300 from "./pages/CarWashTL300";
+import CarWashProducts from "./pages/CarWashProducts";
 import ConsultationServices from "./pages/ConsultationServices";
 import SebaqMachine from "./pages/SebaqMachine";
 import VendingMachines from "./pages/VendingMachines";
@@ -47,6 +48,7 @@ const App = () => (
               <Route path="/sebaaq-machine/vending-machines" element={<VendingMachines />} />
               <Route path="/sebaaq-machine/production-lines" element={<ProductionLines />} />
               <Route path="/sebaaq-machine/car-wash" element={<CarWash />} />
+              <Route path="/car-wash/products" element={<CarWashProducts />} />
               <Route path="/car-wash/bt900" element={<CarWashBT900 />} />
               <Route path="/car-wash/bt500" element={<CarWashBT500 />} />
               <Route path="/car-wash/tl500" element={<CarWashTL500 />} />
