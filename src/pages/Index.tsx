@@ -4,7 +4,7 @@ import StatsSection from "@/components/sections/StatsSection";
 import ServicesSection from "@/components/sections/ServicesSection";
 import ShippingCalculatorSection from "@/components/sections/ShippingCalculatorSection";
 import ShippingSection from "@/components/sections/ShippingSection";
-import WhyChooseUsSection from "@/components/sections/WhyChooseUsSection";
+import { FeaturesSectionWithHoverEffects } from "@/components/blocks/feature-section-with-hover-effects";
 import FactorySearchSection from "@/components/sections/FactorySearchSection";
 import TrackingSection from "@/components/sections/TrackingSection";
 import WarehouseSection from "@/components/sections/WarehouseSection";
@@ -16,7 +16,7 @@ const Index = () => {
     <div className="min-h-screen">
       <HeroSection />
       <ShippingCalculatorSection />
-      <WhyChooseUsSection />
+      <FeaturesSectionWithHoverEffects />
       <StatsSection />
       <FactorySearchSection />
       <ShippingSection />
