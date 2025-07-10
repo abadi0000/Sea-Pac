@@ -125,15 +125,16 @@ const HeroSection: React.FC<HeroSectionProps> = ({
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="text-center mb-12"
+            className="text-center mb-16"
           >
-            <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold text-foreground mb-6 leading-tight">
-              <span className="bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent">
-                {headline}
+            <h1 className="text-4xl md:text-6xl lg:text-8xl font-bold text-foreground mb-8 leading-tight">
+              <span className="bg-gradient-to-r from-primary via-primary/80 to-primary/60 bg-clip-text text-transparent">
+                حلول شحن ذكية من الصين إلى المملكة العربية السعودية
               </span>
             </h1>
-            <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-              نقدم خدمات لوجستية متكاملة تربط بين الصين والمملكة العربية السعودية بأعلى معايير الجودة والكفاءة
+            <p className="text-xl md:text-2xl text-muted-foreground max-w-4xl mx-auto leading-relaxed">
+              نقدم حلولاً لوجستية متكاملة تربط الصين بالمملكة العربية السعودية بأعلى معايير الجودة والكفاءة. 
+              نحن شريكك المتكامل للنمو مع حلول لوجستية ذكية وحلول صناعية متطورة.
             </p>
           </motion.div>
 
@@ -142,7 +143,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.6 }}
-            className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12"
+            className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16 max-w-6xl mx-auto"
           >
             {services.map((service, index) => (
               <motion.div
@@ -157,7 +158,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
                 whileTap={{ scale: 0.98 }}
               >
                 <Card 
-                  className="p-6 h-full bg-card/50 backdrop-blur-sm border-border/50 hover:border-primary/30 transition-all duration-300 hover:shadow-lg hover:shadow-primary/10 cursor-pointer group"
+                  className="p-8 h-full bg-card/60 backdrop-blur-sm border-border/50 hover:border-primary/40 transition-all duration-300 hover:shadow-xl hover:shadow-primary/20 cursor-pointer group relative overflow-hidden"
                   role="article"
                   aria-label={service.title}
                   tabIndex={0}
@@ -167,14 +168,15 @@ const HeroSection: React.FC<HeroSectionProps> = ({
                     }
                   }}
                 >
-                  <div className="flex flex-col items-center text-center space-y-4">
-                    <div className="p-3 rounded-full bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300">
+                  <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="relative flex flex-col items-center text-center space-y-6">
+                    <div className="p-4 rounded-full bg-gradient-to-br from-primary/10 to-primary/20 text-primary group-hover:bg-gradient-to-br group-hover:from-primary group-hover:to-primary/80 group-hover:text-primary-foreground transition-all duration-300 shadow-lg">
                       {service.icon}
                     </div>
-                    <h3 className="text-xl font-semibold text-foreground group-hover:text-primary transition-colors duration-300">
+                    <h3 className="text-xl font-bold text-foreground group-hover:text-primary transition-colors duration-300">
                       {service.title}
                     </h3>
-                    <p className="text-muted-foreground leading-relaxed">
+                    <p className="text-muted-foreground leading-relaxed group-hover:text-foreground/80 transition-colors duration-300">
                       {service.description}
                     </p>
                   </div>
@@ -193,28 +195,6 @@ const HeroSection: React.FC<HeroSectionProps> = ({
             <Button
               size="lg"
               className="w-full sm:w-auto px-8 py-4 text-lg font-semibold bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 focus:scale-105 focus:ring-2 focus:ring-primary focus:ring-offset-2"
-              onClick={handlePrimaryClick}
-              disabled={primaryLoading}
-              aria-label={primaryButtonText}
-              role="button"
-            >
-              {primaryLoading ? (
-                <>
-                  <Loader2 className="w-5 h-5 ml-2 animate-spin" />
-                  جاري التحميل...
-                </>
-              ) : (
-                <>
-                  <Phone className="w-5 h-5 ml-2" />
-                  {primaryButtonText}
-                </>
-              )}
-            </Button>
-
-            <Button
-              variant="outline"
-              size="lg"
-              className="w-full sm:w-auto px-8 py-4 text-lg font-semibold border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 focus:scale-105 focus:ring-2 focus:ring-primary focus:ring-offset-2"
               onClick={handleSecondaryClick}
               disabled={secondaryLoading}
               aria-label={secondaryButtonText}
@@ -229,6 +209,28 @@ const HeroSection: React.FC<HeroSectionProps> = ({
                 <>
                   <FileText className="w-5 h-5 ml-2" />
                   {secondaryButtonText}
+                </>
+              )}
+            </Button>
+
+            <Button
+              variant="outline"
+              size="lg"
+              className="w-full sm:w-auto px-8 py-4 text-lg font-semibold border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 focus:scale-105 focus:ring-2 focus:ring-primary focus:ring-offset-2"
+              onClick={handlePrimaryClick}
+              disabled={primaryLoading}
+              aria-label={primaryButtonText}
+              role="button"
+            >
+              {primaryLoading ? (
+                <>
+                  <Loader2 className="w-5 h-5 ml-2 animate-spin" />
+                  جاري التحميل...
+                </>
+              ) : (
+                <>
+                  <Phone className="w-5 h-5 ml-2" />
+                  {primaryButtonText}
                 </>
               )}
             </Button>
