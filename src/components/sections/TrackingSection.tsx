@@ -59,8 +59,8 @@ interface CargoShipRouteProps {
 
 export function CargoShipRoute({
   startPort = {
-    lat: 23.1291,
-    lng: 113.2644,
+    lat: 31.2304,
+    lng: 121.4737,
     label: "منفذ المنشأ",
     city: "شنغهاي، الصين"
   },
@@ -70,7 +70,7 @@ export function CargoShipRoute({
     label: "منفذ الوجهة", 
     city: "جدة، المملكة العربية السعودية"
   },
-  lineColor = "#0ea5e9",
+  lineColor = "#ef4444",
   shipColor = "#059669"
 }: CargoShipRouteProps) {
   const svgRef = useRef<SVGSVGElement>(null);
@@ -153,9 +153,9 @@ export function CargoShipRoute({
       {/* Map */}
       <div className="relative aspect-[2/1] bg-white">
         <img
-          src={`data:image/svg+xml;utf8,${encodeURIComponent(svgMap)}`}
-          className="h-full w-full [mask-image:linear-gradient(to_bottom,transparent,white_10%,white_90%,transparent)] pointer-events-none select-none"
-          alt="خريطة العالم"
+          src="/lovable-uploads/c816dc83-442d-40b5-89e3-58f1872702cd.png"
+          className="h-full w-full object-cover pointer-events-none select-none"
+          alt="خريطة مسارات الشحن"
           draggable={false}
         />
         
