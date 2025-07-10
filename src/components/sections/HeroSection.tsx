@@ -1,7 +1,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { motion } from "framer-motion";
-import { MoveRight, PhoneCall } from "lucide-react";
+import { MoveRight, PhoneCall, Ship, Plane, Cog } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const HeroSection = () => {
@@ -70,42 +70,26 @@ const HeroSection = () => {
                 >
                   <span className="text-primary">سي باك لوجستيك</span>
                   <br />
-                  <span className="text-3xl md:text-5xl">حلول الشحن</span>
-                  <span className="relative flex w-full justify-center overflow-hidden text-center md:pb-4 md:pt-1">
-                    &nbsp;
-                    {titles.map((title, index) => (
-                      <motion.span
-                        key={index}
-                        className="absolute font-semibold text-primary"
-                        initial={{ opacity: 0, y: "-100" }}
-                        transition={{ type: "spring", stiffness: 50 }}
-                        animate={
-                          titleNumber === index
-                            ? {
-                                y: 0,
-                                opacity: 1,
-                              }
-                            : {
-                                y: titleNumber > index ? -150 : 150,
-                                opacity: 0,
-                              }
-                        }
-                      >
-                        {title}
-                      </motion.span>
-                    ))}
-                  </span>
+                  <span className="text-3xl md:text-5xl">حلول الشحن الذكية</span>
                   <br />
                   <span className="text-3xl md:text-5xl">من الصين إلى المملكة</span>
                 </h1>
 
-                <p 
-                  className="text-lg md:text-xl leading-relaxed tracking-normal text-muted-foreground max-w-4xl text-center font-noto-arabic" 
-                  dir="rtl"
-                >
-                  نوفر حلولاً لوجستية متكاملة للشركات والأفراد مع خدمات الشحن البحري والجوي والتوصيل المباشر والتغليف الاحترافي. 
-                  نضمن استلام البضائع من المصانع وتسليمها مباشرة لعنوانك مع أعلى معايير الأمان والاحترافية وضمان شامل.
-                </p>
+                {/* Services with Icons */}
+                <div className="flex flex-col md:flex-row gap-6 justify-center items-center mt-8" dir="rtl">
+                  <div className="flex items-center gap-3 text-lg md:text-xl font-noto-arabic">
+                    <Ship className="w-6 h-6 text-primary" />
+                    <span>شحن بحري</span>
+                  </div>
+                  <div className="flex items-center gap-3 text-lg md:text-xl font-noto-arabic">
+                    <Plane className="w-6 h-6 text-primary" />
+                    <span>شحن جوي</span>
+                  </div>
+                  <div className="flex items-center gap-3 text-lg md:text-xl font-noto-arabic">
+                    <Cog className="w-6 h-6 text-primary" />
+                    <span>توريد وتركيب وصيانة آلات حديثة</span>
+                  </div>
+                </div>
               </div>
               
               <div className="flex flex-row gap-3" dir="rtl">
