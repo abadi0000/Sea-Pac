@@ -61,7 +61,7 @@ const SebaqMachine = () => {
       link: "/sebaaq-machine/car-wash"
     },
     {
-      title: "الأنظمة الترفيهية",
+      title: "المشاريع الترفيهية",
       subtitle: "استثمر في مستقبل الترفيه السعودي",
       description: "مجموعة واسعة من الأنظمة الترفيهية المبتكرة التي تضمن تجارب لا تُنسى",
       image: "https://images.unsplash.com/photo-1531297484001-80022131f5a1?auto=format&fit=crop&w=800&q=80",
