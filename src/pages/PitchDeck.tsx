@@ -22,7 +22,9 @@ import {
   Truck,
   Package,
   Award,
-  Heart
+  Heart,
+  Wrench,
+  Settings
 } from 'lucide-react';
 
 const PitchDeck = () => {
@@ -206,7 +208,7 @@ const PitchDeck = () => {
             </h2>
           </div>
           
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             <Card className="p-6">
               <CardHeader className="pb-4">
                 <div className="flex items-center gap-3">
@@ -249,6 +251,33 @@ const PitchDeck = () => {
                 <div className="flex items-start gap-3">
                   <CheckCircle className="w-5 h-5 text-sebaaq-blue flex-shrink-0 mt-0.5" />
                   <span className="text-muted-foreground">كفاءة عالية قبل الشحن النهائي</span>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card className="p-6 border-sebaaq-blue/30 bg-gradient-to-br from-sebaaq-blue/5 to-blue-50">
+              <CardHeader className="pb-4">
+                <div className="flex items-center gap-3">
+                  <Settings className="w-8 h-8 text-sebaaq-blue" />
+                  <CardTitle className="text-xl">توريد وتركيب الآلات الحديثة</CardTitle>
+                </div>
+              </CardHeader>
+              <CardContent className="space-y-3">
+                <div className="flex items-start gap-3">
+                  <CheckCircle className="w-5 h-5 text-sebaaq-blue flex-shrink-0 mt-0.5" />
+                  <span className="text-muted-foreground">توريد آلات حديثة ومتطورة للسوق السعودي</span>
+                </div>
+                <div className="flex items-start gap-3">
+                  <CheckCircle className="w-5 h-5 text-sebaaq-blue flex-shrink-0 mt-0.5" />
+                  <span className="text-muted-foreground">خدمات تركيب احترافية بواسطة فنيين متخصصين</span>
+                </div>
+                <div className="flex items-start gap-3">
+                  <CheckCircle className="w-5 h-5 text-sebaaq-blue flex-shrink-0 mt-0.5" />
+                  <span className="text-muted-foreground">صيانة دورية وخدمات ما بعد البيع</span>
+                </div>
+                <div className="flex items-start gap-3">
+                  <CheckCircle className="w-5 h-5 text-sebaaq-blue flex-shrink-0 mt-0.5" />
+                  <span className="text-muted-foreground">تدريب المستخدمين على تشغيل الآلات</span>
                 </div>
               </CardContent>
             </Card>
