@@ -32,7 +32,7 @@ const Navigation = () => {
             <img 
               src="/lovable-uploads/f4a3ae4c-73f0-4dbe-8100-49e25dd7383b.png" 
               alt="شعار شركة سي باك لوجستيك" 
-              className="h-8 sm:h-10 w-auto"
+              className="h-12 sm:h-14 w-auto"
             />
           </Link>
 
