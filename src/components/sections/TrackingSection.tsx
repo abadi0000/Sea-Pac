@@ -86,10 +86,13 @@ export function CargoShipRoute({
   });
 
   const projectPoint = (lat: number, lng: number) => {
-    // Adjusted projection to match the map image layout
-    const x = ((lng + 180) * (800 / 360)) - 50; // Slight offset for better positioning
-    const y = ((90 - lat) * (400 / 180)) + 20; // Slight offset for better positioning
-    return { x, y };
+    // Manual positioning based on the actual map image
+    // Shanghai is at the far right, Jeddah at the left
+    if (lng > 120) { // Shanghai area
+      return { x: 720, y: 120 }; // Far right position
+    } else { // Jeddah area  
+      return { x: 120, y: 180 }; // Left side position
+    }
   };
 
   const createCurvedPath = (
