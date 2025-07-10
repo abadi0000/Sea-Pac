@@ -276,6 +276,55 @@ const BT900FuturisticPage: React.FC = () => {
               <CarSimulation />
             </motion.div>
 
+            {/* BT900 System Gallery */}
+            <motion.div
+              className="max-w-6xl mx-auto mt-16"
+              initial={{ opacity: 0, y: 50 }}
+              animate={isHeroInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.8, delay: 1.2 }}
+            >
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <motion.div
+                  className="relative group overflow-hidden rounded-2xl border border-primary/20"
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <img
+                    src="/lovable-uploads/c5375e9e-6274-4fe3-ace0-0c5f793ff6d0.png"
+                    alt="نظام BT900 - منظر جانبي"
+                    className="w-full h-64 object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                </motion.div>
+
+                <motion.div
+                  className="relative group overflow-hidden rounded-2xl border border-primary/20"
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <img
+                    src="/lovable-uploads/28144a1c-943b-408f-ad5d-00076e8779ae.png"
+                    alt="نظام BT900 - منظر علوي"
+                    className="w-full h-64 object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                </motion.div>
+
+                <motion.div
+                  className="relative group overflow-hidden rounded-2xl border border-primary/20"
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <img
+                    src="/lovable-uploads/3ccf25e5-f98e-46f9-be3c-88ad951e5499.png"
+                    alt="نظام BT900 - منظر ثلاثي الأبعاد"
+                    className="w-full h-64 object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                </motion.div>
+              </div>
+            </motion.div>
+
             {/* CTA Buttons */}
             <motion.div
               className="flex flex-col sm:flex-row gap-4 justify-center"
