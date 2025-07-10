@@ -343,17 +343,6 @@ function LogisticsHero({
                 <Mockup type="responsive">
                   <div className="w-full h-[300px] bg-gradient-to-br from-primary/10 via-secondary/10 to-accent/10 rounded-lg flex items-center justify-center relative overflow-hidden">
                     <div className="absolute inset-0 opacity-50" style={{ backgroundImage: 'radial-gradient(circle at 50% 50%, hsl(var(--foreground) / 0.05) 1px, transparent 1px)', backgroundSize: '20px 20px' }}></div>
-                    <div className="relative z-10 text-center">
-                       <div className="flex items-center justify-center gap-4 mb-4">
-                        <Ship className="h-8 w-8 text-primary" />
-                        <ArrowRightIcon className="h-4 w-4 text-muted-foreground" />
-                        <Plane className="h-8 w-8 text-secondary-foreground" />
-                        <ArrowRightIcon className="h-4 w-4 text-muted-foreground" />
-                        <Settings className="h-8 w-8 text-accent-foreground" />
-                      </div>
-                      <p className="text-lg font-bold text-foreground font-cairo">خدمات لوجستية شاملة</p>
-                      <p className="text-muted-foreground mt-1 text-sm font-cairo">من الصين إلى المملكة العربية السعودية</p>
-                    </div>
                   </div>
                 </Mockup>
               </MockupFrame>
