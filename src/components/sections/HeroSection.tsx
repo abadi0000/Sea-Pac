@@ -232,9 +232,9 @@ function LogisticsHero({
         <div className="flex flex-col items-center gap-4 text-center sm:gap-8">
           {/* Badge */}
           <AnimatedGroup variants={transitionVariants}>
-            <Badge variant="outline" className="gap-2 text-sm px-4 py-1.5 border-primary/20 bg-primary/5 font-cairo">
-              <span className="text-muted-foreground">✨ خدمات لوجستية متطورة</span>
-              <ArrowRightIcon className="h-3 w-3" />
+            <Badge variant="outline" className="gap-3 text-sm px-6 py-2.5 border-primary/30 bg-primary/10 backdrop-blur-sm font-cairo shadow-sm hover:bg-primary/15 transition-colors duration-300">
+              <span className="text-primary font-medium">✨ خدمات لوجستية متطورة</span>
+              <ArrowRightIcon className="h-3 w-3 text-primary" />
             </Badge>
           </AnimatedGroup>
 
@@ -252,10 +252,10 @@ function LogisticsHero({
               ...transitionVariants,
             }}
           >
-            <h1 className="relative z-10 inline-block bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-3xl font-bold leading-tight text-transparent drop-shadow-2xl sm:text-4xl sm:leading-tight md:text-5xl md:leading-tight font-cairo">
+            <h1 className="relative z-10 inline-block bg-gradient-to-r from-foreground via-foreground to-muted-foreground bg-clip-text text-4xl font-bold leading-tight text-transparent drop-shadow-2xl sm:text-5xl sm:leading-tight md:text-6xl md:leading-tight lg:text-7xl lg:leading-tight font-cairo">
               {companyName}
             </h1>
-            <p className="text-lg relative z-10 max-w-[700px] font-medium text-primary opacity-90 sm:text-xl font-cairo">
+            <p className="text-xl relative z-10 max-w-[800px] font-semibold text-primary opacity-95 sm:text-2xl md:text-2xl lg:text-3xl font-cairo leading-relaxed">
               {tagline}
             </p>
           </AnimatedGroup>
@@ -273,27 +273,27 @@ function LogisticsHero({
               },
               ...transitionVariants,
             }}
-            className="grid grid-cols-1 md:grid-cols-3 gap-4 w-full max-w-4xl"
+            className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 w-full max-w-5xl px-4"
           >
-            <div className="flex flex-col items-center gap-3 p-4 rounded-xl bg-background/50 border border-border/50 backdrop-blur-sm hover:bg-background/70 transition-all duration-300">
-              <div className="p-3 rounded-full bg-primary/10 border border-primary/20">
-                <Ship className="h-6 w-6 text-primary" />
+            <div className="flex flex-col items-center gap-4 p-6 rounded-2xl bg-background/60 border border-border/30 backdrop-blur-md hover:bg-background/80 hover:border-primary/30 hover:shadow-lg hover:scale-105 transition-all duration-500 group">
+              <div className="p-4 rounded-full bg-primary/15 border border-primary/30 group-hover:bg-primary/20 transition-colors duration-300">
+                <Ship className="h-7 w-7 text-primary" />
               </div>
-              <h3 className="text-base font-semibold text-foreground font-cairo">{services.seaShipping}</h3>
+              <h3 className="text-lg font-semibold text-foreground font-cairo text-center leading-relaxed">{services.seaShipping}</h3>
             </div>
             
-            <div className="flex flex-col items-center gap-3 p-4 rounded-xl bg-background/50 border border-border/50 backdrop-blur-sm hover:bg-background/70 transition-all duration-300">
-              <div className="p-3 rounded-full bg-secondary/10 border border-secondary/20">
-                <Plane className="h-6 w-6 text-secondary-foreground" />
+            <div className="flex flex-col items-center gap-4 p-6 rounded-2xl bg-background/60 border border-border/30 backdrop-blur-md hover:bg-background/80 hover:border-secondary/30 hover:shadow-lg hover:scale-105 transition-all duration-500 group">
+              <div className="p-4 rounded-full bg-secondary/15 border border-secondary/30 group-hover:bg-secondary/20 transition-colors duration-300">
+                <Plane className="h-7 w-7 text-secondary-foreground" />
               </div>
-              <h3 className="text-base font-semibold text-foreground font-cairo">{services.airShipping}</h3>
+              <h3 className="text-lg font-semibold text-foreground font-cairo text-center leading-relaxed">{services.airShipping}</h3>
             </div>
             
-            <div className="flex flex-col items-center gap-3 p-4 rounded-xl bg-background/50 border border-border/50 backdrop-blur-sm hover:bg-background/70 transition-all duration-300 md:col-span-1">
-              <div className="p-3 rounded-full bg-accent/10 border border-accent/20">
-                <Settings className="h-6 w-6 text-accent-foreground" />
+            <div className="flex flex-col items-center gap-4 p-6 rounded-2xl bg-background/60 border border-border/30 backdrop-blur-md hover:bg-background/80 hover:border-accent/30 hover:shadow-lg hover:scale-105 transition-all duration-500 group md:col-span-1">
+              <div className="p-4 rounded-full bg-accent/15 border border-accent/30 group-hover:bg-accent/20 transition-colors duration-300">
+                <Settings className="h-7 w-7 text-accent-foreground" />
               </div>
-              <h3 className="text-base font-semibold text-foreground text-center font-cairo">{services.machinery}</h3>
+              <h3 className="text-lg font-semibold text-foreground text-center font-cairo leading-relaxed">{services.machinery}</h3>
             </div>
           </AnimatedGroup>
 
@@ -310,14 +310,14 @@ function LogisticsHero({
               },
               ...transitionVariants,
             }}
-            className="flex flex-col sm:flex-row gap-3 justify-center"
+            className="flex flex-col sm:flex-row gap-4 justify-center px-4"
           >
-            <Button size="lg" className="text-base px-6 py-3 bg-primary hover:bg-primary/90 font-cairo">
-              <Phone className="h-4 w-4 ml-2" />
+            <Button size="lg" className="text-lg px-8 py-4 bg-primary hover:bg-primary/90 hover:shadow-lg hover:scale-105 transition-all duration-300 font-cairo shadow-md">
+              <Phone className="h-5 w-5 ml-2" />
               {ctaButtons.contact}
             </Button>
-            <Button variant="outline" size="lg" className="text-base px-6 py-3 border-primary/20 hover:bg-primary/5 font-cairo">
-              <FileText className="h-4 w-4 ml-2" />
+            <Button variant="outline" size="lg" className="text-lg px-8 py-4 border-2 border-primary/40 text-primary hover:bg-primary/10 hover:border-primary/60 hover:shadow-lg hover:scale-105 transition-all duration-300 font-cairo">
+              <FileText className="h-5 w-5 ml-2" />
               {ctaButtons.quote}
             </Button>
           </AnimatedGroup>
@@ -344,12 +344,12 @@ function LogisticsHero({
                   <div className="w-full h-[300px] bg-gradient-to-br from-primary/10 via-secondary/10 to-accent/10 rounded-lg flex items-center justify-center relative overflow-hidden">
                     <div className="absolute inset-0 opacity-50" style={{ backgroundImage: 'radial-gradient(circle at 50% 50%, hsl(var(--foreground) / 0.05) 1px, transparent 1px)', backgroundSize: '20px 20px' }}></div>
                     <div className="relative z-10 text-center">
-                      <div className="flex items-center justify-center gap-6 mb-4">
-                        <Ship className="h-12 w-12 text-primary" />
-                        <ArrowRightIcon className="h-6 w-6 text-muted-foreground" />
-                        <Plane className="h-12 w-12 text-secondary-foreground" />
-                        <ArrowRightIcon className="h-6 w-6 text-muted-foreground" />
-                        <Settings className="h-12 w-12 text-accent-foreground" />
+                       <div className="flex items-center justify-center gap-4 mb-4">
+                        <Ship className="h-8 w-8 text-primary" />
+                        <ArrowRightIcon className="h-4 w-4 text-muted-foreground" />
+                        <Plane className="h-8 w-8 text-secondary-foreground" />
+                        <ArrowRightIcon className="h-4 w-4 text-muted-foreground" />
+                        <Settings className="h-8 w-8 text-accent-foreground" />
                       </div>
                       <p className="text-lg font-bold text-foreground font-cairo">خدمات لوجستية شاملة</p>
                       <p className="text-muted-foreground mt-1 text-sm font-cairo">من الصين إلى المملكة العربية السعودية</p>
