@@ -1,19 +1,24 @@
-
 import { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Calculator, Package, Truck, Ship, Plane } from 'lucide-react';
+import { Calculator, Package } from 'lucide-react';
 
 const ShippingCalculatorSection = () => {
   const [formData, setFormData] = useState({
+    length: '',
+    width: '',
+    height: '',
     weight: '',
-    dimensions: '',
-    origin: '',
-    destination: '',
-    shippingType: ''
+    productType: ''
+  });
+
+  const [result, setResult] = useState({
+    cbm: 0,
+    totalPrice: 0,
+    showResult: false
   });
 
   const handleInputChange = (field: string, value: string) => {
@@ -24,7 +29,30 @@ const ShippingCalculatorSection = () => {
   };
 
   const calculateShipping = () => {
-    console.log('Calculating shipping for:', formData);
+    const { length, width, height, productType } = formData;
+    
+    if (!length || !width || !height || !productType) {
+      alert('يرجى ملء جميع الحقول المطلوبة');
+      return;
+    }
+
+    // Calculate CBM: (Length * Width * Height) / 1,000,000
+    const cbm = (parseFloat(length) * parseFloat(width) * parseFloat(height)) / 1000000;
+    
+    // Price per CBM based on product type
+    const pricePerCBM = {
+      'non-electronic': 900,
+      'electronic-no-battery': 1200,
+      'with-battery': 1300
+    };
+    
+    const totalPrice = cbm * pricePerCBM[productType as keyof typeof pricePerCBM];
+    
+    setResult({
+      cbm: parseFloat(cbm.toFixed(6)),
+      totalPrice: parseFloat(totalPrice.toFixed(2)),
+      showResult: true
+    });
   };
 
   return (
@@ -47,9 +75,9 @@ const ShippingCalculatorSection = () => {
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 items-start">
+        <div className="max-w-2xl mx-auto">
           {/* Calculator Form */}
-          <Card className="bg-white/10 backdrop-blur-sm border-sebaaq-blue/30 order-2 lg:order-1" role="form">
+          <Card className="bg-white/10 backdrop-blur-sm border-sebaaq-blue/30" role="form">
             <CardHeader className="pb-4 sm:pb-6">
               <CardTitle className="text-white flex items-center gap-2 sm:gap-3 text-lg sm:text-xl">
                 <Calculator className="w-5 h-5 sm:w-6 sm:h-6 text-sebaaq-blue" aria-hidden="true" />
@@ -57,129 +85,106 @@ const ShippingCalculatorSection = () => {
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-4 sm:space-y-6">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {/* Dimensions */}
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                 <div className="space-y-2">
-                  <Label htmlFor="weight" className="text-gray-300 text-sm sm:text-base font-medium">
-                    الوزن (كيلوغرام) <span className="text-red-400" aria-label="مطلوب">*</span>
+                  <Label htmlFor="length" className="text-gray-300 text-sm sm:text-base font-medium">
+                    الطول (سم) <span className="text-red-400" aria-label="مطلوب">*</span>
                   </Label>
                   <Input
-                    id="weight"
+                    id="length"
                     type="number"
                     min="0"
                     step="0.1"
-                    placeholder="مثال: 5.5"
-                    value={formData.weight}
-                    onChange={(e) => handleInputChange('weight', e.target.value)}
+                    placeholder="مثال: 50"
+                    value={formData.length}
+                    onChange={(e) => handleInputChange('length', e.target.value)}
                     className="bg-white/20 border-gray-400 text-white placeholder:text-gray-400 h-10 sm:h-11 text-sm sm:text-base focus:ring-2 focus:ring-sebaaq-blue focus:border-sebaaq-blue"
-                    aria-describedby="weight-help"
                     required
                   />
-                  <div id="weight-help" className="text-xs text-gray-400">
-                    أدخل الوزن الإجمالي للشحنة بالكيلوغرام
-                  </div>
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="dimensions" className="text-gray-300 text-sm sm:text-base font-medium">
-                    الأبعاد (سم) <span className="text-red-400" aria-label="مطلوب">*</span>
+                  <Label htmlFor="width" className="text-gray-300 text-sm sm:text-base font-medium">
+                    العرض (سم) <span className="text-red-400" aria-label="مطلوب">*</span>
                   </Label>
                   <Input
-                    id="dimensions"
-                    placeholder="مثال: 50 × 30 × 20"
-                    value={formData.dimensions}
-                    onChange={(e) => handleInputChange('dimensions', e.target.value)}
+                    id="width"
+                    type="number"
+                    min="0"
+                    step="0.1"
+                    placeholder="مثال: 30"
+                    value={formData.width}
+                    onChange={(e) => handleInputChange('width', e.target.value)}
                     className="bg-white/20 border-gray-400 text-white placeholder:text-gray-400 h-10 sm:h-11 text-sm sm:text-base focus:ring-2 focus:ring-sebaaq-blue focus:border-sebaaq-blue"
-                    aria-describedby="dimensions-help"
                     required
                   />
-                  <div id="dimensions-help" className="text-xs text-gray-400">
-                    أدخل أبعاد الصندوق: الطول × العرض × الارتفاع
-                  </div>
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="height" className="text-gray-300 text-sm sm:text-base font-medium">
+                    الارتفاع (سم) <span className="text-red-400" aria-label="مطلوب">*</span>
+                  </Label>
+                  <Input
+                    id="height"
+                    type="number"
+                    min="0"
+                    step="0.1"
+                    placeholder="مثال: 20"
+                    value={formData.height}
+                    onChange={(e) => handleInputChange('height', e.target.value)}
+                    className="bg-white/20 border-gray-400 text-white placeholder:text-gray-400 h-10 sm:h-11 text-sm sm:text-base focus:ring-2 focus:ring-sebaaq-blue focus:border-sebaaq-blue"
+                    required
+                  />
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div className="space-y-2">
-                  <Label htmlFor="origin" className="text-gray-300 text-sm sm:text-base font-medium">
-                    المدينة المرسلة <span className="text-red-400" aria-label="مطلوب">*</span>
-                  </Label>
-                  <Select onValueChange={(value) => handleInputChange('origin', value)} required>
-                    <SelectTrigger 
-                      className="bg-white/20 border-gray-400 text-white h-10 sm:h-11 focus:ring-2 focus:ring-sebaaq-blue focus:border-sebaaq-blue"
-                      aria-describedby="origin-help"
-                    >
-                      <SelectValue placeholder="اختر مدينة الإرسال في الصين" />
-                    </SelectTrigger>
-                    <SelectContent className="bg-white border-gray-300">
-                      <SelectItem value="guangzhou">قوانغتشو</SelectItem>
-                      <SelectItem value="shenzhen">شنتشن</SelectItem>
-                      <SelectItem value="shanghai">شنغهاي</SelectItem>
-                      <SelectItem value="beijing">بكين</SelectItem>
-                      <SelectItem value="yiwu">ييوو</SelectItem>
-                    </SelectContent>
-                  </Select>
-                  <div id="origin-help" className="text-xs text-gray-400">
-                    اختر المدينة التي ستنطلق منها الشحنة في الصين
-                  </div>
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="destination" className="text-gray-300 text-sm sm:text-base font-medium">
-                    المدينة المستقبلة <span className="text-red-400" aria-label="مطلوب">*</span>
-                  </Label>
-                  <Select onValueChange={(value) => handleInputChange('destination', value)} required>
-                    <SelectTrigger 
-                      className="bg-white/20 border-gray-400 text-white h-10 sm:h-11 focus:ring-2 focus:ring-sebaaq-blue focus:border-sebaaq-blue"
-                      aria-describedby="destination-help"
-                    >
-                      <SelectValue placeholder="اختر مدينة الوصول في السعودية" />
-                    </SelectTrigger>
-                    <SelectContent className="bg-white border-gray-300">
-                      <SelectItem value="riyadh">الرياض</SelectItem>
-                      <SelectItem value="jeddah">جدة</SelectItem>
-                      <SelectItem value="dammam">الدمام</SelectItem>
-                      <SelectItem value="mecca">مكة المكرمة</SelectItem>
-                      <SelectItem value="medina">المدينة المنورة</SelectItem>
-                    </SelectContent>
-                  </Select>
-                  <div id="destination-help" className="text-xs text-gray-400">
-                    اختر المدينة التي ستصل إليها الشحنة في السعودية
-                  </div>
-                </div>
-              </div>
-
+              {/* Weight */}
               <div className="space-y-2">
-                <Label htmlFor="shippingType" className="text-gray-300 text-sm sm:text-base font-medium">
-                  نوع الشحن <span className="text-red-400" aria-label="مطلوب">*</span>
+                <Label htmlFor="weight" className="text-gray-300 text-sm sm:text-base font-medium">
+                  الوزن (كيلوغرام) <span className="text-red-400" aria-label="مطلوب">*</span>
                 </Label>
-                <Select onValueChange={(value) => handleInputChange('shippingType', value)} required>
+                <Input
+                  id="weight"
+                  type="number"
+                  min="0"
+                  step="0.1"
+                  placeholder="مثال: 5.5"
+                  value={formData.weight}
+                  onChange={(e) => handleInputChange('weight', e.target.value)}
+                  className="bg-white/20 border-gray-400 text-white placeholder:text-gray-400 h-10 sm:h-11 text-sm sm:text-base focus:ring-2 focus:ring-sebaaq-blue focus:border-sebaaq-blue"
+                  aria-describedby="weight-help"
+                  required
+                />
+                <div id="weight-help" className="text-xs text-gray-400">
+                  أدخل الوزن الإجمالي للشحنة بالكيلوغرام
+                </div>
+              </div>
+
+              {/* Product Type */}
+              <div className="space-y-2">
+                <Label htmlFor="productType" className="text-gray-300 text-sm sm:text-base font-medium">
+                  نوع المنتج <span className="text-red-400" aria-label="مطلوب">*</span>
+                </Label>
+                <Select onValueChange={(value) => handleInputChange('productType', value)} required>
                   <SelectTrigger 
                     className="bg-white/20 border-gray-400 text-white h-10 sm:h-11 focus:ring-2 focus:ring-sebaaq-blue focus:border-sebaaq-blue"
-                    aria-describedby="shipping-type-help"
+                    aria-describedby="product-type-help"
                   >
-                    <SelectValue placeholder="اختر نوع الشحن المناسب" />
+                    <SelectValue placeholder="اختر نوع المنتج" />
                   </SelectTrigger>
                   <SelectContent className="bg-white border-gray-300">
-                    <SelectItem value="sea">
-                      <div className="flex items-center gap-2">
-                        <Ship className="w-4 h-4" aria-hidden="true" />
-                        شحن بحري (15-30 يوم)
-                      </div>
+                    <SelectItem value="non-electronic">
+                      منتجات غير إلكترونية بدون بطارية - 900 ريال لكل متر مكعب
                     </SelectItem>
-                    <SelectItem value="air">
-                      <div className="flex items-center gap-2">
-                        <Plane className="w-4 h-4" aria-hidden="true" />
-                        شحن جوي (3-7 أيام)
-                      </div>
+                    <SelectItem value="electronic-no-battery">
+                      أجهزة إلكترونية بدون بطارية - 1200 ريال لكل متر مكعب
                     </SelectItem>
-                    <SelectItem value="express">
-                      <div className="flex items-center gap-2">
-                        <Truck className="w-4 h-4" aria-hidden="true" />
-                        شحن سريع (1-3 أيام)
-                      </div>
+                    <SelectItem value="with-battery">
+                      منتجات تحتوي على بطارية - 1300 ريال لكل متر مكعب
                     </SelectItem>
                   </SelectContent>
                 </Select>
-                <div id="shipping-type-help" className="text-xs text-gray-400">
-                  اختر نوع الشحن حسب السرعة المطلوبة والميزانية
+                <div id="product-type-help" className="text-xs text-gray-400">
+                  اختر نوع المنتج لتحديد السعر المناسب
                 </div>
               </div>
 
@@ -194,35 +199,25 @@ const ShippingCalculatorSection = () => {
               <div id="calculate-button-help" className="text-xs text-gray-400 text-center mt-2">
                 انقر لحساب تكلفة الشحن التقديرية بناءً على البيانات المدخلة
               </div>
+
+              {/* Results */}
+              {result.showResult && (
+                <div className="mt-6 p-4 bg-sebaaq-blue/20 rounded-lg border border-sebaaq-blue/30">
+                  <h3 className="text-white text-lg font-bold mb-3">نتائج الحساب:</h3>
+                  <div className="space-y-2 text-gray-200">
+                    <div className="flex justify-between">
+                      <span>الحجم (CBM):</span>
+                      <span className="font-semibold text-sebaaq-blue">{result.cbm} متر مكعب</span>
+                    </div>
+                    <div className="flex justify-between text-lg font-bold">
+                      <span>التكلفة الإجمالية:</span>
+                      <span className="text-sebaaq-blue">{result.totalPrice} ريال سعودي</span>
+                    </div>
+                  </div>
+                </div>
+              )}
             </CardContent>
           </Card>
-
-          {/* Pricing Chart */}
-          <div className="space-y-4 sm:space-y-6 order-1 lg:order-2">
-            <div className="bg-white rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8 shadow-lg sm:shadow-2xl">
-              <picture>
-                <source 
-                  srcSet="/lovable-uploads/fc517a5f-1ae6-42e8-80af-97ea437eaf38.webp" 
-                  type="image/webp"
-                />
-                <img 
-                  src="/lovable-uploads/fc517a5f-1ae6-42e8-80af-97ea437eaf38.png" 
-                  alt="مخطط توضيحي يُظهر تقديرات أسعار الشحن المختلفة من الصين إلى السعودية حسب الوزن ونوع الشحن" 
-                  className="w-full rounded-lg"
-                  loading="lazy"
-                />
-              </picture>
-            </div>
-            
-            <div className="text-center">
-              <h3 className="text-xl sm:text-2xl font-bold text-white mb-3 sm:mb-4">
-                تحليل ذكي للأسعار
-              </h3>
-              <p className="text-gray-300 leading-relaxed text-sm sm:text-base">
-                نستخدم تقنيات متقدمة لحساب أسعار الشحن. نحلل البيانات لتقديم أفضل العروض المتاحة حسب احتياجاتكم.
-              </p>
-            </div>
-          </div>
         </div>
       </div>
     </section>

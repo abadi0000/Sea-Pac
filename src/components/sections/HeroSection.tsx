@@ -86,11 +86,7 @@ const HeroSection = () => {
               </div>
               <div className="bg-white/10 backdrop-blur-sm rounded-lg sm:rounded-xl p-3 sm:p-4 md:p-6 border border-white/20 hover:bg-white/15 transition-all duration-300 focus-within:ring-2 focus-within:ring-sebaaq-blue focus-within:ring-offset-2" role="listitem">
                 <Truck className="w-6 h-6 sm:w-8 sm:h-8 text-sebaaq-blue mx-auto mb-2 sm:mb-3" aria-hidden="true" />
-                <p className="text-white text-xs sm:text-sm font-medium">توصيل مباشر</p>
-              </div>
-              <div className="bg-white/10 backdrop-blur-sm rounded-lg sm:rounded-xl p-3 sm:p-4 md:p-6 border border-white/20 hover:bg-white/15 transition-all duration-300 focus-within:ring-2 focus-within:ring-sebaaq-blue focus-within:ring-offset-2" role="listitem">
-                <Package className="w-6 h-6 sm:w-8 sm:h-8 text-sebaaq-blue mx-auto mb-2 sm:mb-3" aria-hidden="true" />
-                <p className="text-white text-xs sm:text-sm font-medium">تغليف احترافي</p>
+                <p className="text-white text-xs sm:text-sm font-medium">توريد وتركيب وصيانة آلات حديثة</p>
               </div>
             </div>
           
