@@ -1,7 +1,8 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Car, Droplets, Wind, Sparkles, Clock, Users, Shield, Star, Gauge, Target } from 'lucide-react';
+import { Car, Droplets, Wind, Sparkles, Clock, Users, Shield, Star, Gauge, Target, ArrowLeft, Timer, Zap, CheckCircle } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const CarWash = () => {
   const carWashTypes = [
@@ -101,6 +102,28 @@ const CarWash = () => {
     }
   ];
 
+  const availableProducts = [
+    {
+      id: "bt900",
+      title: "BT900",
+      subtitle: "نظام الغسيل المتطور",
+      description: "أحدث تقنيات الغسيل الأوتوماتيكي مع نظام 2 في 1: غسيل بدون لمس + غسيل بالفرش. تقنيات متطورة تضمن أداءً فائق الكفاءة.",
+      capacity: "60 سيارة/ساعة",
+      washTime: "1 دقيقة",
+      warranty: "10 سنوات",
+      features: [
+        "نظام ذكي ضد الاصطدام",
+        "تشخيص ذاتي للأخطاء", 
+        "9 فرش ناعمة جداً",
+        "نسبة تجفيف 99%",
+        "مضخة ألمانية 100 بار",
+        "دعم فني مدى الحياة"
+      ],
+      route: "/car-wash/bt900",
+      featured: true
+    }
+  ];
+
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
@@ -195,6 +218,105 @@ const CarWash = () => {
                 <p className="text-gray-600 text-sm leading-relaxed">
                   {feature.description}
                 </p>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Available Products Section */}
+      <section className="py-20 bg-white" dir="rtl">
+        <div className="container mx-auto px-6">
+          <h2 className="font-playfair text-3xl md:text-5xl font-bold text-sebaaq-midnight text-center mb-16">
+            المنتجات المتاحة
+            <span className="gradient-text block">أحدث أنظمة الغسيل</span>
+          </h2>
+          <div className="grid md:grid-cols-1 lg:grid-cols-1 gap-8 max-w-4xl mx-auto">
+            {availableProducts.map((product, index) => (
+              <Card key={index} className="p-8 hover:shadow-2xl transition-all duration-300 transform hover:scale-105 bg-gradient-to-br from-white to-blue-50 border-2 border-sebaaq-blue/20">
+                <div className="flex flex-col lg:flex-row gap-8">
+                  {/* Product Info */}
+                  <div className="flex-1">
+                    <div className="flex items-center mb-6">
+                      {product.featured && (
+                        <div className="bg-gradient-to-r from-orange-500 to-red-500 text-white px-3 py-1 rounded-full text-sm font-bold ml-4">
+                          مميز
+                        </div>
+                      )}
+                      <div>
+                        <h3 className="font-playfair text-3xl font-bold text-sebaaq-midnight leading-tight">
+                          {product.title}
+                        </h3>
+                        <p className="text-sebaaq-blue font-medium text-lg">{product.subtitle}</p>
+                      </div>
+                    </div>
+                    
+                    <p className="text-gray-600 mb-6 leading-relaxed text-lg">
+                      {product.description}
+                    </p>
+                    
+                    {/* Specs Grid */}
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                      <div className="bg-gradient-to-r from-sebaaq-blue/10 to-blue-400/10 p-4 rounded-lg text-center">
+                        <div className="flex items-center justify-center mb-2">
+                          <Gauge className="w-5 h-5 text-sebaaq-blue ml-2" />
+                          <span className="font-semibold text-sebaaq-midnight">السرعة</span>
+                        </div>
+                        <p className="text-sebaaq-blue font-bold">{product.capacity}</p>
+                      </div>
+                      <div className="bg-gradient-to-r from-green-500/10 to-emerald-400/10 p-4 rounded-lg text-center">
+                        <div className="flex items-center justify-center mb-2">
+                          <Timer className="w-5 h-5 text-green-600 ml-2" />
+                          <span className="font-semibold text-sebaaq-midnight">وقت الغسيل</span>
+                        </div>
+                        <p className="text-green-600 font-bold">{product.washTime}</p>
+                      </div>
+                      <div className="bg-gradient-to-r from-purple-500/10 to-violet-400/10 p-4 rounded-lg text-center">
+                        <div className="flex items-center justify-center mb-2">
+                          <Shield className="w-5 h-5 text-purple-600 ml-2" />
+                          <span className="font-semibold text-sebaaq-midnight">الضمان</span>
+                        </div>
+                        <p className="text-purple-600 font-bold">{product.warranty}</p>
+                      </div>
+                    </div>
+                    
+                    {/* Features */}
+                    <div className="mb-8">
+                      <h4 className="font-bold text-sebaaq-midnight mb-4 text-lg">المميزات الرئيسية:</h4>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                        {product.features.map((feature, idx) => (
+                          <div key={idx} className="flex items-center text-gray-600">
+                            <CheckCircle className="w-5 h-5 text-green-500 ml-3 flex-shrink-0" />
+                            <span className="font-medium">{feature}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                    
+                    {/* CTA Button */}
+                    <Link to={product.route}>
+                      <Button className="bg-gradient-to-r from-sebaaq-blue to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white px-8 py-4 rounded-lg font-semibold text-lg group transition-all duration-300">
+                        تفاصيل أكثر عن {product.title}
+                        <ArrowLeft className="w-5 h-5 mr-2 group-hover:transform group-hover:-translate-x-1 transition-transform" />
+                      </Button>
+                    </Link>
+                  </div>
+                  
+                  {/* Product Image Placeholder */}
+                  <div className="lg:w-80">
+                    <div className="aspect-square rounded-2xl bg-gradient-to-br from-blue-100 to-blue-200 flex items-center justify-center relative overflow-hidden border-4 border-sebaaq-blue/20">
+                      <div className="absolute inset-0 bg-gradient-to-br from-sebaaq-blue/20 via-blue-500/20 to-purple-500/20"></div>
+                      <div className="relative z-10 text-center">
+                        <div className="text-6xl font-bold text-sebaaq-blue mb-4">{product.title}</div>
+                        <div className="flex items-center justify-center gap-4 text-sebaaq-blue/70">
+                          <Droplets className="h-12 w-12" />
+                          <Zap className="h-12 w-12" />
+                          <Wind className="h-12 w-12" />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </Card>
             ))}
           </div>
