@@ -13,8 +13,7 @@ const Navigation = () => {
     { path: '/consultation-services', label: 'الخدمات الاستشارية' },
     { path: '/sebaaq-machine', label: 'سـي بـاك ماشـين' },
     { path: '/parts-maintenance', label: 'قطع الغيار والصيانة' },
-    { path: '/alibaba', label: 'استورد من الصين' },
-    { path: '/invest', label: 'استثمر معنا' }
+    { path: '/alibaba', label: 'استورد من الصين' }
   ];
 
   const toggleMenu = () => setIsOpen(!isOpen);
