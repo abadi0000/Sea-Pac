@@ -270,13 +270,24 @@ const CarWashBT500 = () => {
               className="relative mt-16"
             >
               <div className="relative mx-auto max-w-4xl">
-                <div className="aspect-video rounded-3xl bg-gradient-to-br from-primary/10 to-secondary/10 backdrop-blur-sm border border-primary/20 overflow-hidden">
-                  <img 
-                    src="https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=800&h=600&fit=crop" 
-                    alt="نظام BT500 الأوتوماتيكي"
-                    className="w-full h-full object-cover rounded-3xl"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-background/20 to-transparent" />
+                <div className="grid lg:grid-cols-2 gap-8 items-center">
+                  <div className="aspect-square rounded-3xl bg-gradient-to-br from-primary/10 to-secondary/10 backdrop-blur-sm border border-primary/20 overflow-hidden">
+                    <img 
+                      src="/lovable-uploads/c081f3eb-1547-47f0-9e8e-53a43ecacb57.png" 
+                      alt="نظام BT500 الأوتوماتيكي - منظر أمامي"
+                      className="w-full h-full object-cover rounded-3xl"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-background/20 to-transparent" />
+                  </div>
+                  
+                  <div className="aspect-square rounded-3xl bg-gradient-to-br from-primary/10 to-secondary/10 backdrop-blur-sm border border-primary/20 overflow-hidden">
+                    <img 
+                      src="/lovable-uploads/874ddf82-5416-4769-a260-5b080bc8eb43.png" 
+                      alt="نظام BT500 الأوتوماتيكي - منظر جانبي"
+                      className="w-full h-full object-cover rounded-3xl"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-background/20 to-transparent" />
+                  </div>
                 </div>
                 
                 {/* Floating Stats */}
