@@ -273,18 +273,18 @@ const CarWashBT500 = () => {
                 <div className="grid lg:grid-cols-2 gap-8 items-center">
                   <div className="aspect-square rounded-3xl bg-gradient-to-br from-primary/10 to-secondary/10 backdrop-blur-sm border border-primary/20 overflow-hidden">
                     <img 
-                      src="/lovable-uploads/c081f3eb-1547-47f0-9e8e-53a43ecacb57.png" 
+                      src="/lovable-uploads/cc671829-aaa7-4559-affa-11d056fbcf5d.png" 
                       alt="نظام BT500 الأوتوماتيكي - منظر أمامي"
-                      className="w-full h-full object-cover rounded-3xl"
+                      className="w-full h-full object-contain rounded-3xl"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-background/20 to-transparent" />
                   </div>
                   
                   <div className="aspect-square rounded-3xl bg-gradient-to-br from-primary/10 to-secondary/10 backdrop-blur-sm border border-primary/20 overflow-hidden">
                     <img 
-                      src="/lovable-uploads/874ddf82-5416-4769-a260-5b080bc8eb43.png" 
+                      src="/lovable-uploads/4fc5de97-552b-4944-9b40-833efae54802.png" 
                       alt="نظام BT500 الأوتوماتيكي - منظر جانبي"
-                      className="w-full h-full object-cover rounded-3xl"
+                      className="w-full h-full object-contain rounded-3xl"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-background/20 to-transparent" />
                   </div>
