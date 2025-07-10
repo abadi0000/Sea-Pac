@@ -22,7 +22,7 @@ const Navigation = () => {
   return (
     <nav className="bg-white shadow-md border-b sticky top-0 z-50" role="navigation" aria-label="التنقل الرئيسي">
       <div className="container mx-auto px-4 sm:px-6">
-        <div className="flex items-center justify-between h-14 sm:h-16">
+        <div className="flex items-center justify-between h-18 sm:h-24">
           {/* Logo */}
           <Link 
             to="/" 
@@ -32,7 +32,7 @@ const Navigation = () => {
             <img 
               src="/lovable-uploads/57df7416-e6c6-422e-a76e-219744fc7bf2.png" 
               alt="شعار شركة سي باك لوجستيك" 
-              className="h-12 sm:h-14 w-auto"
+              className="h-16 sm:h-20 w-auto"
             />
           </Link>
 
