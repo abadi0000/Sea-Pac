@@ -2,7 +2,14 @@
 const TrackingSection = () => {
   return (
     <section className="py-20 bg-white relative overflow-hidden">
-      <div className="absolute bottom-0 left-0 w-64 h-64 bg-blue-400/5 rounded-full blur-3xl"></div>
+      {/* Background Map Image */}
+      <div className="absolute inset-0 opacity-10">
+        <img 
+          src="/lovable-uploads/d4715ba8-3fda-4d93-9d3e-41d8c45c54d2.png" 
+          alt="Shipping Routes Map" 
+          className="w-full h-full object-cover"
+        />
+      </div>
       
       <div className="relative z-10 container mx-auto px-6">
         <div className="max-w-4xl mx-auto text-center">
