@@ -1,5 +1,6 @@
 
 import HeroSection from "@/components/sections/HeroSection";
+import ServicesTabsSection from "@/components/sections/ServicesTabsSection";
 import StatsSection from "@/components/sections/StatsSection";
 import ServicesSection from "@/components/sections/ServicesSection";
 import ShippingCalculatorSection from "@/components/sections/ShippingCalculatorSection";
@@ -13,6 +14,7 @@ const Index = () => {
   return (
     <div className="min-h-screen">
       <HeroSection />
+      <ServicesTabsSection />
       <ShippingCalculatorSection />
       <FeaturesSectionWithHoverEffects />
       <StatsSection />
