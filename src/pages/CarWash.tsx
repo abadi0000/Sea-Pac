@@ -5,49 +5,6 @@ import { Car, Droplets, Wind, Sparkles, Clock, Users, Shield, Star, Gauge, Targe
 import { Link } from 'react-router-dom';
 
 const CarWash = () => {
-  const carWashTypes = [
-    {
-      title: "مغاسل السيارات الأوتوماتيكية ذات الفرش",
-      subtitle: "Roll-over Car Wash Machines",
-      description: "تتحرك هذه الآلات برشاقة فوق السيارة الثابتة، لتلامس كل زاوية بفرشها الناعمة المبتكرة، مانحةً إياها نظافة شاملة من السقف إلى الإطارات.",
-      capacity: "50 - 100 سيارة يوميًا",
-      icon: Car,
-      features: ["فرش ناعمة متطورة", "نظافة شاملة", "سرعة في الخدمة", "كفاءة عالية"]
-    },
-    {
-      title: "مغاسل السيارات النفقية",
-      subtitle: "Tunnel Car Wash Systems",
-      description: "تجربة غسيل سريعة ومثالية للمواقع ذات الكثافة العالية. رحلة متكاملة عبر نفق يضم محطات غسيل متتالية من الرش المكثف والصابون الغزير إلى الفرش الدقيقة والشمع اللامع والتجفيف الاحترافي.",
-      capacity: "300 - 800 سيارة يوميًا",
-      icon: Wind,
-      features: ["إنتاجية عالية جداً", "تجربة متكاملة", "مناسب للكثافة العالية", "تجفيف احترافي"]
-    },
-    {
-      title: "مغاسل السيارات بدون لمس",
-      subtitle: "Touchless Car Wash",
-      description: "تقنية ثورية تعتمد على قوة رش الماء عالي الضغط والمواد الكيميائية المتطورة لتنظيف السيارة بعمق دون أي تلامس مادي للفرش. مع نماذج بذراع واحدة أو مزدوجة تدور 360 درجة.",
-      capacity: "70 - 150 سيارة يوميًا",
-      icon: Droplets,
-      features: ["لا خدوش", "تغطية 360 درجة", "حماية الطلاء", "تنظيف عميق"]
-    },
-    {
-      title: "مغاسل السيارات المتخصصة",
-      subtitle: "Specialized Car Wash",
-      description: "أنظمة متخصصة للشاحنات والباصات، وأنظمة غسيل بالبخار، وأنظمة غسيل العجلات المتخصصة.",
-      capacity: "10 - 50 مركبة يوميًا",
-      icon: Sparkles,
-      features: ["للمركبات الكبيرة", "غسيل بالبخار", "تنظيف العجلات", "تعقيم فائق"]
-    },
-    {
-      title: "أنظمة الغسيل الذاتي",
-      subtitle: "Self-Service Car Wash",
-      description: "محطات تمنح العملاء حرية الاختيار والتحكم الكامل، مع جميع المعدات الآلية الحديثة مثل خراطيم الضغط العالي ومرشات الصابون.",
-      capacity: "50 - 200 سيارة يوميًا",
-      icon: Users,
-      features: ["تحكم العميل", "مرونة في الخدمة", "معدات حديثة", "خدمة متنوعة"]
-    }
-  ];
-
   const technicalFeatures = [
     {
       title: "أنظمة التجفيف المدمجة",
@@ -231,71 +188,6 @@ const CarWash = () => {
             <Button variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-sebaaq-midnight px-8 py-4 rounded-lg font-semibold">
               جولة افتراضية
             </Button>
-          </div>
-        </div>
-      </section>
-
-      {/* Car Wash Types Section */}
-      <section className="py-20 bg-gray-50">
-        <div className="container mx-auto px-6">
-          <h2 className="font-playfair text-3xl md:text-5xl font-bold text-sebaaq-midnight text-center mb-16">
-            أنواع مغاسل السيارات
-            <span className="gradient-text block">الأوتوماتيكية</span>
-          </h2>
-          <div className="grid md:grid-cols-1 lg:grid-cols-2 gap-8">
-            {carWashTypes.map((washType, index) => (
-              <Card key={index} className="p-6 hover:shadow-2xl transition-all duration-300 transform hover:scale-105">
-                <div className="flex items-center mb-4">
-                  <div className="w-14 h-14 bg-gradient-to-br from-sebaaq-blue to-blue-400 rounded-lg flex items-center justify-center ml-4">
-                    <washType.icon className="w-7 h-7 text-white" />
-                  </div>
-                  <div>
-                    <h3 className="font-playfair text-xl font-bold text-sebaaq-midnight leading-tight">
-                      {washType.title}
-                    </h3>
-                    <p className="text-sebaaq-blue font-medium text-sm">{washType.subtitle}</p>
-                  </div>
-                </div>
-                <p className="text-gray-600 mb-4 leading-relaxed">
-                  {washType.description}
-                </p>
-                <div className="bg-gradient-to-r from-sebaaq-blue/10 to-blue-400/10 p-4 rounded-lg mb-4">
-                  <p className="text-sebaaq-midnight font-semibold">
-                    القدرة الاستيعابية: <span className="text-sebaaq-blue">{washType.capacity}</span>
-                  </p>
-                </div>
-                <div className="grid grid-cols-2 gap-2">
-                  {washType.features.map((feature, idx) => (
-                    <div key={idx} className="flex items-center text-sm text-gray-600">
-                      <Star className="w-4 h-4 text-sebaaq-blue ml-2 flex-shrink-0" />
-                      {feature}
-                    </div>
-                  ))}
-                </div>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Technical Features Section */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-6">
-          <h2 className="font-playfair text-3xl md:text-5xl font-bold text-sebaaq-midnight text-center mb-16">
-            التقنيات والميزات
-            <span className="gradient-text block">المتقدمة</span>
-          </h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {technicalFeatures.map((feature, index) => (
-              <Card key={index} className="p-6 text-center hover:shadow-lg transition-shadow duration-300">
-                <h3 className="font-playfair text-lg font-bold text-sebaaq-midnight mb-3">
-                  {feature.title}
-                </h3>
-                <p className="text-gray-600 text-sm leading-relaxed">
-                  {feature.description}
-                </p>
-              </Card>
-            ))}
           </div>
         </div>
       </section>
