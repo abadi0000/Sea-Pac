@@ -86,8 +86,9 @@ export function CargoShipRoute({
   });
 
   const projectPoint = (lat: number, lng: number) => {
-    const x = (lng + 180) * (800 / 360);
-    const y = (90 - lat) * (400 / 180);
+    // Adjusted projection to match the map image layout
+    const x = ((lng + 180) * (800 / 360)) - 50; // Slight offset for better positioning
+    const y = ((90 - lat) * (400 / 180)) + 20; // Slight offset for better positioning
     return { x, y };
   };
 
@@ -153,7 +154,7 @@ export function CargoShipRoute({
       {/* Map */}
       <div className="relative aspect-[2/1] bg-white">
         <img
-          src="/lovable-uploads/c816dc83-442d-40b5-89e3-58f1872702cd.png"
+          src="/lovable-uploads/7a827e62-065b-447a-85a9-35d7d757eefb.png"
           className="h-full w-full object-cover pointer-events-none select-none"
           alt="خريطة مسارات الشحن"
           draggable={false}
