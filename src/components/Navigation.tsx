@@ -30,8 +30,8 @@ const Navigation = () => {
             aria-label="سـي بـاك - الصفحة الرئيسية"
           >
             <img 
-              src="/lovable-uploads/57df7416-e6c6-422e-a76e-219744fc7bf2.png" 
-              alt="شعار شركة سي باك لوجستيك" 
+              src="/lovable-uploads/130fbaf4-5a41-47ad-9bb9-9693989a851b.png" 
+              alt="شعار شركة سي باك" 
               className="h-16 sm:h-20 w-auto"
             />
           </Link>
