@@ -68,13 +68,13 @@ interface ServicesTabsSectionProps {
 
 const ServicesTabsSection = ({
   badge = "خدمات سي باك",
-  heading = "حلول الاستيراد والشحن المتكاملة من الصين",
-  description = "نقدم خدمات شاملة للاستيراد والشحن مع الخبرة والكفاءة العالية",
+  heading = "خدمات سي باك لوجستك",
+  description = "نقدم خدمات شاملة للاستيراد والشحن وتوريد الآلات مع الخبرة والكفاءة العالية",
   tabs = [
     {
       value: "shipping",
       icon: <Truck className="h-auto w-5 shrink-0" />,
-      label: "الشحن البحري والجوي",
+      label: "خدمات الشحن والاستيراد",
       content: {
         badge: "شحن سريع",
         title: "شحن جزئي وحاويات كاملة",
@@ -98,22 +98,9 @@ const ServicesTabsSection = ({
       },
     },
     {
-      value: "sourcing",
-      icon: <Search className="h-auto w-5 shrink-0" />,
-      label: "البحث عن المصانع",
-      content: {
-        badge: "مصادر موثوقة",
-        title: "تحديد أفضل الموردين والمنتجات",
-        description: "نبسط استيرادك من الصين بتحديد المصادر الموثوقة والتفاوض الفعال وضمان الجودة",
-        buttonText: "ابدأ البحث",
-        imageSrc: "https://images.unsplash.com/photo-1565793298595-6a879b1d9492?w=600&h=400&fit=crop",
-        imageAlt: "مصانع صينية",
-      },
-    },
-    {
       value: "consultation",
       icon: <MessageCircle className="h-auto w-5 shrink-0" />,
-      label: "الاستشارة",
+      label: "خدمات استشارية",
       content: {
         badge: "خبرة متخصصة",
         title: "استشارات متخصصة في السوق الصيني",
@@ -142,7 +129,7 @@ const ServicesTabsSection = ({
 
         <Tabs defaultValue={tabs[0].value} className="mt-16">
           <div className="relative">
-            <TabsList className="grid w-full max-w-4xl mx-auto grid-cols-2 lg:grid-cols-4 h-auto bg-background/60 backdrop-blur-md border border-border/50 rounded-2xl p-1 shadow-lg">
+            <TabsList className="grid w-full max-w-4xl mx-auto grid-cols-3 h-auto bg-background/60 backdrop-blur-md border border-border/50 rounded-2xl p-1 shadow-lg">
               {tabs.map((tab) => (
                 <TabsTrigger
                   key={tab.value}
