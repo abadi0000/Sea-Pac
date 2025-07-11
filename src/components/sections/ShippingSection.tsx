@@ -98,9 +98,9 @@ const ShippingSection = () => {
         </div>
 
         {/* Tabs Container */}
-        <div className="bg-white rounded-3xl shadow-2xl p-8 mb-12 border border-gray-100">
+        <div className="bg-white rounded-3xl shadow-2xl p-8 mb-12 border border-gray-100 text-center">
           {/* Tab Navigation */}
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-7 gap-3 mb-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-7 gap-3 mb-8 justify-items-center">
             {shippingFeatures.map((feature, index) => (
               <button
                 key={index}
@@ -122,15 +122,15 @@ const ShippingSection = () => {
           </div>
 
           {/* Active Tab Content */}
-          <div className="bg-gradient-to-r from-blue-50/50 to-indigo-50/50 rounded-2xl p-8 min-h-[120px] flex items-center">
-            <div className="w-full">
-              <div className="flex items-center mb-4">
+          <div className="bg-gradient-to-r from-blue-50/50 to-indigo-50/50 rounded-2xl p-8 min-h-[120px] flex items-center justify-center text-center">
+            <div className="w-full max-w-4xl">
+              <div className="flex items-center justify-center mb-4">
                 <span className="text-4xl ml-4">{shippingFeatures[activeTab].emoji}</span>
-                <h4 className="text-2xl font-bold text-sebaaq-midnight">
+                <h4 className="text-2xl font-bold text-sebaaq-midnight text-center">
                   {shippingFeatures[activeTab].title}
                 </h4>
               </div>
-              <p className="text-gray-700 leading-relaxed text-lg">
+              <p className="text-gray-700 leading-relaxed text-lg text-center max-w-3xl mx-auto">
                 {shippingFeatures[activeTab].description}
               </p>
             </div>
