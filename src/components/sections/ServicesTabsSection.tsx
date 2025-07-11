@@ -190,7 +190,7 @@ const ServicesTabsSection = ({
                   className="flex flex-col items-center gap-3 rounded-xl px-6 py-8 text-base font-semibold transition-all duration-300 data-[state=active]:bg-gradient-to-br data-[state=active]:from-primary data-[state=active]:to-primary/80 data-[state=active]:text-primary-foreground data-[state=active]:shadow-lg hover:bg-accent/50 font-cairo"
                 >
                   <div className="text-xl">{tab.icon}</div>
-                  <span className="text-center text-base font-semibold leading-tight">{tab.label}</span>
+                  <span className="text-center text-2xl font-bold leading-tight bg-gradient-to-r from-foreground to-foreground/80 bg-clip-text font-cairo">{tab.label}</span>
                 </TabsTrigger>
               ))}
             </TabsList>
