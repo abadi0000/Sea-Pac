@@ -73,7 +73,7 @@ const ServicesTabsSection = ({
   tabs = [
     {
       value: "shipping",
-      icon: <Truck className="h-auto w-5 shrink-0" />,
+      icon: <img src="/lovable-uploads/d7f1cba7-dbec-4c7e-85f2-3f7da1660c17.png" alt="خدمات الشحن" className="w-8 h-8" />,
       label: "خدمات الشحن والاستيراد",
       content: {
         badge: "حلول لوجستية متكاملة",
@@ -86,7 +86,7 @@ const ServicesTabsSection = ({
     },
     {
       value: "consultation",
-      icon: <MessageCircle className="h-auto w-5 shrink-0" />,
+      icon: <img src="/lovable-uploads/ca0e3cbf-cfd3-4fe0-88e7-173dc3ac0bc2.png" alt="خدمات استشارية" className="w-8 h-8" />,
       label: "خدمات استشارية",
       content: {
         badge: "خبرة متخصصة",
@@ -99,7 +99,7 @@ const ServicesTabsSection = ({
     },
     {
       value: "machinery",
-      icon: <Cog className="h-auto w-5 shrink-0" />,
+      icon: <img src="/lovable-uploads/36e35649-f04b-406a-94e8-2c8d6d70df5d.png" alt="توريد الآلات" className="w-8 h-8" />,
       label: "توريد وتركيب الآلات",
       content: {
         badge: "خبرة تقنية متقدمة",
