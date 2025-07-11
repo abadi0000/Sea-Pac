@@ -5,17 +5,17 @@ import { Truck, ShoppingCart, MessageSquare, FileSearch, Shield, Package, Clock,
 const FeaturesSectionWithHoverEffects = () => {
   const services = [
     {
-      icon: <Truck className="w-8 h-8 text-primary" />,
+      icon: <img src="/lovable-uploads/d7f1cba7-dbec-4c7e-85f2-3f7da1660c17.png" alt="خدمات الشحن" className="w-16 h-16" />,
       title: "خدمة الشحن من الباب للباب",
       description: "نتكفل بكل تفاصيل شحن بضائعك من مكان موردك مباشرة إلى عنوانك"
     },
     {
-      icon: <ShoppingCart className="w-8 h-8 text-primary" />,
+      icon: <img src="/lovable-uploads/ca0e3cbf-cfd3-4fe0-88e7-173dc3ac0bc2.png" alt="خدمات استشارية" className="w-16 h-16" />,
       title: "حلول خدمات التجارة الإلكترونية",
       description: "ندعم نمو تجارتك الإلكترونية بتوفير خدمات لوجستية متخصصة تلبي احتياجات متجرك"
     },
     {
-      icon: <MessageSquare className="w-8 h-8 text-primary" />,
+      icon: <img src="/lovable-uploads/36e35649-f04b-406a-94e8-2c8d6d70df5d.png" alt="توريد الآلات" className="w-16 h-16" />,
       title: "تفاوض مع المصانع",
       description: "بفضل خبرتنا في المصانع والسوق الصيني نستطيع تقديم لك أسعار قيمة إضافية عن طريق التفاوض مع المصنع"
     },
