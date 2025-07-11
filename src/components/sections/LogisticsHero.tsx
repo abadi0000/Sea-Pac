@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Plane, Ship, Settings, Phone, ArrowRight, Globe, Truck, Wrench } from 'lucide-react';
+import { Plane, Ship, Settings, Phone, ArrowRight, Globe, Truck, Cog } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 

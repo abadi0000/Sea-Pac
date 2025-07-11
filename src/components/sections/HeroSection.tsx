@@ -3,7 +3,7 @@
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { ArrowRightIcon, Phone, FileText } from 'lucide-react';
+import { ArrowRight, Phone, FileText } from 'lucide-react';
 import { motion, Variants } from 'framer-motion';
 import { cn } from '@/lib/utils';
 import { cva, type VariantProps } from 'class-variance-authority';
@@ -226,7 +226,7 @@ function LogisticsHero({
           <AnimatedGroup variants={transitionVariants}>
             <Badge variant="outline" className="gap-3 text-sm px-6 py-2.5 border-primary/30 bg-primary/10 backdrop-blur-sm font-cairo shadow-sm hover:bg-primary/15 transition-colors duration-300">
               <span className="text-primary font-medium">✨ خدمات لوجستية متطورة</span>
-              <ArrowRightIcon className="h-3 w-3 text-primary" />
+              <ArrowRight className="h-3 w-3 text-primary" />
             </Badge>
           </AnimatedGroup>
 

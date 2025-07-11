@@ -1,6 +1,6 @@
 
 import { useState } from 'react';
-import { Shield, Clock, Users, Star, Globe, HeadphonesIcon, Truck, ShoppingCart, MessageCircle, Search, Eye, Package, Map, Zap } from 'lucide-react';
+import { Shield, Clock, Users, Star, Globe, Headphones, Truck, ShoppingCart, MessageCircle, Search, Eye, Package, MapPin, Zap } from 'lucide-react';
 
 interface ServiceCardProps {
   icon: React.ComponentType<any>;
@@ -71,7 +71,7 @@ const ServicesSection = () => {
       description: "نتفاوض نيابة عنك مع المصانع للحصول على أفضل الأسعار وأقصر مدد التصنيع."
     },
     {
-      icon: HeadphonesIcon,
+      icon: Headphones,
       title: "استشارات مجانية",
       description: "نقدم استشارات مجانية حول الاستيراد والشحن وأفضل الحلول لاحتياجاتك."
     },
@@ -86,7 +86,7 @@ const ServicesSection = () => {
       description: "خدمات تجميع الطلبات من عدة مصانع وتخزين آمن للبضائع."
     },
     {
-      icon: Map,
+      icon: MapPin,
       title: "خبرة محلية طويلة",
       description: "خبرة تزيد عن 10 سنوات في السوق السعودي والصيني."
     },

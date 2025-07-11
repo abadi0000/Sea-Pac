@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Calculator, Ship, Plane, ArrowLeft } from "lucide-react";
+import { Calculator, Ship, Plane, ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 
@@ -77,7 +77,7 @@ const ShippingCTASection = () => {
                 <span className="text-sm text-muted-foreground">حساب دقيق للتكلفة</span>
               </div>
               <div className="flex items-center gap-3 text-right">
-                <ArrowLeft className="h-5 w-5 text-primary flex-shrink-0 rotate-180" />
+                <ArrowRight className="h-5 w-5 text-primary flex-shrink-0 rotate-180" />
                 <span className="text-sm text-muted-foreground">نتائج فورية</span>
               </div>
             </motion.div>

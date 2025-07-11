@@ -1,7 +1,7 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Factory, Utensils, Zap, Building2, Cpu, Car, Package, Droplets, Wrench, Star, Target, Shield, Gauge } from 'lucide-react';
+import { Factory, Utensils, Zap, Building2, Cpu, Car, Package, Droplets, Cog, Star, Target, Shield, Gauge } from 'lucide-react';
 
 const ProductionLines = () => {
   const industrialSectors = [
@@ -72,7 +72,7 @@ const ProductionLines = () => {
     },
     {
       title: "مصانع متخصصة وحيوية أخرى",
-      icon: Wrench,
+      icon: Cog,
       items: [
         "مصانع إنتاج الأكسجين/النيتروجين الصناعي",
         "مصانع تحلية المياه",

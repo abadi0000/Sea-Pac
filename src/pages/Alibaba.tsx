@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Shield, Search, Package, FileCheck, Truck, Users } from 'lucide-react';
+import { Shield, Search, Package, CheckCircle, Truck, Users } from 'lucide-react';
 
 const Alibaba = () => {
   const [hoveredService, setHoveredService] = useState<number | null>(null);
@@ -26,7 +26,7 @@ const Alibaba = () => {
     {
       title: "التخليص الجمركي",
       description: "نتولى جميع الإجراءات الجمركية في السعودية لضمان وصول شحنتك دون تأخير.",
-      icon: FileCheck
+      icon: CheckCircle
     }
   ];
 

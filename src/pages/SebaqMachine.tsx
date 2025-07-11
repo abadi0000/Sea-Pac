@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Wrench, Package, Settings, Headphones, Cog, Lightbulb, Cpu, Zap, MapPin, ArrowRight } from 'lucide-react';
+import { Cog, Package, Settings, Headphones, Lightbulb, Cpu, Zap, MapPin, ArrowRight } from 'lucide-react';
 
 const SebaqMachine = () => {
   const [hoveredService, setHoveredService] = useState<number | null>(null);
@@ -29,7 +29,7 @@ const SebaqMachine = () => {
     {
       title: "صيانة",
       description: "نوفر خدمات صيانة شاملة ودعمًا فنيًا لضمان استمرارية عمل الآلات بكفاءة عالية وإطالة عمرها التشغيلي.",
-      icon: Wrench
+      icon: Cog
     },
     {
       title: "توفير القطع",

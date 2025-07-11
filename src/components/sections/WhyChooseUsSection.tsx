@@ -1,6 +1,6 @@
 
 import { Card, CardContent } from "@/components/ui/card";
-import { Truck, ShoppingCart, MessageSquare, FileSearch, Shield, Package, Clock, Users } from 'lucide-react';
+import { Truck, ShoppingCart, MessageSquare, Search, Shield, Package, Clock, Users } from 'lucide-react';
 
 const WhyChooseUsSection = () => {
   const services = [
@@ -20,7 +20,7 @@ const WhyChooseUsSection = () => {
       description: "بفضل خبرتنا في المصانع والسوق الصيني نستطيع تقديم لك أسعار قيمة إضافية عن طريق التفاوض مع المصنع"
     },
     {
-      icon: <FileSearch className="w-8 h-8 text-sebaaq-blue" />,
+      icon: <Search className="w-8 h-8 text-sebaaq-blue" />,
       title: "استشارات مجانية",
       description: "نوفر رؤى متعمقة ونصائح عملية في سوق الصناعة الصيني في كافة المجالات"
     },
