@@ -1,6 +1,6 @@
 
 import { useState } from 'react';
-import { Shield, Clock, Users, Star, Globe, HeadphonesIcon } from 'lucide-react';
+import { Shield, Clock, Users, Star, Globe, HeadphonesIcon, Truck, ShoppingCart, MessageCircle, Search, Eye, Package, Map, Zap } from 'lucide-react';
 
 interface ServiceCardProps {
   icon: React.ComponentType<any>;
@@ -56,34 +56,44 @@ const ServicesSection = () => {
 
   const services = [
     {
-      icon: Shield,
-      title: "شحن آمن ومضمون",
-      description: "نضمن وصول بضائعك بأمان مع تأمين شامل وتتبع مباشر."
+      icon: Truck,
+      title: "خدمة الشحن من الباب للباب",
+      description: "نستلم شحنتك من المصنع ونوصلها حتى باب منزلك أو مكتبك."
     },
     {
-      icon: Clock,
-      title: "مواعيد دقيقة",
-      description: "التزام بالمواعيد المحددة مع شحن سريع وفعال."
+      icon: ShoppingCart,
+      title: "حلول خدمات التجارة الإلكترونية",
+      description: "خدمات شحن متخصصة لمتاجر التجارة الإلكترونية والبائعين عبر الإنترنت."
     },
     {
-      icon: Users,
-      title: "خبرة واسعة",
-      description: "فريق متخصص بخبرة تزيد عن 10 سنوات في السوق الصيني."
-    },
-    {
-      icon: Star,
-      title: "جودة عالية",
-      description: "فحص دقيق للبضائع قبل الشحن لضمان أعلى معايير الجودة."
-    },
-    {
-      icon: Globe,
-      title: "شبكة واسعة",
-      description: "علاقات قوية مع أفضل المصانع والموردين في الصين."
+      icon: MessageCircle,
+      title: "تفاوض مع المصانع لتوفير في مدة التصنيع والأسعار",
+      description: "نتفاوض نيابة عنك مع المصانع للحصول على أفضل الأسعار وأقصر مدد التصنيع."
     },
     {
       icon: HeadphonesIcon,
-      title: "دعم مستمر",
-      description: "خدمة عملاء متاحة على مدار الساعة لمساعدتك في أي وقت."
+      title: "استشارات مجانية",
+      description: "نقدم استشارات مجانية حول الاستيراد والشحن وأفضل الحلول لاحتياجاتك."
+    },
+    {
+      icon: Eye,
+      title: "فحص البضاعة",
+      description: "فحص دقيق وشامل للبضائع قبل الشحن لضمان الجودة والمطابقة للمواصفات."
+    },
+    {
+      icon: Package,
+      title: "تجميع وتخزين",
+      description: "خدمات تجميع الطلبات من عدة مصانع وتخزين آمن للبضائع."
+    },
+    {
+      icon: Map,
+      title: "خبرة محلية طويلة",
+      description: "خبرة تزيد عن 10 سنوات في السوق السعودي والصيني."
+    },
+    {
+      icon: Zap,
+      title: "شحن جزئي سريع ومباشر",
+      description: "حلول شحن سريعة للطلبات الصغيرة والعاجلة بأسعار تنافسية."
     }
   ];
 
@@ -102,46 +112,20 @@ const ServicesSection = () => {
         {/* Header */}
         <div className="text-center mb-20">
           <h2 id="services-title" className="font-playfair text-4xl md:text-5xl font-bold text-sebaaq-midnight mb-6">
-            لماذا تختار
-            <span className="gradient-text block mt-2">سي باك؟</span>
+            شركة سي باك لوجستيك:
+            <span className="gradient-text block mt-2">حلول الشحن من الصين</span>
           </h2>
-          <p className="text-gray-600 text-lg max-w-3xl mx-auto leading-relaxed">
-            نقدم حلول شحن متكاملة تجمع بين الخبرة والجودة والأمان
+          <p className="text-gray-600 text-lg max-w-4xl mx-auto leading-relaxed">
+            نوفر حلولاً لوجستية متكاملة للشركات والأفراد، وكيل شحن معتمد من الصين، مع ضمان أعلى معايير الأمان والاحترافية. نستلم شحنتك من مصانع الصين ونسلّمها مباشرة إلى عنوانك في السعودية.
           </p>
         </div>
 
-        {/* Shipping Options - Centered and Better Organized */}
-        <div className="flex flex-col lg:flex-row justify-center items-center gap-8 lg:gap-16 mb-20">
-          <div className="text-center group">
-            <div className="w-24 h-24 mx-auto bg-gradient-to-br from-sebaaq-blue to-blue-600 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-              <Globe className="w-12 h-12 text-white" />
-            </div>
-            <h3 className="font-playfair text-xl font-bold text-sebaaq-midnight mb-2">شحن بحري</h3>
-            <p className="text-gray-600 text-sm">حلول شحن اقتصادية للبضائع الكبيرة</p>
-          </div>
-          
-          <div className="text-center group">
-            <div className="w-24 h-24 mx-auto bg-gradient-to-br from-sebaaq-blue to-blue-600 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-              <Clock className="w-12 h-12 text-white" />
-            </div>
-            <h3 className="font-playfair text-xl font-bold text-sebaaq-midnight mb-2">شحن جوي</h3>
-            <p className="text-gray-600 text-sm">شحن سريع للبضائع العاجلة</p>
-          </div>
-          
-          <div className="text-center group">
-            <div className="w-24 h-24 mx-auto bg-gradient-to-br from-sebaaq-blue to-blue-600 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-              <Shield className="w-12 h-12 text-white" />
-            </div>
-            <h3 className="font-playfair text-xl font-bold text-sebaaq-midnight mb-2">توريد وتركيب وصيانة آلات حديثة</h3>
-            <p className="text-gray-600 text-sm">خدمات شاملة للآلات والمعدات</p>
-          </div>
-        </div>
 
         {/* Services Grid */}
         <div 
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12 max-w-7xl mx-auto"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12 max-w-8xl mx-auto"
           role="region"
-          aria-label="مميزات خدمات الشركة"
+          aria-label="خدمات سي باك لوجستيك"
         >
           {services.map((service, index) => (
             <ServiceCard

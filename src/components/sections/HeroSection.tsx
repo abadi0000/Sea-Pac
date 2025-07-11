@@ -3,7 +3,7 @@
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { ArrowRightIcon, Ship, Plane, Settings, Phone, FileText } from 'lucide-react';
+import { ArrowRightIcon, Phone, FileText } from 'lucide-react';
 import { motion, Variants } from 'framer-motion';
 import { cn } from '@/lib/utils';
 import { cva, type VariantProps } from 'class-variance-authority';
@@ -163,11 +163,7 @@ function AnimatedGroup({
 interface LogisticsHeroProps {
   companyName?: string;
   tagline?: string;
-  services?: {
-    seaShipping: string;
-    airShipping: string;
-    machinery: string;
-  };
+  subtitle?: string;
   ctaButtons?: {
     contact: string;
     quote: string;
@@ -176,12 +172,8 @@ interface LogisticsHeroProps {
 
 function LogisticsHero({
   companyName = "سي باك لوجستيك",
-  tagline = "حلول الشحن الذكية من الصين إلى المملكة",
-  services = {
-    seaShipping: "شحن بحري وجوي",
-    airShipping: "توريد وتركيب وصيانة",
-    machinery: "البحث عن مصانع"
-  },
+  tagline = "شريكك المتكامل للخدمات اللوجستية والتشغيلية في السعودية",
+  subtitle = "حلولًا متكاملة تشمل خدمات الشحن، الاستيراد، توريد الآلات، تركيب والصيانة",
   ctaButtons = {
     contact: "اتصل بنا الآن",
     quote: "احصل على عرض سعر"
@@ -258,44 +250,11 @@ function LogisticsHero({
             <p className="text-xl relative z-10 max-w-[800px] font-semibold text-primary opacity-95 sm:text-2xl md:text-2xl lg:text-3xl font-cairo leading-relaxed">
               {tagline}
             </p>
+            <p className="text-lg relative z-10 max-w-[900px] text-muted-foreground sm:text-xl md:text-xl lg:text-2xl font-cairo leading-relaxed mt-4">
+              {subtitle}
+            </p>
           </AnimatedGroup>
 
-          {/* Services Grid */}
-          <AnimatedGroup
-            variants={{
-              container: {
-                visible: {
-                  transition: {
-                    staggerChildren: 0.1,
-                    delayChildren: 0.6,
-                  },
-                },
-              },
-              ...transitionVariants,
-            }}
-            className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 w-full max-w-5xl px-4"
-          >
-            <div className="flex flex-col items-center gap-4 p-6 rounded-2xl bg-background/60 border border-border/30 backdrop-blur-md hover:bg-background/80 hover:border-primary/30 hover:shadow-lg hover:scale-105 transition-all duration-500 group">
-              <div className="p-4 rounded-full bg-primary/15 border border-primary/30 group-hover:bg-primary/20 transition-colors duration-300">
-                <Ship className="h-7 w-7 text-primary" />
-              </div>
-              <h3 className="text-lg font-semibold text-foreground font-cairo text-center leading-relaxed">{services.seaShipping}</h3>
-            </div>
-            
-            <div className="flex flex-col items-center gap-4 p-6 rounded-2xl bg-background/60 border border-border/30 backdrop-blur-md hover:bg-background/80 hover:border-secondary/30 hover:shadow-lg hover:scale-105 transition-all duration-500 group">
-              <div className="p-4 rounded-full bg-secondary/15 border border-secondary/30 group-hover:bg-secondary/20 transition-colors duration-300">
-                <Plane className="h-7 w-7 text-secondary-foreground" />
-              </div>
-              <h3 className="text-lg font-semibold text-foreground font-cairo text-center leading-relaxed">{services.airShipping}</h3>
-            </div>
-            
-            <div className="flex flex-col items-center gap-4 p-6 rounded-2xl bg-background/60 border border-border/30 backdrop-blur-md hover:bg-background/80 hover:border-accent/30 hover:shadow-lg hover:scale-105 transition-all duration-500 group md:col-span-1">
-              <div className="p-4 rounded-full bg-accent/15 border border-accent/30 group-hover:bg-accent/20 transition-colors duration-300">
-                <Settings className="h-7 w-7 text-accent-foreground" />
-              </div>
-              <h3 className="text-lg font-semibold text-foreground text-center font-cairo leading-relaxed">{services.machinery}</h3>
-            </div>
-          </AnimatedGroup>
 
           {/* CTA Buttons */}
           <AnimatedGroup
