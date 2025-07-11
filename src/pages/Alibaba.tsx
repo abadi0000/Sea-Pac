@@ -73,8 +73,90 @@ const Alibaba = () => {
         </div>
       </section>
 
-      {/* Services Section */}
+      {/* Factory Search Section */}
       <section className="py-20 bg-white">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="font-playfair text-3xl md:text-5xl font-bold text-sebaaq-midnight mb-6">
+              البحث عن أفضل المصانع والأسعار
+            </h2>
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
+              نساعدك في العثور على مصانع حقيقية، تقييم الجودة، ومقارنة الأسعار
+            </p>
+          </div>
+
+          {/* Warning Section */}
+          <div className="bg-gradient-to-r from-red-50 to-orange-50 border-l-4 border-red-400 p-8 rounded-lg shadow-lg mb-12 max-w-5xl mx-auto">
+            <div className="flex items-center mb-4">
+              <div className="w-20 h-20 bg-gradient-to-br from-red-500 to-orange-500 rounded-full flex items-center justify-center text-white text-3xl font-bold ml-6">
+                90%
+              </div>
+              <div>
+                <h3 className="text-2xl font-bold text-red-800 mb-2">
+                  من المنتجات المعروضة أونلاين هي من وسطاء وشركات! وباسعار مرتفعة
+                </h3>
+              </div>
+            </div>
+            <p className="text-gray-700 leading-relaxed text-lg">
+              في الواقع، أغلب المنتجات المعروضة على الإنترنت – سواء عبر مواقع كبرى مثل علي بابا أو من خلال موردين مستقلين – تُقدَّم من خلال وسطاء أو شركات تجارية لا تُمثل المصنع بشكل مباشر. هذا التعدد في الوساطة يؤدي إلى زيادة مرتفعة في الأسعار، غالبًا تتجاوز القيمة الحقيقية للمنتج.
+            </p>
+          </div>
+
+          {/* Solution Section */}
+          <div className="bg-gradient-to-r from-green-50 to-blue-50 p-8 rounded-lg shadow-lg max-w-5xl mx-auto">
+            <h3 className="text-2xl font-bold text-sebaaq-midnight mb-4 text-center">
+              سي باك طريقك المباشر للمصانع
+            </h3>
+            <p className="text-gray-700 leading-relaxed text-lg text-center mb-8">
+              من خلال الشراء المباشر من المصنع، يمكنك الحصول على أسعار المصنع، وضمان أعلى للجودة والمواصفات، وتوفير كبير في التكاليف.
+            </p>
+            
+            <div className="text-center mb-8">
+              <h4 className="text-xl font-bold text-sebaaq-blue mb-4">
+                تجاهل الوسطاء والكيانات التجارية
+              </h4>
+            </div>
+
+            {/* Process Steps */}
+            <div className="grid md:grid-cols-4 gap-6">
+              <div className="text-center">
+                <div className="w-16 h-16 bg-gradient-to-br from-sebaaq-blue to-blue-400 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Search className="w-8 h-8 text-white" />
+                </div>
+                <h5 className="font-bold text-sebaaq-midnight mb-2">تحديد المصانع</h5>
+                <p className="text-gray-600 text-sm">البحث عن المصانع الحقيقية المتخصصة</p>
+              </div>
+              
+              <div className="text-center">
+                <div className="w-16 h-16 bg-gradient-to-br from-sebaaq-blue to-blue-400 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <CheckCircle className="w-8 h-8 text-white" />
+                </div>
+                <h5 className="font-bold text-sebaaq-midnight mb-2">فحص الجودة</h5>
+                <p className="text-gray-600 text-sm">تقييم وفحص جودة المنتجات</p>
+              </div>
+              
+              <div className="text-center">
+                <div className="w-16 h-16 bg-gradient-to-br from-sebaaq-blue to-blue-400 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Users className="w-8 h-8 text-white" />
+                </div>
+                <h5 className="font-bold text-sebaaq-midnight mb-2">التفاوض</h5>
+                <p className="text-gray-600 text-sm">التفاوض المباشر للحصول على أفضل الأسعار</p>
+              </div>
+              
+              <div className="text-center">
+                <div className="w-16 h-16 bg-gradient-to-br from-sebaaq-blue to-blue-400 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Truck className="w-8 h-8 text-white" />
+                </div>
+                <h5 className="font-bold text-sebaaq-midnight mb-2">الشحن المباشر</h5>
+                <p className="text-gray-600 text-sm">شحن مباشر من المصنع إلى عنوانك</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Services Section */}
+      <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-6">
           <div className="grid md:grid-cols-2 gap-8">
             {services.map((service, index) => (
