@@ -63,7 +63,7 @@ const App = () => (
               <Route path="/parts-maintenance/production-line-parts" element={<ProductionLineParts />} />
               <Route path="/parts-maintenance/car-wash-parts" element={<CarWashParts />} />
               <Route path="/parts-maintenance/entertainment-system-parts" element={<EntertainmentSystemParts />} />
-              <Route path="/alibaba" element={<Alibaba />} />
+              <Route path="/shipping-import-china" element={<Alibaba />} />
               <Route path="/about-us" element={<AboutUs />} />
               <Route path="/invest" element={<Invest />} />
               <Route path="/pitch-deck" element={<PitchDeck />} />
