@@ -122,20 +122,20 @@ const ServicesTabsSection = ({
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting && !hasUserInteracted) {
-            // Start auto-cycling through tabs
+            // Start auto-cycling through tabs for 5 seconds only
             let currentIndex = 0;
             intervalRef.current = setInterval(() => {
               currentIndex = (currentIndex + 1) % tabs.length;
               setActiveTab(tabs[currentIndex].value);
-              
-              // Stop after one complete cycle
-              if (currentIndex === 0) {
-                if (intervalRef.current) {
-                  clearInterval(intervalRef.current);
-                  intervalRef.current = null;
-                }
-              }
             }, 2000); // Change tab every 2 seconds
+            
+            // Stop auto-cycling after 5 seconds
+            setTimeout(() => {
+              if (intervalRef.current) {
+                clearInterval(intervalRef.current);
+                intervalRef.current = null;
+              }
+            }, 5000);
           }
         });
       },
