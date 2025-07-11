@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { cn } from "@/lib/utils";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Truck, Cog, Search, MessageCircle } from "lucide-react";
+import { Truck, Cog, MessageCircle } from "lucide-react";
 
 // Feature component with hover effects
 interface FeatureProps {
@@ -112,8 +112,48 @@ const ServicesTabsSection = ({
     },
   ],
 }: ServicesTabsSectionProps) => {
+  const [activeTab, setActiveTab] = useState(tabs[0].value);
+  const [hasUserInteracted, setHasUserInteracted] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !hasUserInteracted) {
+            // Start auto-cycling through tabs
+            let currentIndex = 0;
+            const interval = setInterval(() => {
+              currentIndex = (currentIndex + 1) % tabs.length;
+              setActiveTab(tabs[currentIndex].value);
+              
+              // Stop after one complete cycle
+              if (currentIndex === 0) {
+                clearInterval(interval);
+              }
+            }, 2000); // Change tab every 2 seconds
+
+            return () => clearInterval(interval);
+          }
+        });
+      },
+      { threshold: 0.3 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, [tabs, hasUserInteracted]);
+
+  const handleTabChange = (value: string) => {
+    setActiveTab(value);
+    setHasUserInteracted(true);
+  };
+
   return (
-    <section className="py-20 bg-background" dir="rtl">
+    <section ref={sectionRef} className="py-20 bg-background" dir="rtl">
       <div className="container mx-auto px-4">
         <div className="flex flex-col items-center gap-6 text-center mb-12">
           <Badge variant="outline" className="text-primary border-primary">
@@ -127,7 +167,7 @@ const ServicesTabsSection = ({
           </p>
         </div>
 
-        <Tabs defaultValue={tabs[0].value} className="mt-16">
+        <Tabs value={activeTab} onValueChange={handleTabChange} className="mt-16">
           <div className="relative">
             <TabsList className="grid w-full max-w-4xl mx-auto grid-cols-3 h-auto bg-background/60 backdrop-blur-md border border-border/50 rounded-2xl p-1 shadow-lg">
               {tabs.map((tab) => (
@@ -159,7 +199,7 @@ const ServicesTabsSection = ({
                       {tab.content.title}
                     </h3>
                   </div>
-                  <p className="text-muted-foreground lg:text-lg leading-relaxed max-w-lg">
+                  <p className="text-muted-foreground lg:text-lg leading-relaxed max-w-lg whitespace-pre-line">
                     {tab.content.description}
                   </p>
                   <Button className="mt-6 w-fit gap-3 bg-gradient-to-r from-primary to-primary/90 hover:from-primary/90 hover:to-primary shadow-lg hover:shadow-xl transition-all duration-300 text-base px-8 py-6" size="lg">
@@ -197,7 +237,7 @@ const ServicesTabsSection = ({
             <Feature
               title="خبرة واسعة"
               description="سنوات من الخبرة في السوق الصيني وفهم عميق لاحتياجات العملاء"
-              icon={<Search className="w-6 h-6" />}
+              icon={<Truck className="w-6 h-6" />}
               index={0}
             />
             <Feature
