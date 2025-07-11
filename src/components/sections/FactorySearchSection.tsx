@@ -1,5 +1,5 @@
 
-import { Shield } from "lucide-react";
+import { AlertTriangle } from "lucide-react";
 
 const FactorySearchSection = () => {
   return (
@@ -21,11 +21,11 @@ const FactorySearchSection = () => {
              <div className="bg-gradient-to-r from-red-500/20 to-orange-500/20 rounded-xl p-8 mb-8 border border-red-500/30">
                <div className="text-center mb-6">
                  <div className="flex items-center justify-center gap-4 mb-4">
-                   <Shield className="w-12 h-12 text-red-400" />
+                   <AlertTriangle className="w-12 h-12 text-red-400" />
                    <div className="text-8xl md:text-9xl font-bold text-red-500 leading-none">
                      90%
                    </div>
-                   <Shield className="w-12 h-12 text-red-400" />
+                   <AlertTriangle className="w-12 h-12 text-red-400" />
                  </div>
                  <h3 className="text-white font-bold text-xl mb-2">من المنتجات المعروضة أونلاين</h3>
                 <p className="text-white leading-relaxed">
