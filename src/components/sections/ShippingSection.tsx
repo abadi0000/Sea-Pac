@@ -34,26 +34,52 @@ const ShippingSection = () => {
               شريكك في الاستيراد من الصين
             </h3>
             <p className="text-gray-600 mb-8 leading-relaxed">
-              بفضل شراكتنا مع أكبر المنصات التجارية وشركات الشحن، نضمن لكم تجربة استيراد سلسة وموثوقة من الصين إلى المملكة العربية السعودية.
+              نوفر حلولاً لوجستية متكاملة للشركات والأفراد، وكيل شحن معتمد من الصين، مع ضمان أعلى معايير الأمان والاحترافية. نستلم شحنتك من مصانع الصين ونسلمها مباشرة إلى عنوانك في السعودية.
             </p>
             
-            {/* Features */}
-            <div className="grid md:grid-cols-2 gap-4">
-              <div className="flex items-center space-x-3 space-x-reverse">
-                <Ship className="w-6 h-6 text-sebaaq-blue" />
-                <span className="text-gray-700">شحن بحري وجوي</span>
+            {/* Warning Box */}
+            <div className="bg-gradient-to-r from-red-50 to-orange-50 p-6 rounded-lg border border-red-200 mb-8">
+              <div className="flex items-center gap-3 mb-3">
+                <div className="bg-red-100 p-2 rounded-full">
+                  <span className="text-lg font-bold text-red-600">90%</span>
+                </div>
+                <h4 className="font-bold text-red-800">من المنتجات المعروضة أونلاين هي من وسطاء وشركات! وباسعار مرتفعة</h4>
               </div>
-              <div className="flex items-center space-x-3 space-x-reverse">
-                <Package className="w-6 h-6 text-sebaaq-blue" />
-                <span className="text-gray-700">تعبئة آمنة</span>
+              <p className="text-red-700 text-sm leading-relaxed">
+                في الواقع، أغلب المنتجات المعروضة على الإنترنت – سواء عبر مواقع كبرى مثل علي بابا أو من خلال موردين مستقلين – تُقدَّم من خلال وسطاء أو شركات تجارية لا تُمثل المصنع بشكل مباشر. هذا التعدد في الوساطة يؤدي إلى زيادة مرتفعة في الأسعار، غالبًا تتجاوز القيمة الحقيقية للمنتج.
+              </p>
+            </div>
+
+            <div className="mb-8">
+              <h4 className="font-bold text-sebaaq-midnight mb-2">سي باك طريقك المباشر للمصانع</h4>
+              <p className="text-gray-600 text-sm">تجاهل الوسطاء والكيانات التجارية</p>
+            </div>
+            
+            {/* Process Steps */}
+            <div className="grid grid-cols-2 gap-4 mb-8">
+              <div className="text-center">
+                <div className="w-12 h-12 bg-sebaaq-blue/10 rounded-lg flex items-center justify-center mx-auto mb-2">
+                  <span className="text-sebaaq-blue font-bold">🏭</span>
+                </div>
+                <h5 className="font-semibold text-sebaaq-midnight text-sm">تحديد المصانع</h5>
               </div>
-              <div className="flex items-center space-x-3 space-x-reverse">
-                <Clock className="w-6 h-6 text-sebaaq-blue" />
-                <span className="text-gray-700">توقيتات دقيقة</span>
+              <div className="text-center">
+                <div className="w-12 h-12 bg-sebaaq-blue/10 rounded-lg flex items-center justify-center mx-auto mb-2">
+                  <span className="text-sebaaq-blue font-bold">✅</span>
+                </div>
+                <h5 className="font-semibold text-sebaaq-midnight text-sm">فحص الجودة</h5>
               </div>
-              <div className="flex items-center space-x-3 space-x-reverse">
-                <Shield className="w-6 h-6 text-sebaaq-blue" />
-                <span className="text-gray-700">تأمين شامل</span>
+              <div className="text-center">
+                <div className="w-12 h-12 bg-sebaaq-blue/10 rounded-lg flex items-center justify-center mx-auto mb-2">
+                  <span className="text-sebaaq-blue font-bold">🤝</span>
+                </div>
+                <h5 className="font-semibold text-sebaaq-midnight text-sm">التفاوض</h5>
+              </div>
+              <div className="text-center">
+                <div className="w-12 h-12 bg-sebaaq-blue/10 rounded-lg flex items-center justify-center mx-auto mb-2">
+                  <span className="text-sebaaq-blue font-bold">🚚</span>
+                </div>
+                <h5 className="font-semibold text-sebaaq-midnight text-sm">الشحن المباشر</h5>
               </div>
             </div>
           </div>
