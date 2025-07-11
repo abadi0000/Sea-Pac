@@ -5,24 +5,44 @@ import { Truck, ShoppingCart, MessageSquare, FileSearch, Shield, Package, Clock,
 const FeaturesSectionWithHoverEffects = () => {
   const services = [
     {
-      icon: <img src="/lovable-uploads/d7f1cba7-dbec-4c7e-85f2-3f7da1660c17.png" alt="خبرة واسعة" className="w-16 h-16" />,
-      title: "خبرة واسعة",
-      description: "سنوات من الخبرة في السوق الصيني وفهم عميق لاحتياجات العملاء"
+      icon: <img src="/lovable-uploads/d7f1cba7-dbec-4c7e-85f2-3f7da1660c17.png" alt="خدمات الشحن" className="w-16 h-16" />,
+      title: "خدمة الشحن من الباب للباب",
+      description: "نتكفل بكل تفاصيل شحن بضائعك من مكان موردك مباشرة إلى عنوانك"
     },
     {
-      icon: <img src="/lovable-uploads/ca0e3cbf-cfd3-4fe0-88e7-173dc3ac0bc2.png" alt="شبكة موردين موثوقة" className="w-16 h-16" />,
-      title: "شبكة موردين موثوقة",
-      description: "علاقات قوية مع أفضل المصانع والموردين في الصين"
+      icon: <img src="/lovable-uploads/ca0e3cbf-cfd3-4fe0-88e7-173dc3ac0bc2.png" alt="خدمات استشارية" className="w-16 h-16" />,
+      title: "حلول خدمات التجارة الإلكترونية",
+      description: "ندعم نمو تجارتك الإلكترونية بتوفير خدمات لوجستية متخصصة تلبي احتياجات متجرك"
     },
     {
-      icon: <img src="/lovable-uploads/36e35649-f04b-406a-94e8-2c8d6d70df5d.png" alt="ضمان الجودة" className="w-16 h-16" />,
-      title: "ضمان الجودة",
-      description: "فحص دقيق للمنتجات وضمان مطابقتها للمواصفات المطلوبة"
+      icon: <img src="/lovable-uploads/36e35649-f04b-406a-94e8-2c8d6d70df5d.png" alt="توريد الآلات" className="w-16 h-16" />,
+      title: "تفاوض مع المصانع",
+      description: "بفضل خبرتنا في المصانع والسوق الصيني نستطيع تقديم لك أسعار قيمة إضافية عن طريق التفاوض مع المصنع"
     },
     {
-      icon: <Shield className="w-16 h-16 text-primary" />,
-      title: "دعم شامل",
-      description: "مرافقة كاملة من البحث حتى وصول البضاعة والدعم الفني"
+      icon: <FileSearch className="w-8 h-8 text-primary" />,
+      title: "استشارات مجانية",
+      description: "نوفر رؤى متعمقة ونصائح عملية في سوق الصناعة الصيني في كافة المجالات"
+    },
+    {
+      icon: <Shield className="w-8 h-8 text-primary" />,
+      title: "فحص البضاعة",
+      description: "نضمن لك جودة المنتجات من خلال فحصها والتأكد من سلامتها قبل الشحن"
+    },
+    {
+      icon: <Package className="w-8 h-8 text-primary" />,
+      title: "تجميع وتخزين",
+      description: "إذا كنت تتعامل مع عدة موردين، نوفر لك خدمة تجميع شحناتك وتخزينها"
+    },
+    {
+      icon: <Clock className="w-8 h-8 text-primary" />,
+      title: "خبرة محلية طويلة",
+      description: "نتمتع بخبرة طويلة في مجال الخدمات اللوجستية والشحن بين الصين والسعودية"
+    },
+    {
+      icon: <Users className="w-8 h-8 text-primary" />,
+      title: "حلول لوجستية ذكية",
+      description: "شحن جزئي سريع ومباشر من الصين إلى السعودية مع مرونة وكفاءة عالية"
     }
   ];
 
@@ -45,7 +65,7 @@ const FeaturesSectionWithHoverEffects = () => {
             <div className="h-1 w-24 bg-gradient-to-r from-primary to-secondary mx-auto rounded-full"></div>
           </div>
           <p className="text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed font-cairo">
-            نقدم حلولاً متكاملة تلبي جميع احتياجاتك في الاستيراد من الصين بأعلى معايير الجودة والكفاءة
+            سي باك لوجيستيك، شركة سعودية متخصصة في الخدمات اللوجستية، تتفهم التحديات التي تواجه الشركات والأفراد في عمليات الاستيراد من الصين، توفر خدمات احترافية ودعم عملاء قوي
           </p>
         </div>
 
