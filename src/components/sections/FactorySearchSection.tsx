@@ -1,4 +1,6 @@
 
+import { Shield } from "lucide-react";
+
 const FactorySearchSection = () => {
   return (
     <section className="py-20 bg-sebaaq-charcoal relative overflow-hidden">
@@ -16,12 +18,16 @@ const FactorySearchSection = () => {
               نساعدك في العثور على مصانع حقيقية، تقييم الجودة، ومقارنة الأسعار
             </p>
 
-            <div className="bg-gradient-to-r from-red-500/20 to-orange-500/20 rounded-xl p-8 mb-8 border border-red-500/30">
-              <div className="text-center mb-6">
-                <div className="text-8xl md:text-9xl font-bold text-red-500 mb-4 leading-none">
-                  90%
-                </div>
-                <h3 className="text-white font-bold text-xl mb-2">من المنتجات المعروضة أونلاين</h3>
+             <div className="bg-gradient-to-r from-red-500/20 to-orange-500/20 rounded-xl p-8 mb-8 border border-red-500/30">
+               <div className="text-center mb-6">
+                 <div className="flex items-center justify-center gap-4 mb-4">
+                   <Shield className="w-12 h-12 text-red-400" />
+                   <div className="text-8xl md:text-9xl font-bold text-red-500 leading-none">
+                     90%
+                   </div>
+                   <Shield className="w-12 h-12 text-red-400" />
+                 </div>
+                 <h3 className="text-white font-bold text-xl mb-2">من المنتجات المعروضة أونلاين</h3>
                 <p className="text-white leading-relaxed">
                   في الواقع، أغلب المنتجات المعروضة على الإنترنت – سواء عبر مواقع كبرى مثل علي بابا أو من خلال موردين مستقلين – تُقدَّم من خلال وسطاء أو شركات تجارية لا تُمثل المصنع بشكل مباشر. هذا التعدد في الوساطة يؤدي إلى زيادة ملحوظة في الأسعار، غالبًا تتجاوز القيمة الحقيقية للمنتج. من خلال الشراء المباشر من المصنع، يمكنك الحصول على أسعار أصلية دون تضخيم، وضمان أعلى للجودة والمواصفات، وتوفير كبير في التكاليف.
                 </p>
