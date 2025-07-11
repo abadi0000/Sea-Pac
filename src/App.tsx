@@ -27,6 +27,7 @@ import EntertainmentSystemParts from "./pages/EntertainmentSystemParts";
 import Alibaba from "./pages/Alibaba";
 import Invest from "./pages/Invest";
 import PitchDeck from "./pages/PitchDeck";
+import AboutUs from "./pages/AboutUs";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -63,6 +64,7 @@ const App = () => (
               <Route path="/parts-maintenance/car-wash-parts" element={<CarWashParts />} />
               <Route path="/parts-maintenance/entertainment-system-parts" element={<EntertainmentSystemParts />} />
               <Route path="/alibaba" element={<Alibaba />} />
+              <Route path="/about-us" element={<AboutUs />} />
               <Route path="/invest" element={<Invest />} />
               <Route path="/pitch-deck" element={<PitchDeck />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}

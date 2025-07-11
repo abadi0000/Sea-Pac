@@ -10,10 +10,10 @@ const Navigation = () => {
 
   const navItems = [
     { path: '/home', label: 'الرئيسية' },
-    { path: '/consultation-services', label: 'الخدمات الاستشارية' },
-    { path: '/sebaaq-machine', label: 'سـي بـاك ماشـين' },
+    { path: '/alibaba', label: 'استورد من الصين' },
+    { path: '/sebaaq-machine', label: 'سي باك ماشين' },
     { path: '/parts-maintenance', label: 'قطع الغيار والصيانة' },
-    { path: '/alibaba', label: 'استورد من الصين' }
+    { path: '/about-us', label: 'من نحن' }
   ];
 
   const toggleMenu = () => setIsOpen(!isOpen);
