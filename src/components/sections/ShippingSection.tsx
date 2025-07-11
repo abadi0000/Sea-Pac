@@ -97,62 +97,82 @@ const ShippingSection = () => {
           </p>
         </div>
 
-        {/* Tabs Container */}
-        <div className="bg-white rounded-3xl shadow-2xl p-8 mb-12 border border-gray-100 text-center">
-          {/* Tab Navigation */}
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-7 gap-3 mb-8 justify-items-center">
-            {shippingFeatures.map((feature, index) => (
-              <button
-                key={index}
-                onClick={() => setActiveTab(index)}
-                className={`p-4 rounded-2xl transition-all duration-300 hover:scale-105 border-2 ${
-                  activeTab === index
-                    ? 'bg-gradient-to-br from-sebaaq-blue to-blue-600 border-sebaaq-blue text-white shadow-lg'
-                    : 'bg-gray-50 border-gray-200 hover:bg-gray-100 hover:border-gray-300'
-                }`}
-              >
-                <div className="text-3xl mb-2">{feature.emoji}</div>
-                <div className={`text-xs font-medium leading-tight ${
-                  activeTab === index ? 'text-white' : 'text-gray-700'
+        {/* Services Grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+          {shippingFeatures.map((feature, index) => (
+            <div
+              key={index}
+              className={`bg-white rounded-2xl p-6 shadow-lg border border-gray-100 transition-all duration-300 hover:shadow-xl hover:-translate-y-2 cursor-pointer ${
+                activeTab === index ? 'ring-2 ring-sebaaq-blue bg-gradient-to-br from-sebaaq-blue/5 to-blue-50' : ''
+              }`}
+              onClick={() => setActiveTab(index)}
+            >
+              <div className="text-center mb-4">
+                <div className={`w-16 h-16 mx-auto rounded-2xl flex items-center justify-center text-4xl transition-all duration-300 ${
+                  activeTab === index 
+                    ? 'bg-gradient-to-br from-sebaaq-blue to-blue-600 shadow-lg scale-110' 
+                    : 'bg-gradient-to-br from-gray-100 to-gray-200 hover:from-sebaaq-blue/20 hover:to-blue-100'
                 }`}>
-                  {feature.title}
+                  {feature.emoji}
                 </div>
-              </button>
-            ))}
-          </div>
-
-          {/* Active Tab Content */}
-          <div className="bg-gradient-to-r from-blue-50/50 to-indigo-50/50 rounded-2xl p-8 min-h-[120px] flex items-center justify-center text-center">
-            <div className="w-full max-w-4xl">
-              <div className="flex items-center justify-center mb-4">
-                <span className="text-4xl ml-4">{shippingFeatures[activeTab].emoji}</span>
-                <h4 className="text-2xl font-bold text-sebaaq-midnight text-center">
-                  {shippingFeatures[activeTab].title}
-                </h4>
               </div>
-              <p className="text-gray-700 leading-relaxed text-lg text-center max-w-3xl mx-auto">
-                {shippingFeatures[activeTab].description}
+              
+              <h4 className="text-lg font-bold text-sebaaq-midnight mb-3 text-center leading-tight">
+                {feature.title}
+              </h4>
+              
+              <p className={`text-sm text-gray-600 leading-relaxed text-center transition-all duration-300 ${
+                activeTab === index ? 'text-gray-700' : ''
+              }`}>
+                {feature.description}
               </p>
-            </div>
-          </div>
 
-          {/* Progress Indicator */}
-          <div className="flex justify-center mt-6 space-x-2 space-x-reverse">
-            {shippingFeatures.map((_, index) => (
-              <div
-                key={index}
-                className={`h-2 rounded-full transition-all duration-300 ${
-                  index === activeTab
-                    ? 'w-8 bg-sebaaq-blue'
-                    : 'w-2 bg-gray-300'
-                }`}
-              />
-            ))}
+              {/* Selected Indicator */}
+              {activeTab === index && (
+                <div className="mt-4 flex justify-center">
+                  <div className="w-8 h-1 bg-gradient-to-r from-sebaaq-blue to-blue-600 rounded-full"></div>
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+
+        {/* Featured Service Display */}
+        <div className="bg-white rounded-3xl shadow-2xl p-8 border border-gray-100">
+          <div className="text-center">
+            <div className="flex items-center justify-center mb-6">
+              <div className="w-20 h-20 bg-gradient-to-br from-sebaaq-blue to-blue-600 rounded-2xl flex items-center justify-center text-5xl shadow-lg">
+                {shippingFeatures[activeTab].emoji}
+              </div>
+            </div>
+            
+            <h3 className="text-2xl md:text-3xl font-bold text-sebaaq-midnight mb-4">
+              {shippingFeatures[activeTab].title}
+            </h3>
+            
+            <p className="text-gray-700 leading-relaxed text-lg max-w-4xl mx-auto">
+              {shippingFeatures[activeTab].description}
+            </p>
+
+            {/* Navigation Dots */}
+            <div className="flex justify-center mt-8 space-x-2 space-x-reverse">
+              {shippingFeatures.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setActiveTab(index)}
+                  className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                    index === activeTab
+                      ? 'bg-sebaaq-blue scale-125'
+                      : 'bg-gray-300 hover:bg-gray-400'
+                  }`}
+                />
+              ))}
+            </div>
           </div>
         </div>
 
         {/* CTA */}
-        <div className="text-center">
+        <div className="text-center mt-12">
           <Button className="bg-gradient-to-r from-sebaaq-blue to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white px-12 py-4 rounded-2xl font-semibold text-lg shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105">
             تواصل معنا
           </Button>
