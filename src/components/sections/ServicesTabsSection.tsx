@@ -224,44 +224,6 @@ const ServicesTabsSection = ({
           </div>
         </Tabs>
 
-        {/* Additional Features Grid */}
-        <div className="mt-24">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-foreground mb-6 bg-gradient-to-r from-foreground to-foreground/80 bg-clip-text">
-              لماذا تختار سي باك؟
-            </h2>
-            <p className="text-muted-foreground text-lg max-w-2xl mx-auto leading-relaxed">
-              نقدم حلولاً متكاملة تلبي جميع احتياجاتك في الاستيراد من الصين بأعلى معايير الجودة والكفاءة
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 relative z-10 max-w-7xl mx-auto gap-0 bg-background/50 backdrop-blur-sm rounded-3xl border border-border/30 overflow-hidden shadow-xl">
-            <Feature
-              title="خبرة واسعة"
-              description="سنوات من الخبرة في السوق الصيني وفهم عميق لاحتياجات العملاء"
-              icon={<Truck className="w-6 h-6" />}
-              index={0}
-            />
-            <Feature
-              title="شبكة موردين موثوقة"
-              description="علاقات قوية مع أفضل المصانع والموردين في الصين"
-              icon={<Cog className="w-6 h-6" />}
-              index={1}
-            />
-            <Feature
-              title="ضمان الجودة"
-              description="فحص دقيق للمنتجات وضمان مطابقتها للمواصفات المطلوبة"
-              icon={<Truck className="w-6 h-6" />}
-              index={2}
-            />
-            <Feature
-              title="دعم شامل"
-              description="مرافقة كاملة من البحث حتى وصول البضاعة والدعم الفني"
-              icon={<MessageCircle className="w-6 h-6" />}
-              index={3}
-            />
-          </div>
-        </div>
       </div>
     </section>
   );
