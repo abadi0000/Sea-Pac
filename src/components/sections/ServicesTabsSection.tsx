@@ -188,34 +188,23 @@ const ServicesTabsSection = ({
               <TabsContent
                 key={tab.value}
                 value={tab.value}
-                className="grid gap-12 lg:grid-cols-2 lg:gap-16 items-center"
+                className="flex justify-center items-center"
               >
-                <div className="flex flex-col gap-6 text-right order-2 lg:order-1">
-                  <div className="space-y-2">
-                    <Badge variant="outline" className="w-fit bg-gradient-to-r from-primary/10 to-secondary/10 border-primary/30 text-primary font-semibold">
+                <div className="flex flex-col gap-6 text-center max-w-4xl">
+                  <div className="space-y-4">
+                    <Badge variant="outline" className="w-fit mx-auto bg-gradient-to-r from-primary/10 to-secondary/10 border-primary/30 text-primary font-semibold">
                       {tab.content.badge}
                     </Badge>
                     <h3 className="text-3xl font-bold lg:text-4xl text-foreground leading-tight bg-gradient-to-r from-foreground to-foreground/80 bg-clip-text">
                       {tab.content.title}
                     </h3>
                   </div>
-                  <p className="text-muted-foreground lg:text-lg leading-relaxed max-w-lg whitespace-pre-line">
+                  <p className="text-muted-foreground lg:text-lg leading-relaxed whitespace-pre-line">
                     {tab.content.description}
                   </p>
-                  <Button className="mt-6 w-fit gap-3 bg-gradient-to-r from-primary to-primary/90 hover:from-primary/90 hover:to-primary shadow-lg hover:shadow-xl transition-all duration-300 text-base px-8 py-6" size="lg">
+                  <Button className="mt-6 w-fit mx-auto gap-3 bg-gradient-to-r from-primary to-primary/90 hover:from-primary/90 hover:to-primary shadow-lg hover:shadow-xl transition-all duration-300 text-base px-8 py-6" size="lg">
                     {tab.content.buttonText}
                   </Button>
-                </div>
-                <div className="relative group order-1 lg:order-2">
-                  <div className="absolute -inset-4 bg-gradient-to-r from-primary/30 via-secondary/20 to-primary/30 rounded-2xl blur-2xl group-hover:blur-3xl transition-all duration-500 opacity-0 group-hover:opacity-100" />
-                  <div className="relative overflow-hidden rounded-2xl shadow-2xl border border-border/20">
-                    <img
-                      src={tab.content.imageSrc}
-                      alt={tab.content.imageAlt}
-                      className="w-full h-auto object-cover aspect-[4/3] group-hover:scale-105 transition-transform duration-500"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-background/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  </div>
                 </div>
               </TabsContent>
             ))}
