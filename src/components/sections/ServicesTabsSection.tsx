@@ -115,6 +115,7 @@ const ServicesTabsSection = ({
   const [activeTab, setActiveTab] = useState(tabs[0].value);
   const [hasUserInteracted, setHasUserInteracted] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
+  const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -123,17 +124,18 @@ const ServicesTabsSection = ({
           if (entry.isIntersecting && !hasUserInteracted) {
             // Start auto-cycling through tabs
             let currentIndex = 0;
-            const interval = setInterval(() => {
+            intervalRef.current = setInterval(() => {
               currentIndex = (currentIndex + 1) % tabs.length;
               setActiveTab(tabs[currentIndex].value);
               
               // Stop after one complete cycle
               if (currentIndex === 0) {
-                clearInterval(interval);
+                if (intervalRef.current) {
+                  clearInterval(intervalRef.current);
+                  intervalRef.current = null;
+                }
               }
             }, 2000); // Change tab every 2 seconds
-
-            return () => clearInterval(interval);
           }
         });
       },
@@ -144,12 +146,23 @@ const ServicesTabsSection = ({
       observer.observe(sectionRef.current);
     }
 
-    return () => observer.disconnect();
+    return () => {
+      observer.disconnect();
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+        intervalRef.current = null;
+      }
+    };
   }, [tabs, hasUserInteracted]);
 
   const handleTabChange = (value: string) => {
     setActiveTab(value);
     setHasUserInteracted(true);
+    // Clear the auto-cycling interval when user interacts
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current);
+      intervalRef.current = null;
+    }
   };
 
   return (
