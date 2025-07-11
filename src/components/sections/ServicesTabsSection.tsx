@@ -85,19 +85,6 @@ const ServicesTabsSection = ({
       },
     },
     {
-      value: "machinery",
-      icon: <Cog className="h-auto w-5 shrink-0" />,
-      label: "توريد وتركيب الآلات",
-      content: {
-        badge: "خبرة تقنية متقدمة",
-        title: "توريد وتركيب الآلات",
-        description: "في سي باك ماشين، تمتد الخبرة التقنية إلى ما وراء مجرد التوريد. لدينا فهم عالٍ في كثير من المجالات والأنظمة التقنية المعقدة، مع إدراك دقيق لتعقيدات عملها الميكانيكي ومبادئ تصميمها الحركي، وذلك يشمل تحليل القوى والإجهادات، ودراسة المواد المكونة منها، وكفاءة نقل الحركة والطاقة.",
-        buttonText: "تفاصيل اكثر",
-        imageSrc: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=600&h=400&fit=crop",
-        imageAlt: "آلات صناعية",
-      },
-    },
-    {
       value: "consultation",
       icon: <MessageCircle className="h-auto w-5 shrink-0" />,
       label: "خدمات استشارية",
@@ -108,6 +95,19 @@ const ServicesTabsSection = ({
         buttonText: "تفاصيل اكثر",
         imageSrc: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=600&h=400&fit=crop",
         imageAlt: "استشارات تجارية",
+      },
+    },
+    {
+      value: "machinery",
+      icon: <Cog className="h-auto w-5 shrink-0" />,
+      label: "توريد وتركيب الآلات",
+      content: {
+        badge: "خبرة تقنية متقدمة",
+        title: "توريد وتركيب الآلات",
+        description: "في سي باك ماشين، تمتد الخبرة التقنية إلى ما وراء مجرد التوريد. لدينا فهم عالٍ في كثير من المجالات والأنظمة التقنية المعقدة، مع إدراك دقيق لتعقيدات عملها الميكانيكي ومبادئ تصميمها الحركي، وذلك يشمل تحليل القوى والإجهادات، ودراسة المواد المكونة منها، وكفاءة نقل الحركة والطاقة.",
+        buttonText: "تفاصيل اكثر",
+        imageSrc: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=600&h=400&fit=crop",
+        imageAlt: "آلات صناعية",
       },
     },
   ],
@@ -172,25 +172,25 @@ const ServicesTabsSection = ({
           <Badge variant="outline" className="text-primary border-primary">
             {badge}
           </Badge>
-          <h1 className="max-w-4xl text-4xl font-bold md:text-5xl text-foreground">
+          <h1 className="max-w-4xl text-5xl md:text-6xl font-bold text-foreground font-cairo">
             {heading}
           </h1>
-          <p className="text-muted-foreground text-lg max-w-2xl">
+          <p className="text-muted-foreground text-xl max-w-2xl font-cairo">
             {description}
           </p>
         </div>
 
         <Tabs value={activeTab} onValueChange={handleTabChange} className="mt-16">
           <div className="relative">
-            <TabsList className="grid w-full max-w-4xl mx-auto grid-cols-3 h-auto bg-background/60 backdrop-blur-md border border-border/50 rounded-2xl p-1 shadow-lg">
+            <TabsList className="grid w-full max-w-4xl mx-auto grid-cols-3 h-auto bg-background/60 backdrop-blur-md border border-border/50 rounded-2xl p-2 shadow-lg">
               {tabs.map((tab) => (
                 <TabsTrigger
                   key={tab.value}
                   value={tab.value}
-                  className="flex flex-col items-center gap-2 rounded-xl px-4 py-6 text-sm font-semibold transition-all duration-300 data-[state=active]:bg-gradient-to-br data-[state=active]:from-primary data-[state=active]:to-primary/80 data-[state=active]:text-primary-foreground data-[state=active]:shadow-lg hover:bg-accent/50"
+                  className="flex flex-col items-center gap-3 rounded-xl px-6 py-8 text-base font-semibold transition-all duration-300 data-[state=active]:bg-gradient-to-br data-[state=active]:from-primary data-[state=active]:to-primary/80 data-[state=active]:text-primary-foreground data-[state=active]:shadow-lg hover:bg-accent/50 font-cairo"
                 >
-                  <div className="text-lg">{tab.icon}</div>
-                  <span className="text-center text-xs font-medium leading-tight">{tab.label}</span>
+                  <div className="text-xl">{tab.icon}</div>
+                  <span className="text-center text-sm font-medium leading-tight">{tab.label}</span>
                 </TabsTrigger>
               ))}
             </TabsList>
@@ -208,14 +208,14 @@ const ServicesTabsSection = ({
                     <Badge variant="outline" className="w-fit mx-auto bg-gradient-to-r from-primary/10 to-secondary/10 border-primary/30 text-primary font-semibold">
                       {tab.content.badge}
                     </Badge>
-                    <h3 className="text-3xl font-bold lg:text-4xl text-foreground leading-tight bg-gradient-to-r from-foreground to-foreground/80 bg-clip-text">
+                    <h3 className="text-4xl font-bold lg:text-5xl text-foreground leading-tight bg-gradient-to-r from-foreground to-foreground/80 bg-clip-text font-cairo">
                       {tab.content.title}
                     </h3>
                   </div>
-                  <p className="text-muted-foreground lg:text-lg leading-relaxed whitespace-pre-line">
+                  <p className="text-muted-foreground xl:text-lg leading-relaxed whitespace-pre-line font-cairo">
                     {tab.content.description}
                   </p>
-                  <Button className="mt-6 w-fit mx-auto gap-3 bg-gradient-to-r from-primary to-primary/90 hover:from-primary/90 hover:to-primary shadow-lg hover:shadow-xl transition-all duration-300 text-base px-8 py-6" size="lg">
+                  <Button className="mt-8 w-fit mx-auto gap-3 bg-gradient-to-r from-primary to-primary/90 hover:from-primary/90 hover:to-primary shadow-lg hover:shadow-xl transition-all duration-300 text-lg px-10 py-7 font-cairo" size="lg">
                     {tab.content.buttonText}
                   </Button>
                 </div>

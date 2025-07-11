@@ -19,9 +19,9 @@ const Navigation = () => {
   const toggleMenu = () => setIsOpen(!isOpen);
 
   return (
-    <nav className="bg-white shadow-md border-b sticky top-0 z-50" role="navigation" aria-label="التنقل الرئيسي">
+    <nav className="bg-white shadow-md border-b sticky top-0 z-50 font-cairo" role="navigation" aria-label="التنقل الرئيسي">
       <div className="container mx-auto px-4 sm:px-6">
-        <div className="flex items-center justify-between h-18 sm:h-24">
+        <div className="flex items-center justify-between h-20 sm:h-24">
           {/* Logo */}
           <Link 
             to="/home" 
@@ -36,16 +36,16 @@ const Navigation = () => {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center space-x-6 space-x-reverse" role="menubar">
+          <div className="hidden lg:flex items-center space-x-8 space-x-reverse" role="menubar">
             {navItems.map((item) => (
               <Link
                 key={item.path}
                 to={item.path}
                 role="menuitem"
-                className={`px-3 py-2 rounded-lg transition-colors font-medium text-sm focus:outline-none focus:ring-2 focus:ring-sebaaq-blue focus:ring-offset-2 ${
+                className={`px-4 py-3 rounded-lg transition-colors font-medium text-base focus:outline-none focus:ring-2 focus:ring-sebaaq-blue focus:ring-offset-2 ${
                   location.pathname === item.path
-                    ? 'bg-sebaaq-blue text-white'
-                    : 'text-sebaaq-midnight hover:bg-gray-100'
+                    ? 'bg-sebaaq-blue text-white shadow-md'
+                    : 'text-sebaaq-midnight hover:bg-gray-100 hover:shadow-sm'
                 }`}
                 aria-current={location.pathname === item.path ? 'page' : undefined}
               >
@@ -58,7 +58,7 @@ const Navigation = () => {
           <div className="flex items-center gap-2">
             <Button 
               size="sm" 
-              className="hidden sm:flex bg-sebaaq-blue hover:bg-blue-600 text-white text-xs sm:text-sm px-3 sm:px-4 focus:outline-none focus:ring-4 focus:ring-sebaaq-blue/50"
+              className="hidden sm:flex bg-sebaaq-blue hover:bg-blue-600 text-white text-sm sm:text-base px-4 sm:px-6 py-2 sm:py-3 focus:outline-none focus:ring-4 focus:ring-sebaaq-blue/50 font-cairo"
               aria-label="تواصل معنا - اتصال مباشر"
             >
               <Phone className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" aria-hidden="true" />
@@ -93,10 +93,10 @@ const Navigation = () => {
                 to={item.path}
                 onClick={() => setIsOpen(false)}
                 role="menuitem"
-                className={`block px-4 py-3 rounded-lg transition-colors font-medium focus:outline-none focus:ring-2 focus:ring-sebaaq-blue focus:ring-offset-2 ${
+                className={`block px-4 py-4 rounded-lg transition-colors font-medium text-base focus:outline-none focus:ring-2 focus:ring-sebaaq-blue focus:ring-offset-2 ${
                   location.pathname === item.path
-                    ? 'bg-sebaaq-blue text-white'
-                    : 'text-sebaaq-midnight hover:bg-gray-100'
+                    ? 'bg-sebaaq-blue text-white shadow-md'
+                    : 'text-sebaaq-midnight hover:bg-gray-100 hover:shadow-sm'
                 }`}
                 aria-current={location.pathname === item.path ? 'page' : undefined}
               >
@@ -106,7 +106,7 @@ const Navigation = () => {
             <div className="pt-2">
               <Button 
                 size="sm" 
-                className="w-full sm:hidden bg-sebaaq-blue hover:bg-blue-600 text-white focus:outline-none focus:ring-4 focus:ring-sebaaq-blue/50"
+                className="w-full sm:hidden bg-sebaaq-blue hover:bg-blue-600 text-white text-base py-3 focus:outline-none focus:ring-4 focus:ring-sebaaq-blue/50 font-cairo"
                 aria-label="تواصل معنا - اتصال مباشر"
               >
                 <Phone className="w-4 h-4 mr-2" aria-hidden="true" />

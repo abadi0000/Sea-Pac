@@ -8,6 +8,10 @@ All colors MUST be HSL.
 */
 
 @layer base {
+  * {
+    font-family: 'Cairo', 'Noto Sans Arabic', 'Tajawal', 'Inter', system-ui, sans-serif;
+  }
+  
   :root {
     --background: 220 27% 8%;
     --foreground: 210 40% 98%;
