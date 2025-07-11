@@ -1,146 +1,160 @@
 
-import { Card, CardContent } from "@/components/ui/card";
+import { useState, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
-import { Ship, Package, Clock, Shield } from 'lucide-react';
+
+const shippingFeatures = [
+  {
+    emoji: "🔍",
+    title: "بحث عن أفضل المصانع",
+    description: "نساعدك في العثور على المصانع الحقيقية التي تُنتج المنتجات التي تحتاجها بجودة عالية وسعر مناسب، مع التأكد من أن المصنع مرخص وموثوق."
+  },
+  {
+    emoji: "🤝",
+    title: "تفاوض مع المصانع",
+    description: "فريقنا في الصين يتولى مهمة التحقق النهائي من جودة وشكل وعدد المنتجات قبل شحنها، مما يقلل من احتمالية المفاجآت عند الوصول."
+  },
+  {
+    emoji: "🕵️‍♂️",
+    title: "خدمة الشحن من الباب للباب",
+    description: "نؤمن بأن الثقة لا تكفي. نقوم بفحص المنتجات قبل الشراء والتأكد من مطابقتها للمواصفات، مع التفاوض على أي تعديل أو تحسين مطلوب قبل التصنيع النهائي."
+  },
+  {
+    emoji: "📞",
+    title: "شحن جزئي",
+    description: "نقدم لك توجيهًا مجانيًا عبر خبرائنا المتخصصين في السوق الصيني، يشمل توصيات للمنتجات والموردين، وتحذيرات من المخاطر المحتملة."
+  },
+  {
+    emoji: "📦",
+    title: "فحص البضاعة قبل الشحن",
+    description: "نؤمن بأن الثقة لا تكفي. نقوم بفحص المنتجات قبل الشراء والتأكد من مطابقتها للمواصفات، مع التفاوض على أي تعديل أو تحسين مطلوب قبل التصنيع النهائي."
+  },
+  {
+    emoji: "📥",
+    title: "تجميع الشحنات من عدة موردين",
+    description: "إذا اشتريت من أكثر من مصنع أو مورد، نقوم بتجميع الشحنات جميعها في مستودعاتنا في الصين لضمان شحن موحد وتوفير في التكاليف."
+  },
+  {
+    emoji: "🏪",
+    title: "تجميع وتخزين مؤقت في مستودعاتنا",
+    description: "نمتلك مستودعات استراتيجية في الصين والسعودية لتخزين شحنتك بشكل آمن ومنظم إلى حين موعد الشحن أو التوزيع النهائي."
+  },
+  {
+    emoji: "🚚",
+    title: "فحص الجودة والتفاوض",
+    description: "نتولى عملية الشحن كاملة من عنوان المصنع في الصين وحتى باب العميل في السعودية، مما يوفر عليك الوقت والتعقيد والمتابعة مع أطراف متعددة."
+  },
+  {
+    emoji: "🧾",
+    title: "التخليص الجمركي في السعودية",
+    description: "فريق التخليص التابع لنا يتعامل مع الجمارك السعودية باحترافية عالية لتسريع دخول الشحنة وتقليل أي تأخير محتمل أو رسوم إضافية."
+  },
+  {
+    emoji: "📡",
+    title: "تتبع شحنتك لحظة بلحظة",
+    description: "نقدم لك نظام تتبع إلكتروني حديث يتيح لك معرفة موقع شحنتك في كل لحظة، من لحظة الشحن إلى التسليم، لضمان الشفافية وراحة البال."
+  },
+  {
+    emoji: "🛒",
+    title: "حلول خدمات التجارة الإلكترونية",
+    description: "ندعم المتاجر الإلكترونية في السعودية بخدمات مخصصة تشمل الشحن الجزئي، التغليف حسب الطلب، وربط مباشر بين الموردين والمتاجر."
+  },
+  {
+    emoji: "⚙️",
+    title: "استشارات مجانية",
+    description: "نوفر لك أنظمة شحن مرنة (مثل الشحن الجزئي أو الموحد) باستخدام أدوات تقنية لتقليل التكاليف وتسريع العمليات."
+  },
+  {
+    emoji: "🇸🇦",
+    title: "خبرة محلية طويلة",
+    description: "بخبرتنا الممتدة لأكثر من 10 سنوات في الشحن بين الصين والسعودية، نحن نعرف القوانين، التحديات، وأفضل الطرق لتوصيل شحنتك باسرع وقت وبأمان."
+  }
+];
 
 const ShippingSection = () => {
+  const [activeTab, setActiveTab] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveTab((prev) => (prev + 1) % shippingFeatures.length);
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
-    <section className="py-20 bg-gradient-to-b from-gray-50 to-white">
+    <section className="py-20 bg-gradient-to-br from-slate-50 via-white to-blue-50">
       <div className="container mx-auto px-6">
         {/* Header */}
         <div className="text-center mb-16">
           <h2 className="font-playfair text-3xl md:text-5xl font-bold text-sebaaq-midnight mb-6">
             شحن موثوق من الصين
           </h2>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-            نوفر خدمات شحن متكاملة وموثوقة لضمان وصول آلاتكم ومعداتكم بأمان وفي الوقت المحدد
+          <h3 className="font-playfair text-xl md:text-2xl font-semibold text-sebaaq-blue mb-4">
+            شريكك في الاستيراد من الصين
+          </h3>
+          <p className="text-lg text-gray-600 max-w-4xl mx-auto leading-relaxed">
+            نوفر حلولاً لوجستية متكاملة للشركات والأفراد، وكيل شحن معتمد من الصين، مع ضمان أعلى معايير الأمان والاحترافية. نستلم شحنتك من مصانع الصين ونسلمها مباشرة إلى عنوانك في السعودية.
           </p>
         </div>
 
-        {/* Main Content with Port Image */}
-        <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
-          {/* Port Image */}
-          <div className="order-2 lg:order-1">
-            <img 
-              src="/lovable-uploads/f7fee70f-6642-464a-9248-24c0c3d0b0ce.png" 
-              alt="ميناء سيباك للشحن" 
-              className="w-full rounded-lg shadow-2xl"
-            />
+        {/* Tabs Container */}
+        <div className="bg-white rounded-3xl shadow-2xl p-8 mb-12 border border-gray-100">
+          {/* Tab Navigation */}
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-7 gap-3 mb-8">
+            {shippingFeatures.map((feature, index) => (
+              <button
+                key={index}
+                onClick={() => setActiveTab(index)}
+                className={`p-4 rounded-2xl transition-all duration-300 hover:scale-105 border-2 ${
+                  activeTab === index
+                    ? 'bg-gradient-to-br from-sebaaq-blue to-blue-600 border-sebaaq-blue text-white shadow-lg'
+                    : 'bg-gray-50 border-gray-200 hover:bg-gray-100 hover:border-gray-300'
+                }`}
+              >
+                <div className="text-3xl mb-2">{feature.emoji}</div>
+                <div className={`text-xs font-medium leading-tight ${
+                  activeTab === index ? 'text-white' : 'text-gray-700'
+                }`}>
+                  {feature.title}
+                </div>
+              </button>
+            ))}
           </div>
-          
-          {/* Content */}
-          <div className="order-1 lg:order-2">
-            <h3 className="font-playfair text-2xl md:text-3xl font-bold text-sebaaq-midnight mb-6">
-              شريكك في الاستيراد من الصين
-            </h3>
-            <p className="text-gray-600 mb-8 leading-relaxed">
-              بفضل شراكتنا مع أكبر المنصات التجارية وشركات الشحن، نضمن لكم تجربة استيراد سلسة وموثوقة من الصين إلى المملكة العربية السعودية.
-            </p>
-            
-            {/* Features */}
-            <div className="grid md:grid-cols-2 gap-4">
-              <div className="flex items-center space-x-3 space-x-reverse">
-                <Ship className="w-6 h-6 text-sebaaq-blue" />
-                <span className="text-gray-700">شحن بحري وجوي</span>
-              </div>
-              <div className="flex items-center space-x-3 space-x-reverse">
-                <Package className="w-6 h-6 text-sebaaq-blue" />
-                <span className="text-gray-700">تعبئة آمنة</span>
-              </div>
-              <div className="flex items-center space-x-3 space-x-reverse">
-                <Clock className="w-6 h-6 text-sebaaq-blue" />
-                <span className="text-gray-700">توقيتات دقيقة</span>
-              </div>
-              <div className="flex items-center space-x-3 space-x-reverse">
-                <Shield className="w-6 h-6 text-sebaaq-blue" />
-                <span className="text-gray-700">تأمين شامل</span>
-              </div>
-            </div>
-          </div>
-        </div>
 
-        {/* Container Organization */}
-        <div className="bg-white rounded-2xl shadow-xl p-8 mb-12">
-          <div className="grid lg:grid-cols-2 gap-8 items-center">
-            <div>
-              <h3 className="font-playfair text-2xl md:text-3xl font-bold text-sebaaq-midnight mb-6">
-                تنظيم وإدارة الشحنات
-              </h3>
-              <p className="text-gray-600 mb-6 leading-relaxed">
-                نستخدم أحدث تقنيات تنظيم الحاويات لضمان الاستفادة القصوى من المساحة وحماية البضائع أثناء النقل.
+          {/* Active Tab Content */}
+          <div className="bg-gradient-to-r from-blue-50/50 to-indigo-50/50 rounded-2xl p-8 min-h-[120px] flex items-center">
+            <div className="w-full">
+              <div className="flex items-center mb-4">
+                <span className="text-4xl ml-4">{shippingFeatures[activeTab].emoji}</span>
+                <h4 className="text-2xl font-bold text-sebaaq-midnight">
+                  {shippingFeatures[activeTab].title}
+                </h4>
+              </div>
+              <p className="text-gray-700 leading-relaxed text-lg">
+                {shippingFeatures[activeTab].description}
               </p>
-              <ul className="space-y-3 text-gray-600">
-                <li className="flex items-center space-x-3 space-x-reverse">
-                  <div className="w-2 h-2 bg-sebaaq-blue rounded-full"></div>
-                  <span>تصنيف وترقيم دقيق للبضائع</span>
-                </li>
-                <li className="flex items-center space-x-3 space-x-reverse">
-                  <div className="w-2 h-2 bg-sebaaq-blue rounded-full"></div>
-                  <span>استغلال أمثل لمساحة الحاويات</span>
-                </li>
-                <li className="flex items-center space-x-3 space-x-reverse">
-                  <div className="w-2 h-2 bg-sebaaq-blue rounded-full"></div>
-                  <span>حماية متقدمة للمعدات الحساسة</span>
-                </li>
-                <li className="flex items-center space-x-3 space-x-reverse">
-                  <div className="w-2 h-2 bg-sebaaq-blue rounded-full"></div>
-                  <span>تتبع مباشر لحالة الشحنة</span>
-                </li>
-              </ul>
-            </div>
-            <div>
-              <img 
-                src="/lovable-uploads/b9a6b73c-7a7c-4210-8267-bad296bc4b56.png" 
-                alt="تنظيم الحاويات" 
-                className="w-full rounded-lg shadow-lg"
-              />
             </div>
           </div>
-        </div>
 
-        {/* AI Warehouse Management */}
-        <div className="bg-gradient-to-r from-sebaaq-blue/5 to-blue-400/5 rounded-2xl shadow-xl p-8 mb-12">
-          <div className="grid lg:grid-cols-2 gap-8 items-center">
-            <div>
-              <img 
-                src="/lovable-uploads/d14ba9d4-afc3-4a8d-8141-dbaec2d0a42b.png" 
-                alt="نظام إدارة المخازن الذكي" 
-                className="w-full rounded-lg shadow-lg"
+          {/* Progress Indicator */}
+          <div className="flex justify-center mt-6 space-x-2 space-x-reverse">
+            {shippingFeatures.map((_, index) => (
+              <div
+                key={index}
+                className={`h-2 rounded-full transition-all duration-300 ${
+                  index === activeTab
+                    ? 'w-8 bg-sebaaq-blue'
+                    : 'w-2 bg-gray-300'
+                }`}
               />
-            </div>
-            <div>
-              <h3 className="font-playfair text-2xl md:text-3xl font-bold text-sebaaq-midnight mb-6">
-                إدارة ذكية للمخازن
-              </h3>
-              <p className="text-gray-600 mb-6 leading-relaxed">
-                نطبق أحدث تقنيات الذكاء الاصطناعي في إدارة المخازن وتتبع البضائع لضمان الدقة والكفاءة.
-              </p>
-              <ul className="space-y-3 text-gray-600">
-                <li className="flex items-center space-x-3 space-x-reverse">
-                  <div className="w-2 h-2 bg-sebaaq-blue rounded-full"></div>
-                  <span>تتبع فوري للمنتجات بالذكاء الاصطناعي</span>
-                </li>
-                <li className="flex items-center space-x-3 space-x-reverse">
-                  <div className="w-2 h-2 bg-sebaaq-blue rounded-full"></div>
-                  <span>تحليل الأبعاد والمساحات تلقائياً</span>
-                </li>
-                <li className="flex items-center space-x-3 space-x-reverse">
-                  <div className="w-2 h-2 bg-sebaaq-blue rounded-full"></div>
-                  <span>تحسين التخزين والاسترجاع</span>
-                </li>
-                <li className="flex items-center space-x-3 space-x-reverse">
-                  <div className="w-2 h-2 bg-sebaaq-blue rounded-full"></div>
-                  <span>تقارير مفصلة ودقيقة</span>
-                </li>
-              </ul>
-            </div>
+            ))}
           </div>
         </div>
 
         {/* CTA */}
         <div className="text-center">
-          <Button className="bg-gradient-to-r from-sebaaq-blue to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white px-12 py-4 rounded-lg font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
-            احصل على عرض سعر للشحن
+          <Button className="bg-gradient-to-r from-sebaaq-blue to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white px-12 py-4 rounded-2xl font-semibold text-lg shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105">
+            تواصل معنا
           </Button>
         </div>
       </div>
