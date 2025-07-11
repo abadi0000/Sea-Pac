@@ -73,7 +73,7 @@ const ServicesTabsSection = ({
   tabs = [
     {
       value: "shipping",
-      icon: <img src="/lovable-uploads/d7f1cba7-dbec-4c7e-85f2-3f7da1660c17.png" alt="خدمات الشحن" className="w-8 h-8" />,
+      icon: <img src="/lovable-uploads/d7f1cba7-dbec-4c7e-85f2-3f7da1660c17.png" alt="خدمات الشحن" className="w-12 h-12" />,
       label: "خدمات الشحن والاستيراد",
       content: {
         badge: "حلول لوجستية متكاملة",
@@ -86,7 +86,7 @@ const ServicesTabsSection = ({
     },
     {
       value: "consultation",
-      icon: <img src="/lovable-uploads/ca0e3cbf-cfd3-4fe0-88e7-173dc3ac0bc2.png" alt="خدمات استشارية" className="w-8 h-8" />,
+      icon: <img src="/lovable-uploads/ca0e3cbf-cfd3-4fe0-88e7-173dc3ac0bc2.png" alt="خدمات استشارية" className="w-12 h-12" />,
       label: "خدمات استشارية",
       content: {
         badge: "خبرة متخصصة",
@@ -99,7 +99,7 @@ const ServicesTabsSection = ({
     },
     {
       value: "machinery",
-      icon: <img src="/lovable-uploads/36e35649-f04b-406a-94e8-2c8d6d70df5d.png" alt="توريد الآلات" className="w-8 h-8" />,
+      icon: <img src="/lovable-uploads/36e35649-f04b-406a-94e8-2c8d6d70df5d.png" alt="توريد الآلات" className="w-12 h-12" />,
       label: "توريد وتركيب الآلات",
       content: {
         badge: "خبرة تقنية متقدمة",
@@ -190,7 +190,7 @@ const ServicesTabsSection = ({
                   className="flex flex-col items-center gap-3 rounded-xl px-6 py-8 text-base font-semibold transition-all duration-300 data-[state=active]:bg-gradient-to-br data-[state=active]:from-primary data-[state=active]:to-primary/80 data-[state=active]:text-primary-foreground data-[state=active]:shadow-lg hover:bg-accent/50 font-cairo"
                 >
                   <div className="text-xl">{tab.icon}</div>
-                  <span className="text-center text-sm font-medium leading-tight">{tab.label}</span>
+                  <span className="text-center text-base font-semibold leading-tight">{tab.label}</span>
                 </TabsTrigger>
               ))}
             </TabsList>
