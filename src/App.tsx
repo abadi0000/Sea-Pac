@@ -51,10 +51,9 @@ const App = () => (
               <Route path="/sebaaq-machine/production-lines" element={<ProductionLines />} />
               <Route path="/sebaaq-machine/car-wash" element={<CarWash />} />
               <Route path="/car-wash/products" element={<CarWashProducts />} />
-              <Route path="/car-wash/bt900" element={<CarWashBT900 />} />
-              <Route path="/car-wash/bt500" element={<CarWashBT500 />} />
-              {/* Redirect all TL models to the unified products page */}
-              <Route path="/car-wash/tl500" element={<CarWashProducts />} />
+               <Route path="/car-wash/bt900" element={<CarWashBT900 />} />
+               <Route path="/car-wash/bt500" element={<CarWashBT500 />} />
+               <Route path="/car-wash/tl500" element={<CarWashTL500 />} />
               <Route path="/car-wash/tl400" element={<CarWashProducts />} />
               <Route path="/car-wash/tl300" element={<CarWashProducts />} />
               <Route path="/sebaaq-machine/entertainment-systems" element={<EntertainmentSystems />} />

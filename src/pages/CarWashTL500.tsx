@@ -1,194 +1,272 @@
-import React from 'react';
-import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
-import { Card } from '@/components/ui/card';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { 
-  Droplets, 
-  Zap, 
-  Timer, 
-  Shield, 
-  Cog, 
-  Phone, 
-  Mail, 
-  CheckCircle,
-  ArrowRight,
-  Award
-} from 'lucide-react';
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { Card, CardContent } from "@/components/ui/card";
+import { CheckCircle, Cog, Droplets, Timer, Shield, Zap, Settings, RefreshCw } from "lucide-react";
 
 const CarWashTL500 = () => {
   const specifications = [
-    { label: "الطول", value: "9.5 متر" },
-    { label: "العرض", value: "3.0 متر" },
-    { label: "الارتفاع", value: "2.5 متر" },
-    { label: "استهلاك المياه", value: "120-150 لتر" },
-    { label: "القدرة الكهربائية", value: "10 كيلو واط" },
-    { label: "عدد السيارات/ساعة", value: "20-25 سيارة" },
-    { label: "ضغط المياه", value: "6-10 بار" },
-    { label: "درجة حرارة الماء", value: "30-50 درجة مئوية" }
+    { label: "نظام التحكم", value: "GERMAN: SIEMENS" },
+    { label: "مضخة المياه الرئيسية", value: "GERMAN: PINFL" },
+    { label: "الحساسات", value: "GERMAN: BAUMER" },
+    { label: "القواطع الكهربائية", value: "GERMAN: SCHNEIDER" },
+    { label: "مساحة التركيب", value: "طول: 7.8 متر، عرض: 4 متر، ارتفاع: 3.5 متر" },
+    { label: "الحد الأقصى لحجم السيارة", value: "طول: 5.6 متر، عرض: 2.6 متر، ارتفاع: 2 متر" },
+    { label: "مضخة المياه الرئيسية", value: "PINFL PUMP" },
+    { label: "نظام التجفيف", value: "6 مجففات توربو" },
+    { label: "استهلاك المياه", value: "60 - 140 لتر" },
+    { label: "استهلاك الطاقة", value: "0.5-1.2 kW/سع" },
+    { label: "وقت الغسيل", value: "2 - 5 دقائق" },
+    { label: "أقصى قوة ضغط المياه", value: "100 Bar" },
+    { label: "استهلاك مواد التنظيف", value: "150 / 20 مل" },
+    { label: "الكهرباء", value: "380V" },
   ];
 
   const features = [
     {
-      icon: <Droplets className="h-6 w-6" />,
-      title: "غسيل فعال",
-      description: "نظام غسيل متطور مع توزيع مثالي للرغوة"
+      icon: Cog,
+      title: "تقنية الاستشعار الذكي القياسي",
+      description: "INTELLIGENT MAX SENSOR - يمتاز موديل TL500 بأجهزة استشعار هاكس متقدمة تقرأ أبعاد وارتفاع السيارة بتقنية عالية.",
     },
     {
-      icon: <Zap className="h-6 w-6" />,
-      title: "توفير الموارد",
-      description: "استهلاك اقتصادي للمياه والطاقة"
+      icon: Droplets,
+      title: "ضغط ماء بقوة BAR 100",
+      description: "باستخدام المضخة الألمانية (بينفل) توفر ضغط عالي وآمن يعمل بانسيابية عالية، مما يبيح تنظيفاً دقيقاً وشاملاً لجميع أنحاء سطح السيارة.",
     },
     {
-      icon: <Timer className="h-6 w-6" />,
-      title: "سرعة مناسبة",
-      description: "دورة غسيل في 5-7 دقائق"
+      icon: Settings,
+      title: "ذراع روبوتك ذكي",
+      description: "يمكن للذراع أن يدور 360 ويتحرك للأمام والخلف ويدعم جميع الاتجاهات، ومن خلال ضبط اتجاه الذراع التي، يمكن توجيه تدفق المياه بشكل محدد نحو المرايا.",
     },
     {
-      icon: <Shield className="h-6 w-6" />,
-      title: "حماية ممتازة",
-      description: "فرش متخصصة آمنة على الطلاء"
-    }
+      icon: RefreshCw,
+      title: "نظام الحركة الديناميكية لليسار واليمين",
+      description: "مع القدرة على التحرك أفقياً، يتكيف الذراع مع عرض كل سيارة، مما يضمن مسافة تنظيف مثالية بالإضافة إلى تجنب العوائق مثل المرايا.",
+    },
+    {
+      icon: Shield,
+      title: "مجموعة من الحساسات الذكية",
+      description: "تقوم أجهزة الاستشعار المتعددة بقياس عرض السيارة، وضبط مسافة الذراع من سطح السيارة، للحفاظ على مسافة مثالية تبلغ 30 سم من الذراع وسطح السيارة.",
+    },
+    {
+      icon: Zap,
+      title: "الغسيل المضاعف",
+      description: "يركز على المناطق التي تحتاج إلى اهتمام إضافي. مقدمة ومؤخرة السيارة: بفضل نظام الغسيل المضاعف، يتم غسل هذه المناطق مرتين قبل الدوران بشكل كامل.",
+    },
   ];
 
-  const benefits = [
-    "مناسب للمشاريع الصغيرة والمتوسطة",
-    "سهولة التركيب والتشغيل",
-    "تكلفة تشغيل منخفضة",
-    "صيانة بسيطة وسريعة",
-    "جودة غسيل ممتازة",
-    "ضمان شامل لمدة سنة ونصف"
+  const advantages = [
+    "نظام تجفيف متطور + مجفف جانبي",
+    "مجففات جانبية: تصميم مبتكر يحسن وصول الهواء وتجفيفه، مما يضمن أقصى أداء للتجفيف",
+    "خيارات متعددة: نوفر لعملائنا خيارات وتعددة لتصاميم أنظمة التجفيف، لتناسب التفضيلات الخاصة لكل عملائنا",
+    "نسبة تجفيف تصل إلى 95%: توفر سمارتكو لأقوى نظام تجفيف، 6 مجففات بقوة وكفاءة قصوى",
   ];
 
   return (
-    <div className="min-h-screen bg-background font-cairo" dir="rtl">
+    <div className="min-h-screen bg-background">
       {/* Hero Section */}
-      <section className="relative py-20 bg-gradient-to-br from-accent/5 via-background to-primary/5">
-        <div className="container mx-auto px-4">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="space-y-6">
-              <Badge variant="outline" className="bg-accent/10 text-accent-foreground border-accent/20">
-                <Award className="h-4 w-4 ml-2" />
-                جودة عالية
+      <section className="relative bg-gradient-to-br from-primary/20 via-primary/10 to-secondary/20 py-20 overflow-hidden">
+        <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div className="space-y-8">
+              <Badge variant="outline" className="w-fit bg-primary/10 text-primary border-primary/20">
+                منتج جديد
               </Badge>
               
-              <h1 className="text-4xl lg:text-5xl font-bold text-foreground">
-                غسالة السيارات الآلية
-                <span className="block text-accent-foreground mt-2">TL500</span>
-              </h1>
-              
-              <p className="text-lg text-muted-foreground leading-relaxed">
-                حل مثالي للمشاريع المتوسطة مع تقنية متقدمة وأداء موثوق.
-                تصميم مدروس يجمع بين الكفاءة والاقتصادية.
-              </p>
+              <div className="space-y-4">
+                <h1 className="text-4xl lg:text-6xl font-bold text-foreground">
+                  نظام غسيل السيارات <span className="text-primary">TL500</span>
+                </h1>
+                <p className="text-xl text-muted-foreground leading-relaxed">
+                  أقوى وأحدث أنظمة غسيل المركبات من موديلات الغسيل بدون لمس، <span className="text-primary font-semibold">سمارتكو</span>
+                </p>
+                <p className="text-lg text-muted-foreground">
+                  تم تصميم نظام TL500 لتحقيق نتائج مبهرة، ووضع معايير جديدة في تكنولوجيا غسيل السيارات الأوتوماتيكي، مزودة بمجموعة كبيرة من الخبرات والتكنولوجيا المتقدمة، لإحداث ثورة في أنظمة غسيل السيارات.
+                </p>
+              </div>
 
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground">
-                  <Phone className="h-5 w-5 ml-2" />
+                <Button size="lg" className="bg-primary hover:bg-primary/90">
                   اطلب عرض سعر
                 </Button>
                 <Button variant="outline" size="lg">
-                  <Mail className="h-5 w-5 ml-2" />
-                  استشارة مجانية
+                  تحميل الكتالوج
                 </Button>
               </div>
             </div>
-
+            
             <div className="relative">
-              <div className="aspect-square rounded-2xl bg-gradient-to-br from-purple-100 to-purple-200 flex items-center justify-center">
+              <div className="relative z-10 bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
                 <img 
-                  src="https://images.unsplash.com/photo-1460574283810-2aab119d8511?w=600&h=600&fit=crop" 
-                  alt="غسالة السيارات TL500"
-                  className="w-full h-full object-cover rounded-2xl"
+                  src="/lovable-uploads/7f3e676e-bd79-407e-a308-0d9483d4578f.png" 
+                  alt="TL500 Car Wash System" 
+                  className="w-full h-auto rounded-lg"
                 />
               </div>
-              <div className="absolute -bottom-4 -right-4 bg-accent text-accent-foreground p-4 rounded-xl shadow-lg">
-                <div className="text-center">
-                  <div className="text-2xl font-bold">20-25</div>
-                  <div className="text-sm">سيارة/ساعة</div>
-                </div>
-              </div>
+              <div className="absolute -top-4 -right-4 w-24 h-24 bg-primary/20 rounded-full blur-xl"></div>
+              <div className="absolute -bottom-8 -left-8 w-32 h-32 bg-secondary/20 rounded-full blur-2xl"></div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Details Section */}
-      <section className="py-16">
+      {/* Stats Section */}
+      <section className="py-16 bg-gradient-to-r from-primary via-primary-glow to-accent">
         <div className="container mx-auto px-4">
-          <Tabs defaultValue="specs" className="w-full">
-            <TabsList className="grid w-full grid-cols-3 mb-8">
-              <TabsTrigger value="specs">المواصفات</TabsTrigger>
-              <TabsTrigger value="features">المميزات</TabsTrigger>
-              <TabsTrigger value="benefits">الفوائد</TabsTrigger>
-            </TabsList>
-
-            <TabsContent value="specs" className="space-y-6">
-              <h2 className="text-2xl font-bold text-foreground mb-6">المواصفات التقنية</h2>
-              <div className="grid md:grid-cols-2 gap-4">
-                {specifications.map((spec, index) => (
-                  <Card key={index} className="p-4">
-                    <div className="flex justify-between items-center">
-                      <span className="font-semibold text-foreground">{spec.label}</span>
-                      <span className="text-accent-foreground font-bold">{spec.value}</span>
-                    </div>
-                  </Card>
-                ))}
+          <div className="text-center text-white space-y-6">
+            <h2 className="text-5xl lg:text-7xl font-bold">10</h2>
+            <p className="text-2xl lg:text-3xl font-semibold">سنوات ضمان</p>
+            <p className="text-lg opacity-90">على الهيكل وأنظمة التحكم</p>
+            
+            <div className="mt-12 flex items-center justify-center">
+              <div className="bg-gradient-to-r from-amber-400 to-orange-500 text-black px-8 py-3 rounded-full font-bold text-xl">
+                دعم فني <span className="text-accent-foreground">مدى الحياة!</span>
               </div>
-            </TabsContent>
-
-            <TabsContent value="features" className="space-y-6">
-              <h2 className="text-2xl font-bold text-foreground mb-6">المميزات الرئيسية</h2>
-              <div className="grid md:grid-cols-2 gap-6">
-                {features.map((feature, index) => (
-                  <Card key={index} className="p-6">
-                    <div className="flex items-start gap-4">
-                      <div className="p-2 bg-accent/10 text-accent-foreground rounded-lg">
-                        {feature.icon}
-                      </div>
-                      <div>
-                        <h3 className="font-semibold text-foreground mb-2">{feature.title}</h3>
-                        <p className="text-muted-foreground">{feature.description}</p>
-                      </div>
-                    </div>
-                  </Card>
-                ))}
+            </div>
+            
+            <div className="mt-8 flex justify-center">
+              <div className="bg-white/10 backdrop-blur-sm rounded-full p-4 border border-white/20">
+                <Settings className="w-12 h-12 text-white" />
               </div>
-            </TabsContent>
+            </div>
+            <p className="text-xl font-semibold">صيانة مجانية</p>
+          </div>
+        </div>
+      </section>
 
-            <TabsContent value="benefits" className="space-y-6">
-              <h2 className="text-2xl font-bold text-foreground mb-6">الفوائد والمزايا</h2>
-              <div className="grid md:grid-cols-2 gap-4">
-                {benefits.map((benefit, index) => (
-                  <div key={index} className="flex items-center gap-3">
-                    <CheckCircle className="h-5 w-5 text-green-500" />
-                    <span className="text-foreground">{benefit}</span>
+      {/* Features Section */}
+      <section className="py-20 bg-background">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">
+              المميزات التي تجعل نظام TL500 استثنائي
+            </h2>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              يمتاز موديل TL500 بأجهزة استشعار هاكس متقدمة تقرأ أبعاد وارتفاع السيارة بتقنية عالية الجودة، مما يوفر أداء تنظيف على المستوى وكفاءة في استخدام الطاقة.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {features.map((feature, index) => (
+              <Card key={index} className="group hover:shadow-lg transition-all duration-300 border-border/50 hover:border-primary/20">
+                <CardContent className="p-6 space-y-4">
+                  <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+                    <feature.icon className="w-6 h-6 text-primary" />
                   </div>
-                ))}
-              </div>
-            </TabsContent>
-          </Tabs>
+                  <h3 className="text-xl font-semibold text-foreground">{feature.title}</h3>
+                  <p className="text-muted-foreground leading-relaxed">{feature.description}</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Catalog Images Section */}
+      <section className="py-20 bg-muted/30">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">
+              نظام تجفيف متطور + مجفف جانبي
+            </h2>
+            <p className="text-xl text-muted-foreground">
+              نظام تجفيف يتكون من 6 مجففات، مزيج بين التكنولوجيا المتطورة وموادعالية الجودة، مما يضمن أقصى أداء للتجفيف على المستوى وكفاءة في استخدام الطاقة
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+            <div className="space-y-6">
+              <img 
+                src="/lovable-uploads/67d50a90-9cf1-4f95-99ca-847913f88c1f.png" 
+                alt="TL500 Features" 
+                className="w-full rounded-lg shadow-lg"
+              />
+            </div>
+            <div className="space-y-6">
+              <img 
+                src="/lovable-uploads/464c2913-7b6d-45d7-9618-6a6baa23ed50.png" 
+                alt="TL500 Smart Arm Features" 
+                className="w-full rounded-lg shadow-lg"
+              />
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <div className="space-y-6">
+              <img 
+                src="/lovable-uploads/6190c4d1-c04b-4586-9991-d1daa8228546.png" 
+                alt="TL500 Drying System" 
+                className="w-full rounded-lg shadow-lg"
+              />
+            </div>
+            <div className="space-y-6">
+              <img 
+                src="/lovable-uploads/9cec8832-9e00-432b-8147-5d39c5f21026.png" 
+                alt="TL500 Specifications" 
+                className="w-full rounded-lg shadow-lg"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Technical Specifications */}
+      <section className="py-20 bg-background">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">المواصفات التقنية</h2>
+            <p className="text-xl text-muted-foreground">مواصفات تقنية متقدمة لضمان الأداء الأمثل</p>
+          </div>
+
+          <div className="max-w-4xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {specifications.map((spec, index) => (
+                <div key={index} className="flex justify-between items-center p-4 bg-card rounded-lg border border-border/50">
+                  <span className="font-medium text-foreground">{spec.label}</span>
+                  <span className="text-muted-foreground text-right">{spec.value}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Comparison Table */}
+      <section className="py-20 bg-muted/30">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">جدول مقارنة التقنيات</h2>
+            <p className="text-xl text-muted-foreground">مقارنة شاملة بين موديلات TL300 و TL400 و TL500</p>
+          </div>
+
+          <div className="max-w-6xl mx-auto">
+            <img 
+              src="/lovable-uploads/2176eb12-53f3-47b4-bfd6-4b73e7ab8f3a.png" 
+              alt="Technology Comparison Table" 
+              className="w-full rounded-lg shadow-lg"
+            />
+          </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 bg-muted/30">
+      <section className="py-20 bg-gradient-to-r from-primary via-primary-glow to-accent">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold text-foreground mb-4">
-            هل TL500 الخيار المناسب لك؟
-          </h2>
-          <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
-            احصل على استشارة مجانية وعرض سعر مخصص لاحتياجاتك
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground">
-              <Phone className="h-5 w-5 ml-2" />
-              اتصل بنا الآن
-            </Button>
-            <Button variant="outline" size="lg">
-              <ArrowRight className="h-5 w-5 mr-2" />
-              عرض المنتجات الأخرى
-            </Button>
+          <div className="max-w-3xl mx-auto space-y-8 text-white">
+            <h2 className="text-3xl lg:text-4xl font-bold">
+              ابدأ مشروعك مع TL500 اليوم
+            </h2>
+            <p className="text-xl opacity-90">
+              احصل على عرض سعر مخصص واستشارة مجانية لتحديد أفضل حل لاحتياجاتك
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button size="lg" variant="secondary" className="bg-white text-primary hover:bg-white/90">
+                اطلب عرض سعر
+              </Button>
+              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10">
+                تواصل معنا
+              </Button>
+            </div>
           </div>
         </div>
       </section>
