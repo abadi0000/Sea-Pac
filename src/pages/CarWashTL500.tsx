@@ -162,7 +162,7 @@ const CarWashTL500 = () => {
         </div>
       </section>
 
-      {/* Catalog Images Section */}
+      {/* Advantages Section */}
       <section className="py-20 bg-muted/30">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
@@ -174,37 +174,14 @@ const CarWashTL500 = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
-            <div className="space-y-6">
-              <img 
-                src="/lovable-uploads/67d50a90-9cf1-4f95-99ca-847913f88c1f.png" 
-                alt="TL500 Features" 
-                className="w-full rounded-lg shadow-lg"
-              />
-            </div>
-            <div className="space-y-6">
-              <img 
-                src="/lovable-uploads/464c2913-7b6d-45d7-9618-6a6baa23ed50.png" 
-                alt="TL500 Smart Arm Features" 
-                className="w-full rounded-lg shadow-lg"
-              />
-            </div>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            <div className="space-y-6">
-              <img 
-                src="/lovable-uploads/6190c4d1-c04b-4586-9991-d1daa8228546.png" 
-                alt="TL500 Drying System" 
-                className="w-full rounded-lg shadow-lg"
-              />
-            </div>
-            <div className="space-y-6">
-              <img 
-                src="/lovable-uploads/9cec8832-9e00-432b-8147-5d39c5f21026.png" 
-                alt="TL500 Specifications" 
-                className="w-full rounded-lg shadow-lg"
-              />
+          <div className="max-w-4xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {advantages.map((advantage, index) => (
+                <div key={index} className="flex items-start space-x-3 p-6 bg-card rounded-lg border border-border/50 hover:shadow-lg transition-all duration-300">
+                  <CheckCircle className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
+                  <p className="text-foreground leading-relaxed">{advantage}</p>
+                </div>
+              ))}
             </div>
           </div>
         </div>
@@ -240,11 +217,16 @@ const CarWashTL500 = () => {
           </div>
 
           <div className="max-w-6xl mx-auto">
-            <img 
-              src="/lovable-uploads/2176eb12-53f3-47b4-bfd6-4b73e7ab8f3a.png" 
-              alt="Technology Comparison Table" 
-              className="w-full rounded-lg shadow-lg"
-            />
+            <div className="bg-card rounded-lg border border-border/50 p-8">
+              <div className="text-center">
+                <p className="text-lg text-muted-foreground mb-8">
+                  يمكنك مقارنة المواصفات التقنية والمميزات بين موديلات TL300 و TL400 و TL500 للعثور على النظام الأمثل لاحتياجاتك
+                </p>
+                <Button size="lg" className="bg-primary hover:bg-primary/90">
+                  طلب جدول المقارنة التفصيلي
+                </Button>
+              </div>
+            </div>
           </div>
         </div>
       </section>
