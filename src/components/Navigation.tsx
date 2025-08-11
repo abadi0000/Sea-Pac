@@ -11,8 +11,6 @@ const Navigation = () => {
   const navItems = [
     { path: '/home', label: 'الرئيسية' },
     { path: '/shipping-import-china', label: 'الشحن والاستيراد من الصين' },
-    { path: '/sebaaq-machine', label: 'سي باك ماشين' },
-    { path: '/parts-maintenance', label: 'قطع الغيار والصيانة' },
     { path: '/shipping-calculator', label: 'حاسبة تكلفة الشحن' },
     { path: '/about-us', label: 'من نحن' }
   ];
